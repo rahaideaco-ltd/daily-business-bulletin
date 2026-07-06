@@ -20,38 +20,18 @@ def write_file(filepath, content):
 json_db = read_file('decisions-log.json')
 md_trends = read_file('weekly-trends.md')
 
-# پرامپت سیستمی و درخواست اصلی
+# پرامپت کاملاً ساختاریافته برای اجبار مدل به تولید پاسخ دقیق
 prompt = f"""
-تو یک تحلیلگر ارشد استراتژی کسب‌وکار هستی. اخبار مهم تک و SaaS امروز را مرور کن و بولتن روزانه را بساز.
-فایل‌های دیتابیس قبلی اینها هستند:
+تو یک تحلیلگر ارشد استراتژی کسب‌وکار هستی. اخبار مهم تک، SaaS و هوش مصنوعی امروز (تاریخ امروز: 2026-07-06) را مرور کن و بولتن روزانه را بر اساس این داده‌های قبلی بساز.
+
+فایل‌های دیتابیس قبلی:
 JSON Database:
 {json_db}
 
 Markdown Trends:
 {md_trends}
 
-خروجی خود را دقیقاً در ۳ بلوک کد مجزا (بدون هیچ متن اضافه‌ای) ارائه بده:
-1. بلوک کد HTML قالب گزارش
-2. بلوک کد JSON آپدیت شده
-3. بلوک کد Markdown آپدیت شده
-"""
+خروجی خود را دقیقاً و حتماً در ۳ بلوک کد مجزا با نام‌های دقیق زیر ارائه بده و هیچ متن اضافی قبل یا بعد از بلوک‌ها ننویس:
 
-# فراخوانی مدل
-model = genai.GenerativeModel('gemini-1.5-flash')
-response = model.generate_content(prompt)
-text = response.text
-
-# استخراج بلوک‌های کد از خروجی هوش مصنوعی
-html_match = re.search(r'```html(.*?)```', text, re.DOTALL)
-json_match = re.search(r'```json(.*?)```', text, re.DOTALL)
-md_match = re.search(r'```markdown(.*?)```', text, re.DOTALL)
-
-if html_match and json_match and md_match:
-    # ذخیره فایل HTML به عنوان index.html برای نمایش در GitHub Pages
-    write_file('index.html', html_match.group(1))
-    # آپدیت دیتابیس‌ها
-    write_file('decisions-log.json', json_match.group(1))
-    write_file('weekly-trends.md', md_match.group(1))
-    print("Files successfully generated and updated.")
-else:
-    print("Error: Could not parse all code blocks from the AI response.")
+```html
+(کد کامل HTML را اینجا قرار بده)
