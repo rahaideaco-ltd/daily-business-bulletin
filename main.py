@@ -29,14 +29,14 @@ except:
 
 today_str = datetime.now().strftime('%Y-%m-%d')
 
-# ۳. تدوین پرامپت مهندسی‌شده برای جداسازی سیگنال از نویز
+# ۳. تدوین پرامپت مهندسی‌شده
 prompt_text = f"""
 امروز {today_str} است. تو یک تحلیلگر ارشد استراتژی محصول و معمار زیرساخت‌های SaaS هستی.
 وظیفه تو رصد زنده، کالبدشکافی عمیق و مستندسازی تصمیمات فنی/مدیریتی شرکت‌های پیشرو تکنولوژی در دنیا است.
 
-گام اول: وب را برای یافتن پپوت‌ها (Pivots)، تغییرات مدل قیمت‌گذاری، تغییرات کلان معماری ابری/زیرساخت، استراتژی‌های کاهش هزینه (Cost-cutting) و پیاده‌سازی‌های عملیاتی هوش مصنوعی در شرکت‌هایی مثل Stripe, Shopify, OpenAI, Netflix, Meta, Uber, Airbnb و استارتاپ‌های شاخص Y-Combinator در چند روز اخیر جستجو کن.
+Analyse recent web signals for pivots, pricing model changes, cloud infrastructure shifts, cost-cutting strategies, and practical AI deployments in companies like Stripe, Shopify, OpenAI, Netflix, Meta, Uber, Airbnb, and notable Y-Combinator startups.
 
-گام دوم: با تحلیل داده‌های جدید و ترکیب آن‌ها با حافظه تاریخی سیستم ما، ۳ خروجی مجزا و دقیق تولید کن.
+با تحلیل داده‌های جدید و ترکیب آن‌ها با حافظه تاریخی سیستم ما، ۳ خروجی مجزا و دقیق تولید کن.
 
 [حافظه تاریخی دیتابیس (۵ ردیف آخر جهت جلوگیری از تکرار)]:
 {json.dumps(historical_db[-5:], indent=2, ensure_ascii=False)}
@@ -48,7 +48,7 @@ prompt_text = f"""
 
 <html_output>
 یک داشبورد مدیریتی فوق‌العاده شیک، مینیمال، مدرن و کاملاً فارسی (index.html).
-از فونت Vazirmatn (از طریق گوگل‌فونتس)، ساختار گرید (Grid Layout)، تم رنگی لوکس (مداد‌شمعی/مرکبی مثل داکیومنت‌های اسکوئر یا استرایپ)، نشانگرهای کیفیت منبع (۱ تا ۵ ستاره)، بخش "چرا اهمیت دارد"، بخش "اقدام امروز برای استارتاپ شما" و دسته‌بندی‌های رنگی (pricing, infrastructure, product-pivot, ai-integration) استفاده کن. طراحی باید کاملاً Responsive باشد.
+از فونت Vazirmatn (از طریق گوگل‌فونتس)، ساختار گرید (Grid Layout)، تم رنگی لوکس، نشانگرهای کیفیت منبع (۱ تا ۵ ستاره)، بخش "چرا اهمیت دارد"، بخش "اقدام امروز برای استارتاپ شما" و دسته‌بندی‌های رنگی (pricing, infrastructure, product-pivot, ai-integration) استفاده کن. طراحی باید کاملاً Responsive باشد.
 </html_output>
 
 <json_output>
@@ -77,10 +77,12 @@ prompt_text = f"""
 """
 
 try:
-    # ۴. اصلاح و اعمال دقیق ابزار گوگل سرچ بر اساس مستندات ابزارها در پایتون
+    # ۴. استفاده از آبجکت صریح پروتوباف برای فعال‌سازی قطعی ابزار سرچ گوگل بدون تداخل با باگ SDK پایتون
+    google_search_tool = genai.protos.Tool(google_search={})
+    
     model = genai.GenerativeModel(
         'gemini-2.5-flash',
-        tools=[{"google_search_retrieval": {}}]
+        tools=[google_search_tool]
     )
     
     response = model.generate_content(prompt_text)
@@ -116,10 +118,10 @@ try:
 except Exception as main_error:
     print(f"💥 [CRITICAL ERROR] Core Execution Failed: {main_error}")
     fallback_html = f"""
-    <div style='font-family:sans-serif; padding:50px; text-align:center; color:#333;'>
+    <div style='font-family:sans-serif; padding:50px; text-align:center; color:#333; direction:rtl;'>
         <h2>⚠️ سیستم دیده‌بان در حال به‌روزرسانی زیرساخت است</h2>
         <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده است.</p>
-        <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block;'>{main_error}</code>
+        <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block; direction:ltr;'>{main_error}</code>
     </div>
     """
     write_file('index.html', fallback_html)
