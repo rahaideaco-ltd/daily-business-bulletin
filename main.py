@@ -29,7 +29,7 @@ except:
 
 today_str = datetime.now().strftime('%Y-%m-%d')
 
-# ۳. تدوین پرامپت مهندسی‌شده و فوق‌حرفه‌ای برای جداسازی سیگنال از نویز
+# ۳. تدوین پرامپت مهندسی‌شده برای جداسازی سیگنال از نویز
 prompt_text = f"""
 امروز {today_str} است. تو یک تحلیلگر ارشد استراتژی محصول و معمار زیرساخت‌های SaaS هستی.
 وظیفه تو رصد زنده، کالبدشکافی عمیق و مستندسازی تصمیمات فنی/مدیریتی شرکت‌های پیشرو تکنولوژی در دنیا است.
@@ -48,7 +48,7 @@ prompt_text = f"""
 
 <html_output>
 یک داشبورد مدیریتی فوق‌العاده شیک، مینیمال، مدرن و کاملاً فارسی (index.html).
-از فونت Vazirmatn (از طریق گوگل‌فونتس)، ساختار گرید (Grid Layout)، تم رنگی لوکس (مداد‌شمعی/مرکبی مثل داکیومنت‌های اسکوئر یا استرایپ)، نشانگرهای کیفیت منبع (۱ تا ۵ ستاره)، بخش "چرا اهمیت دارد"، بخش "اقدام امروز برای استارتاپ شما" و دسته‌بندی‌های رنگی (pricing, infrastructure, product-pivot, ai-integration) استفاده کن. طراحی باید کاملاً Responsive و در سطح فریلنسرهای ارشد باشد.
+از فونت Vazirmatn (از طریق گوگل‌فونتس)، ساختار گرید (Grid Layout)، تم رنگی لوکس (مداد‌شمعی/مرکبی مثل داکیومنت‌های اسکوئر یا استرایپ)، نشانگرهای کیفیت منبع (۱ تا ۵ ستاره)، بخش "چرا اهمیت دارد"، بخش "اقدام امروز برای استارتاپ شما" و دسته‌بندی‌های رنگی (pricing, infrastructure, product-pivot, ai-integration) استفاده کن. طراحی باید کاملاً Responsive باشد.
 </html_output>
 
 <json_output>
@@ -77,21 +77,21 @@ prompt_text = f"""
 """
 
 try:
-    # ۴. راه‌اندازی مدل پیشرفته با ابزار جستجوی زنده گوگل
+    # ۴. اصلاح ساختار فعال‌سازی ابزار سرچ زنده گوگل (فرمت استاندارد SDK)
     model = genai.GenerativeModel(
         'gemini-2.5-flash',
-        tools=[{"google_search": {}}]
+        tools=['google_search']
     )
     
     response = model.generate_content(prompt_text)
     raw_response = response.text
     
-    # ۵. استخراج داده‌ها به روش ایمن صریح (XML Parsing)
+    # ۵. استخراج داده‌ها به روش XML Parsing
     html_content = re.search(r'<html_output>(.*?)</html_output>', raw_response, re.DOTALL).group(1).strip()
     json_content = re.search(r'<json_output>(.*?)</json_output>', raw_response, re.DOTALL).group(1).strip()
     md_content = re.search(r'<md_output>(.*?)</md_output>', raw_response, re.DOTALL).group(1).strip()
     
-    # ۶. پارس و معتبرسازی آرایه JSON و الصاق آن به دیتابیس اصلی
+    # ۶. پارس آرایه JSON و الصاق آن به دیتابیس اصلی
     try:
         new_records = json.loads(json_content)
         if isinstance(new_records, list):
@@ -115,11 +115,10 @@ try:
 
 except Exception as main_error:
     print(f"💥 [CRITICAL ERROR] Core Execution Failed: {main_error}")
-    # جلوگیری از داون شدن سایت و ایجاد صفحه دیباگ شیک
     fallback_html = f"""
     <div style='font-family:sans-serif; padding:50px; text-align:center; color:#333;'>
         <h2>⚠️ سیستم دیده‌بان در حال به‌روزرسانی زیرساخت است</h2>
-        <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده و تیم فنی در حال بررسی است.</p>
+        <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده است.</p>
         <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block;'>{main_error}</code>
     </div>
     """
