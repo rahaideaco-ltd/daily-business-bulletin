@@ -77,10 +77,10 @@ prompt_text = f"""
 """
 
 try:
-    # ۴. اصلاح ساختار فعال‌سازی ابزار سرچ زنده گوگل (فرمت استاندارد SDK)
+    # ۴. اصلاح و اعمال دقیق ابزار گوگل سرچ بر اساس مستندات ابزارها در پایتون
     model = genai.GenerativeModel(
         'gemini-2.5-flash',
-        tools=['google_search']
+        tools=[{"google_search_retrieval": {}}]
     )
     
     response = model.generate_content(prompt_text)
