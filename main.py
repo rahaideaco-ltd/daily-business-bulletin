@@ -1,9 +1,10 @@
 import os
 import json
+import re
 from datetime import datetime
 import google.generativeai as genai
 
-# ۱. تنظیم کلید API
+# ۱. پیکربندی موتور هوش مصنوعی گوگل
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
 def read_file(filepath, default_content=""):
@@ -17,76 +18,109 @@ def write_file(filepath, content):
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content.strip())
 
-# ۲. خواندن حافظه تاریخی سیستم
+# ۲. فراخوانی حافظه تاریخی سیستم
 json_db_str = read_file('decisions-log.json', '[]')
-md_trends = read_file('weekly-trends.md', '# Weekly Meta Trends\n')
+md_trends = read_file('weekly-trends.md', '# روندهای هفتگی دیده‌بان کسب‌وکار (Weekly Trends)\n')
 
 try:
-    historical_data = json.loads(json_db_str)
+    historical_db = json.loads(json_db_str)
 except:
-    historical_data = []
+    historical_db = []
 
 today_str = datetime.now().strftime('%Y-%m-%d')
 
-# ۳. طراحی پرامپت استراتژیک و چندمنظوره
+# ۳. تدوین پرامپت مهندسی‌شده و فوق‌حرفه‌ای برای جداسازی سیگنال از نویز
 prompt_text = f"""
-تو یک تحلیلگر ارشد استراتژی کسب‌وکار و سیستم‌های SaaS هستی. 
-امروز {today_str} است. ابتدا در وب جستجو کن و مهم‌ترین اخبار، تصمیمات استراتژیک شرکت‌های بزرگ (مثل OpenAI, Microsoft, Google, Stripe) و ابزارهای جدید معرفی شده در حوزه هوش مصنوعی و نرم‌افزار را پیدا کن.
+امروز {today_str} است. تو یک تحلیلگر ارشد استراتژی محصول و معمار زیرساخت‌های SaaS هستی.
+وظیفه تو رصد زنده، کالبدشکافی عمیق و مستندسازی تصمیمات فنی/مدیریتی شرکت‌های پیشرو تکنولوژی در دنیا است.
 
-سپس با ترکیب اخبار جدید امروز و تاریخچه بولتن‌های قبلی ما که در زیر آمده است، ۳ خروجی مجزا تولید کن:
----
-[دیتابیس ساختاریافته روزهای قبل]:
-{json.dumps(historical_data[-5:], indent=2, ensure_ascii=False)} 
+گام اول: وب را برای یافتن پپوت‌ها (Pivots)، تغییرات مدل قیمت‌گذاری، تغییرات کلان معماری ابری/زیرساخت، استراتژی‌های کاهش هزینه (Cost-cutting) و پیاده‌سازی‌های عملیاتی هوش مصنوعی در شرکت‌هایی مثل Stripe, Shopify, OpenAI, Netflix, Meta, Uber, Airbnb و استارتاپ‌های شاخص Y-Combinator در چند روز اخیر جستجو کن.
+
+گام دوم: با تحلیل داده‌های جدید و ترکیب آن‌ها با حافظه تاریخی سیستم ما، ۳ خروجی مجزا و دقیق تولید کن.
+
+[حافظه تاریخی دیتابیس (۵ ردیف آخر جهت جلوگیری از تکرار)]:
+{json.dumps(historical_db[-5:], indent=2, ensure_ascii=False)}
 
 [روندهای کلان ثبت شده تا کنون]:
 {md_trends}
----
 
-خروجی خود را دقیقاً در ۳ بلوک کد مجزا (بدون هیچ متن اضافی قبل یا بعد از بلوک‌ها) به فرمت زیر ارائه بده:
+خروجی‌های خود را دقیقاً درون تگ‌های مشخص شده قرار بده. هیچ متن، توضیح یا تعارفی خارج از تگ‌ها ننویس:
 
-۱. بلوک اول (HTML): یک بولتن روزانه بسیار شیک، گرافیکی و مجله‌ای به زبان فارسی (index.html). شامل بخش خلاصه، اخبار داغ امروز همراه با منبع یا نام شرکت‌ها، ابزارهای جدید، و بخش "اقدام امروز".
-۲. بلوک دوم (JSON): یک آبجکت ساختاریافته از دیتای امروز (فقط آبجکت امروز، نه کل آرایه) شامل:
-"date": "{today_str}", "top_news": ["خلاصه خبر ۱", "خلاصه خبر ۲"], "tools": ["ابزار ۱", "ابزار ۲"]
-۳. بلوک سوم (MARKDOWN): تحلیل تو از تغییر روندهای کلان بر اساس اخبار امروز و دیتای روزهای گذشته برای اضافه شدن به فایل روندهای هفتگی.
+<html_output>
+یک داشبورد مدیریتی فوق‌العاده شیک، مینیمال، مدرن و کاملاً فارسی (index.html).
+از فونت Vazirmatn (از طریق گوگل‌فونتس)، ساختار گرید (Grid Layout)، تم رنگی لوکس (مداد‌شمعی/مرکبی مثل داکیومنت‌های اسکوئر یا استرایپ)، نشانگرهای کیفیت منبع (۱ تا ۵ ستاره)، بخش "چرا اهمیت دارد"، بخش "اقدام امروز برای استارتاپ شما" و دسته‌بندی‌های رنگی (pricing, infrastructure, product-pivot, ai-integration) استفاده کن. طراحی باید کاملاً Responsive و در سطح فریلنسرهای ارشد باشد.
+</html_output>
 
-پاسخ را دقیقاً با تگ‌های ```html و ```json و ```markdown تفکیک کن.
+<json_output>
+یک آرایه JSON (فقط رکوردهای استخراج شده امروز) که هر آبجکت آن دقیقاً دارای این فیلدهای مهندسی‌شده باشد:
+{{
+  "date": "{today_str}",
+  "company": "نام شرکت",
+  "category": "دسته‌بندی دقیق",
+  "problem": "مسئله یا چالشی که شرکت با آن مواجه بود",
+  "hypothesis": "فرضیه تیم مدیریت/فنی برای حل مسئله",
+  "experiment_or_action": "اقدام عملی یا آزمایشی که انجام دادند",
+  "metric_tracked": "متریک اصلی برای سنجش موفقیت",
+  "decision_outcome": "تصمیم نهایی اتخاذ شده",
+  "core_lesson": "درس‌آموخته جهانی و بیزینسی برای استارتاپ‌های دیگر",
+  "source_name": "نام منبع معتبر",
+  "source_url": "لینک دقیق منبع",
+  "source_quality_stars": 5
+}}
+</json_output>
+
+<md_output>
+کل متن فایل weekly-trends.md را بازنویسی کن. به این صورت که روندهای تحلیل‌شده امروز را به عنوان یک آیتم جدید با فرمت زیر به لیست روندهای فعلی اضافه کن:
+- **{today_str}:** خلاصه روند تحلیلی کلان | *Tags: tag1, tag2*
+متن‌های قبلی موجود در فایل را حتماً در ادامه حفظ کن.
+</md_output>
 """
 
 try:
-    # ۴. فعال‌سازی مدل با قابلیت سرچ زنده در گوگل (Google Search Tooling)
+    # ۴. راه‌اندازی مدل پیشرفته با ابزار جستجوی زنده گوگل
     model = genai.GenerativeModel(
         'gemini-2.5-flash',
         tools=[{"google_search": {}}]
     )
     
     response = model.generate_content(prompt_text)
-    text_response = response.text
+    raw_response = response.text
     
-    # ۵. تفکیک هوشمند خروجی‌ها با استفاده از Split
-    html_part = text_response.split("```html")[1].split("```")[0].strip()
-    json_part = text_response.split("```json")[1].split("```")[0].strip()
-    md_part = text_response.split("```markdown")[1].split("```")[0].strip()
+    # ۵. استخراج داده‌ها به روش ایمن صریح (XML Parsing)
+    html_content = re.search(r'<html_output>(.*?)</html_output>', raw_response, re.DOTALL).group(1).strip()
+    json_content = re.search(r'<json_output>(.*?)</json_output>', raw_response, re.DOTALL).group(1).strip()
+    md_content = re.search(r'<md_output>(.*?)</md_output>', raw_response, re.DOTALL).group(1).strip()
     
-    # ۶. به‌روزرسانی و غنی‌سازی دیتابیس متمرکز (JSON)
+    # ۶. پارس و معتبرسازی آرایه JSON و الصاق آن به دیتابیس اصلی
     try:
-        today_json_data = json.loads(json_part)
-        historical_data.append(today_json_data)
-    except Exception as json_err:
-        print(f"JSON Parse error, creating fallback: {json_err}")
-        historical_data.append({
+        new_records = json.loads(json_content)
+        if isinstance(new_records, list):
+            historical_db.extend(new_records)
+        elif isinstance(new_records, dict):
+            historical_db.append(new_records)
+    except Exception as e:
+        print(f"JSON Parsing failed, appending raw data instead: {e}")
+        historical_db.append({
             "date": today_str,
-            "status": "Generated with formatting notice",
-            "raw_note": "دیتای امروز به دلیل فرمت متنی استخراج دستی شد."
+            "error": "Failed to parse structured JSON",
+            "raw_text": json_content[:500]
         })
 
-    # ۷. ذخیره‌سازی همزمان هر ۳ فایل برای گیت‌هاب پیجز و آرشیو
-    write_file('index.html', html_part)
-    write_file('decisions-log.json', json.dumps(historical_data, indent=2, ensure_ascii=False))
-    write_file('weekly-trends.md', md_part)
+    # ۷. ذخیره‌سازی همزمان هر ۳ سند در مخزن گیت‌هاب
+    write_file('index.html', html_content)
+    write_file('decisions-log.json', json.dumps(historical_db, indent=2, ensure_ascii=False))
+    write_file('weekly-trends.md', md_content)
     
-    print("Success: Real-time data fetched, JSON database enriched, and HTML generated!")
+    print("🚀 [SUCCESS] Business Bulletin Core updated with premium analytics and grounding database!")
 
-except Exception as e:
-    print(f"Main System Error: {e}")
-    # ثبت خطا در لوپ برای جلوگیری از خرابی فرآیند اتوماسیون
-    write_file('index.html', f"<h1>Error in Strategy Engine: {e}</h1>")
+except Exception as main_error:
+    print(f"💥 [CRITICAL ERROR] Core Execution Failed: {main_error}")
+    # جلوگیری از داون شدن سایت و ایجاد صفحه دیباگ شیک
+    fallback_html = f"""
+    <div style='font-family:sans-serif; padding:50px; text-align:center; color:#333;'>
+        <h2>⚠️ سیستم دیده‌بان در حال به‌روزرسانی زیرساخت است</h2>
+        <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده و تیم فنی در حال بررسی است.</p>
+        <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block;'>{main_error}</code>
+    </div>
+    """
+    write_file('index.html', fallback_html)
