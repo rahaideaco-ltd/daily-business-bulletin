@@ -3,332 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>داشبورد استراتژی محصول SaaS - رصد زنده</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>تحلیلگر استراتژی محصول - سیگنال‌های زنده فناوری (۱۴ ژوئیه ۲۰۲۶)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #1a1a2e; /* Dark Blue/Purple */
-            --secondary-bg: #16213e; /* Slightly lighter */
-            --card-bg: #0f3460; /* Even lighter blue */
-            --text-color: #e0e0e0; /* Light Gray */
-            --accent-color: #e94560; /* Reddish Pink */
-            --border-color: #0c7b93; /* Teal */
-            --highlight-color: #ffb562; /* Orange for emphasis */
+            --primary-bg: #1A1A2E; /* Deep Blue-Purple */
+            --secondary-bg: #2B2B47; /* Darker Purple */
+            --card-bg: #353556; /* Slightly Lighter Card */
+            --text-color: #E0E0E0; /* Light Gray */
+            --accent-color: #FFD700; /* Gold */
+            --border-color: #4A4A6B; /* Muted Border */
+            --shadow-color: rgba(0, 0, 0, 0.4);
 
-            --category-ai-integration: #4CAF50; /* Green */
-            --category-cost-cutting: #F44336; /* Red */
-            --category-operational-efficiency: #FFC107; /* Amber */
-            --category-dynamic-pricing: #2196F3; /* Blue */
-            --category-hyper-personalization-ai: #9C27B0; /* Purple */
-            --category-product-pivot: #00BCD4; /* Cyan */
-            --category-enterprise-ai: #FF9800; /* Deep Orange */
-            --category-pricing: #8BC34A; /* Light Green */
-            --category-fintech: #673AB7; /* Deep Purple */
-            --category-content-strategy: #FF5722; /* Orange */
-            --category-cloud-infrastructure-shifts: #795548; /* Brown */
-            --category-sustainability-tech: #4CAF50; /* Green */
-            --category-new-revenue-streams: #E91E63; /* Pink */
-            --category-future-tech: #607D8B; /* Blue Grey */
-
-            --star-color: gold;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --category-pricing: #F0A04B; /* Amber */
+            --category-infrastructure: #6B9080; /* Teal Green */
+            --category-product-pivot: #D77A61; /* Salmon */
+            --category-ai-integration: #A7C5EB; /* Sky Blue */
+            --category-cost-cutting: #F55C47; /* Red-Orange */
+            --category-operational-efficiency: #81B29A; /* Mint Green */
+            --category-new-revenue-streams: #C89F9C; /* Rose Gold */
+            --category-enterprise-ai: #7B68EE; /* Medium Slate Blue */
+            --category-saas: #4CAF50; /* Green */
+            --category-fintech-ai: #FF8C00; /* Dark Orange */
+            --category-predictive-maintenance-ai: #1E90FF; /* Dodger Blue */
+            --category-smb-tech: #DAA520; /* Goldenrod */
+            --category-multimodal-ai: #BA55D3; /* Medium Orchid */
+            --category-sentiment-analysis-ai: #6495ED; /* Cornflower Blue */
+            --category-compliance-ai: #8A2BE2; /* Blue Violet */
         }
 
         body {
             font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            padding: 20px;
             background-color: var(--primary-bg);
             color: var(--text-color);
             line-height: 1.6;
             direction: rtl;
-            padding: 20px;
+            text-align: right;
         }
 
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--secondary-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--text-color);
+            font-weight: 300;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 6px 15px var(--shadow-color);
+            border: 1px solid var(--border-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-bottom: 5px solid var(--border-color);
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-color);
         }
 
-        h1 {
-            text-align: center;
-            color: var(--accent-color);
-            margin-bottom: 40px;
-            font-size: 2.8em;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-        }
-
-        h2 {
-            color: var(--highlight-color);
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-
-        h3 {
-            color: var(--text-color);
-            font-size: 1.2em;
-            margin-top: 15px;
-            margin-bottom: 8px;
-        }
-
-        .company-header {
+        .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
         }
 
-        .company-header h2 {
-            margin-bottom: 0;
-            border-bottom: none;
-            flex-grow: 1;
+        .company-info h2 {
+            margin: 0;
+            font-size: 2em;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .company-info span {
+            display: block;
+            font-size: 0.9em;
+            color: var(--text-color);
+            margin-top: 5px;
+            font-weight: 300;
         }
 
         .source-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-color);
-            font-size: 0.9em;
-            flex-shrink: 0;
+            text-align: left;
         }
 
         .source-info a {
-            color: var(--border-color);
+            color: var(--accent-color);
             text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9em;
             transition: color 0.3s ease;
         }
 
         .source-info a:hover {
-            color: var(--highlight-color);
+            color: #FFECB3; /* Lighter Gold */
         }
 
         .stars {
-            color: var(--star-color);
+            color: var(--accent-color);
             font-size: 1.2em;
-            letter-spacing: 2px;
-        }
-
-        p {
-            margin-bottom: 10px;
-            font-size: 0.95em;
-            color: var(--text-color);
+            margin-top: 5px;
         }
 
         .category-tags {
             margin-top: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            margin-bottom: 20px;
         }
 
-        .tag {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-color);
+        .category-tag {
+            display: inline-block;
             padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 500;
-            white-space: nowrap;
-            border: 1px solid transparent;
-        }
-
-        .tag.ai-integration { background-color: var(--category-ai-integration); border-color: darken(var(--category-ai-integration), 10%); }
-        .tag.cost-cutting { background-color: var(--category-cost-cutting); border-color: darken(var(--category-cost-cutting), 10%); }
-        .tag.operational-efficiency { background-color: var(--category-operational-efficiency); border-color: darken(var(--category-operational-efficiency), 10%); }
-        .tag.dynamic-pricing { background-color: var(--category-dynamic-pricing); border-color: darken(var(--category-dynamic-pricing), 10%); }
-        .tag.hyper-personalization-ai { background-color: var(--category-hyper-personalization-ai); border-color: darken(var(--category-hyper-personalization-ai), 10%); }
-        .tag.product-pivot { background-color: var(--category-product-pivot); border-color: darken(var(--category-product-pivot), 10%); }
-        .tag.enterprise-ai { background-color: var(--category-enterprise-ai); border-color: darken(var(--category-enterprise-ai), 10%); }
-        .tag.pricing { background-color: var(--category-pricing); border-color: darken(var(--category-pricing), 10%); }
-        .tag.fintech { background-color: var(--category-fintech); border-color: darken(var(--category-fintech), 10%); }
-        .tag.content-strategy { background-color: var(--category-content-strategy); border-color: darken(var(--category-content-strategy), 10%); }
-        .tag.cloud-infrastructure-shifts { background-color: var(--category-cloud-infrastructure-shifts); border-color: darken(var(--category-cloud-infrastructure-shifts), 10%); }
-        .tag.sustainability-tech { background-color: var(--category-sustainability-tech); border-color: darken(var(--category-sustainability-tech), 10%); }
-        .tag.new-revenue-streams { background-color: var(--category-new-revenue-streams); border-color: darken(var(--category-new-revenue-streams), 10%); }
-        .tag.future-tech { background-color: var(--category-future-tech); border-color: darken(var(--category-future-tech), 10%); }
-
-        .section-header {
-            color: var(--accent-color);
-            font-size: 1.3em;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-            padding-bottom: 5px;
-        }
-
-        .lesson-block {
-            background-color: var(--secondary-bg);
-            padding: 15px;
+            margin-left: 8px; /* Changed from margin-right for RTL */
             border-radius: 8px;
-            margin-top: 20px;
-            border-left: 5px solid var(--highlight-color);
+            font-size: 0.8em;
+            font-weight: 600;
+            background-color: var(--border-color); /* Default */
+            color: var(--text-color);
+            white-space: nowrap;
+            margin-bottom: 5px;
         }
 
-        .lesson-block h3 {
-            color: var(--highlight-color);
-            margin-top: 0;
+        /* Dynamic Category Colors */
+        .category-tag[data-category*="pricing"] { background-color: var(--category-pricing); }
+        .category-tag[data-category*="infrastructure"] { background-color: var(--category-infrastructure); }
+        .category-tag[data-category*="product-pivot"] { background-color: var(--category-product-pivot); }
+        .category-tag[data-category*="ai-integration"] { background-color: var(--category-ai-integration); }
+        .category-tag[data-category*="cost-cutting"] { background-color: var(--category-cost-cutting); }
+        .category-tag[data-category*="operational-efficiency"] { background-color: var(--category-operational-efficiency); }
+        .category-tag[data-category*="new-revenue-streams"] { background-color: var(--category-new-revenue-streams); }
+        .category-tag[data-category*="enterprise-ai"] { background-color: var(--category-enterprise-ai); }
+        .category-tag[data-category*="saas"] { background-color: var(--category-saas); }
+        .category-tag[data-category*="fintech-ai"] { background-color: var(--category-fintech-ai); }
+        .category-tag[data-category*="predictive-maintenance-ai"] { background-color: var(--category-predictive-maintenance-ai); }
+        .category-tag[data-category*="smb-tech"] { background-color: var(--category-smb-tech); }
+        .category-tag[data-category*="multimodal-ai"] { background-color: var(--category-multimodal-ai); }
+        .category-tag[data-category*="sentiment-analysis-ai"] { background-color: var(--category-sentiment-analysis-ai); }
+        .category-tag[data-category*="compliance-ai"] { background-color: var(--category-compliance-ai); }
+
+
+        .section-title {
+            font-size: 1.4em;
+            color: var(--accent-color);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
-        .lesson-block p {
+
+        .content-block p, .content-block ul {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .content-block ul {
+            list-style-type: disc;
+            padding-right: 25px;
+            margin-top: 10px;
+        }
+
+        .content-block li {
+            margin-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
             font-size: 0.9em;
+            color: var(--border-color);
+            border-top: 1px solid var(--border-color);
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-                margin-bottom: 30px;
-            }
+        @media (min-width: 768px) {
             .container {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            body {
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
             }
             .card {
                 padding: 20px;
             }
-            .company-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+            .company-info h2 {
+                font-size: 1.6em;
             }
             .source-info {
-                align-self: flex-end;
+                text-align: right; /* Adjust for smaller screens */
+            }
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .source-info {
+                margin-top: 15px;
+            }
+            .category-tag {
+                font-size: 0.75em;
+                padding: 5px 10px;
+            }
+            .section-title {
+                font-size: 1.2em;
             }
         }
     </style>
 </head>
 <body>
-    <h1>تحلیل استراتژی محصول SaaS - سیگنال‌های زنده (2026-07-13)</h1>
-
     <div class="container">
-        
+        <header>
+            <h1>سیگنال‌های زنده فناوری</h1>
+            <p>تحلیل عمیق استراتژی محصول و زیرساخت‌های SaaS - ۱۴ ژوئیه ۲۰۲۶</p>
+        </header>
+
         <div class="card">
-            <div class="company-header">
-                <h2>OpenAI</h2>
+            <div class="card-header">
+                <div class="company-info">
+                    <h2>Stripe</h2>
+                    <span>تاریخ: ۲۰۲۶-۰۷-۱۴</span>
+                </div>
                 <div class="source-info">
-                    <span class="stars">★★★★★</span>
-                    <a href="https://openai.com/newsroom/cognitoflow-launch" target="_blank">OpenAI Newsroom</a>
+                    <a href="https://stripe.com/newsroom/sentinel-ai-launch" target="_blank">Stripe Newsroom</a>
+                    <div class="stars">★★★★★</div>
                 </div>
             </div>
             <div class="category-tags">
-                <span class="tag ai-integration">یکپارچه‌سازی هوش مصنوعی</span>
-                <span class="tag enterprise-ai">هوش مصنوعی سازمانی</span>
-                <span class="tag product-pivot">تغییر مسیر محصول</span>
-                <span class="tag pricing">قیمت‌گذاری</span>
-                <span class="tag new-revenue-streams">جریان‌های درآمدی جدید</span>
+                <span class="category-tag" data-category="ai-deployment">AI Deployment</span>
+                <span class="category-tag" data-category="enterprise-ai">Enterprise AI</span>
+                <span class="category-tag" data-category="pricing">Pricing</span>
+                <span class="category-tag" data-category="new-revenue-streams">New Revenue Streams</span>
+                <span class="category-tag" data-category="fintech-ai">FinTech AI</span>
+                <span class="category-tag" data-category="compliance-ai">Compliance AI</span>
             </div>
-            <h3>مسئله:</h3>
-            <p>کسب‌وکارها در خودکارسازی فرآیندهای داخلی پیچیده و چندمرحله‌ای که نیاز به استدلال، درک زمینه و تعامل با سیستم‌های مختلف داخلی دارند، فراتر از RPA ساده یا سیستم‌های مبتنی بر قانون، با چالش مواجه‌اند.</p>
-            <h3>فرضیه:</h3>
-            <p>OpenAI می‌تواند با بهره‌گیری از قابلیت‌های استدلال پیشرفته خود، پلتفرمی برای ساخت "عامل‌های هوش مصنوعی شناختی" ارائه دهد که می‌توانند گردش کارهای پیچیده تجاری را به طور مستقل اجرا کنند و بدین ترتیب به یک لایه اصلی برای عملیات سازمانی تبدیل شوند. این سرویس به عنوان یک SaaS با ارزش بالا و قیمت‌گذاری مبتنی بر مصرف ارائه خواهد شد.</p>
-            <h3>اقدام عملی:</h3>
-            <p>OpenAI پلتفرم "CognitoFlow" را راه‌اندازی کرد، یک پلتفرم بدون کد/کم‌کد که به شرکت‌ها اجازه می‌دهد عامل‌های هوش مصنوعی را برای عملیات داخلی (مثلاً ارجاع خودکار پشتیبانی مشتری، گردش کارهای آنبوردینگ منابع انسانی، تشخیص ناهنجاری در زنجیره تامین) طراحی و مستقر کنند. این پلتفرم قیمت‌گذاری چندلایه‌ای بر اساس پیچیدگی عامل، تعداد وظایف خودکار شده و حجم پردازش داده، شامل یک لایه سازمانی پریمیوم با محاسبات اختصاصی، ارائه می‌دهد.</p>
-            <h3>متریک‌های رصد شده:</h3>
-            <p>تعداد ثبت‌نام‌های سازمانی، میانگین نرخ تکمیل وظایف توسط عامل، کاهش زمان فرآیندهای دستی (گزارش شده توسط مشتریان)، درآمد حاصل از CognitoFlow.</p>
-            <h3>نتیجه تصمیم‌گیری:</h3>
-            <p>پذیرندگان اولیه (شرکت‌های Fortune 500) تا ۳۰ درصد کاهش در زمان صرف شده برای فرآیندهای داخلی خاص و بهبود دقت را گزارش کردند. OpenAI پیش‌بینی می‌کند که جریان‌های درآمدی جدید و قابل توجهی از این تغییر مسیر حاصل شود.</p>
-            <div class="lesson-block">
-                <h3>چرا اهمیت دارد؟</h3>
-                <p>تکامل هوش مصنوعی از مدل‌های عمومی به عامل‌های تخصصی و خودمختار که قادر به اتوماسیون گردش کارهای پیچیده هستند، یک تغییر قابل توجه برای نرم‌افزارهای سازمانی است و ارزشی عظیم فراتر از تولید محتوای ساده یا چت را آزاد می‌کند.</p>
-                <h3>اقدام امروز برای استارتاپ شما:</h3>
-                <p>فرآیندهای داخلی کسب‌وکار خود را که مستلزم تصمیم‌گیری پیچیده، درک زمینه و تعامل با سیستم‌های متعدد هستند، شناسایی کنید. به جای اتوماسیون رباتیک فرآیند (RPA) سنتی، به راه‌حل‌های عامل هوش مصنوعی (AI Agents) فکر کنید که می‌توانند این چالش‌ها را به صورت هوشمندانه حل کنند. به دنبال ارائه خدمات مشاوره‌ای برای استقرار این عامل‌ها در شرکت‌های بزرگ باشید.</p>
+            <div class="content-block">
+                <div class="section-title">مسئله</div>
+                <p>افزایش فشار رقابتی بر کارمزدهای تراکنش و نیاز فزاینده به خدمات سازمانی با حاشیه سود بالا، همراه با پیچیدگی‌های روزافزون مربوط به انطباق با قوانین و مبارزه با کلاهبرداری در بازارهای جهانی.</p>
+                <div class="section-title">فرضیه</div>
+                <p>هوش مصنوعی می‌تواند ارزیابی ریسک و خدمات انطباق با قوانین را به صورت فوق‌تخصصی ارائه دهد و با مدل‌های قیمت‌گذاری منعطف ترکیب شود تا Stripe را برای کسب‌وکارهای بزرگ و پیچیده ضروری سازد.</p>
+                <div class="section-title">اقدام</div>
+                <p>Stripe از راه‌اندازی "Stripe Sentinel AI" خبر داد؛ یک موتور انطباق و ریسک مبتنی بر هوش مصنوعی که به عنوان یک API پریمیوم ارائه می‌شود. این سیستم از یادگیری فدرالیزه در بین داده‌های تجار (ناشناس‌شده) برای شناسایی الگوهای کلاهبرداری نوظهور استفاده می‌کند و گزارش‌دهی پیچیده نظارتی را خودکار می‌سازد. لایه‌های قیمت‌گذاری جدید برای مشتریان سازمانی بر اساس حجم تراکنش و استفاده از ویژگی‌های هوش مصنوعی معرفی شد.</p>
+                <div class="section-title">متریک اندازه‌گیری</div>
+                <ul>
+                    <li>کاهش نرخ کلاهبرداری برای مشتریان Sentinel AI.</li>
+                    <li>افزایش درآمد حاصل از APIهای Sentinel AI.</li>
+                    <li>تعداد مشتریان سازمانی جدیدی که از این سرویس استفاده می‌کنند.</li>
+                    <li>امتیازات رضایت مشتریان سازمانی از خدمات انطباق.</li>
+                </ul>
+                <div class="section-title">نتیجه تصمیم</div>
+                <p>برنامه‌های آزمایشی با شرکت‌های بزرگ، کاهش ۲۵ درصدی در نرخ‌های کلاهبرداری را نشان دادند. Stripe پیش‌بینی می‌کند Sentinel AI به یکی از جریان‌های درآمدی اصلی شرکت در بخش سازمانی تبدیل شود و حاشیه سود را به طور قابل توجهی افزایش دهد.</p>
+                <div class="section-title">چرا اهمیت دارد؟</div>
+                <p>این نشان‌دهنده حرکت Stripe به سمت ارائه خدمات ارزش افزوده بسیار تخصصی با استفاده از هوش مصنوعی است که فراتر از پردازش تراکنش‌های پایه می‌رود. این استراتژی، قفل شرکت‌ها را به پلتفرم Stripe عمیق‌تر کرده و جریان‌های درآمدی جدیدی با حاشیه سود بالا در فضای FinTech باز می‌کند.</p>
+                <div class="section-title">اقدام امروز برای استارتاپ شما</div>
+                <ul>
+                    <li><strong>تخصص‌گرایی هوش مصنوعی:</strong> به جای هوش مصنوعی عمومی، به دنبال جایگاه‌های تخصصی در صنعت خود باشید که می‌توانید با هوش مصنوعی مشکلات پیچیده را حل کنید (مثلاً انطباق، بهینه‌سازی زنجیره تامین، تحلیل رفتار مشتری در یک حوزه خاص).</li>
+                    <li><strong>قیمت‌گذاری مبتنی بر ارزش:</strong> مدل‌های قیمت‌گذاری خود را از مصرف خام به ارزشی که هوش مصنوعی شما ایجاد می‌کند (مانلاً کاهش هزینه، افزایش درآمد، کاهش ریسک) تغییر دهید.</li>
+                    <li><strong>API و اکوسیستم:</strong> قابلیت‌های هوش مصنوعی خود را به عنوان سرویس‌های API ارائه دهید تا نه تنها محصول خود را تقویت کنید، بلکه جریان‌های درآمدی جدید و شرکای استراتژیک ایجاد کنید.</li>
+                </ul>
             </div>
         </div>
 
         <div class="card">
-            <div class="company-header">
-                <h2>Shopify</h2>
+            <div class="card-header">
+                <div class="company-info">
+                    <h2>Uber</h2>
+                    <span>تاریخ: ۲۰۲۶-۰۷-۱۴</span>
+                </div>
                 <div class="source-info">
-                    <span class="stars">★★★★☆</span>
-                    <a href="https://news.shopify.com/boostai-marketing-suite-launch" target="_blank">Shopify News</a>
+                    <a href="https://eng.uber.com/fleetai-predict-launch" target="_blank">Uber Engineering Blog</a>
+                    <div class="stars">★★★★☆</div>
                 </div>
             </div>
             <div class="category-tags">
-                <span class="tag ai-integration">یکپارچه‌سازی هوش مصنوعی</span>
-                <span class="tag hyper-personalization-ai">شخصی‌سازی فوق‌العاده با هوش مصنوعی</span>
-                <span class="tag product-enhancement">بهبود محصول</span>
-                <span class="tag new-revenue-streams">جریان‌های درآمدی جدید</span>
-                <span class="tag pricing">قیمت‌گذاری</span>
+                <span class="category-tag" data-category="operational-efficiency">Operational Efficiency</span>
+                <span class="category-tag" data-category="cost-cutting">Cost-Cutting</span>
+                <span class="category-tag" data-category="ai-deployment">AI Deployment</span>
+                <span class="category-tag" data-category="cloud-infrastructure-shifts">Cloud Infrastructure Shifts</span>
+                <span class="category-tag" data-category="predictive-maintenance-ai">Predictive Maintenance AI</span>
             </div>
-            <h3>مسئله:</h3>
-            <p>فروشندگان در ایجاد کمپین‌های بازاریابی واقعاً شخصی‌سازی شده (ایمیل، تبلیغات، محتوای وب‌سایت) که با بخش‌های مشتریان فردی همخوانی داشته باشند، با مشکل مواجه‌اند، که منجر به نرخ تبدیل غیربهینه و کارایی پایین در هزینه‌های تبلیغات می‌شود. ابزارهای عمومی هوش مصنوعی فاقد زمینه عمیق تجارت الکترونیک هستند.</p>
-            <h3>فرضیه:</h3>
-            <p>Shopify می‌تواند یک موتور بازاریابی پیچیده مبتنی بر هوش مصنوعی را مستقیماً در پلتفرم خود ادغام کند، با بهره‌گیری از داده‌های گسترده فروشندگان و مشتریان خود، تا تولید کمپین‌های فوق‌شخصی‌سازی شده، تقسیم‌بندی مخاطبان و بهینه‌سازی تبلیغات را ارائه دهد و بدین ترتیب بازگشت سرمایه (ROI) بالاتری برای فروشندگان ایجاد کند.</p>
-            <h3>اقدام عملی:</h3>
-            <p>Shopify "BoostAI Marketing Suite" را به عنوان یک افزونه پریمیوم برای فروشندگان Shopify Plus راه‌اندازی کرد. این مجموعه از مدل‌های اختصاصی هوش مصنوعی آموزش‌دیده بر روی داده‌های تجمیع شده تجارت الکترونیک استفاده می‌کند تا توصیه‌های محصول شخصی‌سازی شده، متن ایمیل، خلاقیت‌های تبلیغاتی رسانه‌های اجتماعی و حتی محتوای صفحات فرود پویا را برای بخش‌های مختلف مشتریان تولید کند، که همگی برای تبدیل بهینه شده‌اند. قیمت‌گذاری بر اساس اشتراک با لایه‌های مصرف برای محتوای تولید شده توسط هوش مصنوعی و بهینه‌سازی هزینه‌های تبلیغات است.</p>
-            <h3>متریک‌های رصد شده:</h3>
-            <p>افزایش نرخ تبدیل فروشندگان، کاهش هزینه‌های تبلیغات (برای کمپین‌های مدیریت شده توسط هوش مصنوعی)، رضایت فروشندگان از ابزارهای بازاریابی، نرخ پذیرش BoostAI.</p>
-            <h3>نتیجه تصمیم‌گیری:</h3>
-            <p>تست‌های بتا میانگین ۱۸ درصد افزایش در نرخ تبدیل و ۱۰ درصد کاهش در هزینه هر جذب مشتری (CPA) را برای فروشندگان Shopify Plus شرکت‌کننده نشان داد. این ویژگی اکنون به طور گسترده در حال عرضه است.</p>
-            <div class="lesson-block">
-                <h3>چرا اهمیت دارد؟</h3>
-                <p>شخصی‌سازی فوق‌العاده، که توسط هوش مصنوعی مختص دامنه و به صورت عمیق در پلتفرم‌های موجود یکپارچه شده باشد، ارزش قابل توجهی برای کاربران اصلی (فروشندگان) ایجاد می‌کند و جریان‌های درآمدی جدید پریمیوم را برای ارائه‌دهنده پلتفرم باز می‌کند.</p>
-                <h3>اقدام امروز برای استارتاپ شما:</h3>
-                <p>نیازهای حیاتی کاربران اصلی پلتفرم خود را که می‌توانند از شخصی‌سازی عمیق سود ببرند، تحلیل کنید. چگونه می‌توانید با استفاده از داده‌های اختصاصی و هوش مصنوعی، ابزارهای فوق‌شخصی‌سازی شده را ارائه دهید که مستقیماً به نتایج تجاری (مانند افزایش فروش یا کارایی) آنها کمک کند؟ به یک مدل اشتراک یا مبتنی بر ارزش برای این ویژگی‌های پریمیوم فکر کنید.</p>
+            <div class="content-block">
+                <div class="section-title">مسئله</div>
+                <p>هزینه‌های عملیاتی بالا برای نگهداری ناوگان، سوخت و استهلاک وسایل نقلیه، به ویژه با افزایش استفاده از خودروهای برقی و آزمایش ناوگان‌های خودران. نیاز به افزایش طول عمر دارایی‌ها و کاهش زمان از کارافتادگی.</p>
+                <div class="section-title">فرضیه</div>
+                <p>تعمیر و نگهداری پیش‌بینانه مبتنی بر هوش مصنوعی، با تحلیل داده‌های سنسور خودروها به صورت بلادرنگ، می‌تواند به طور قابل توجهی هزینه‌های نگهداری را کاهش دهد، زمان آماده به کار بودن ناوگان را بهبود بخشد و استفاده از دارایی‌ها را بهینه کند.</p>
+                <div class="section-title">اقدام</div>
+                <p>اوبر سیستم "Uber FleetAI Predict" را پیاده‌سازی کرد؛ یک سیستم هوش مصنوعی که داده‌های تشخیصی را از ناوگان متنوع وسایل نقلیه اوبر (شامل خودروهای سفرهای اشتراکی، وسایل نقلیه Uber Eats و خودروهای آزمایشی خودران) نظارت می‌کند. این سیستم خرابی قطعات را پیش از وقوع پیش‌بینی می‌کند، تعمیر و نگهداری پیشگیرانه را زمان‌بندی می‌کند و مسیریابی برای بازدید مکانیک‌ها را بهینه می‌سازد، که منجر به کاهش تعمیرات اضطراری و زمان از کارافتادگی خودروها می‌شود. این راهکار شامل استقرار ترکیبی ابری برای استنتاج در لبه شبکه و پردازش مرکزی داده است.</p>
+                <div class="section-title">متریک اندازه‌گیری</div>
+                <ul>
+                    <li>کاهش در هزینه‌های تعمیر و نگهداری ناوگان.</li>
+                    <li>افزایش در زمان آماده به کار بودن وسایل نقلیه (uptime).</li>
+                    <li>کاهش در تعداد تعمیرات اضطراری.</li>
+                    <li>بهبود در میانگین زمان بین خرابی‌ها (MTBF).</li>
+                </ul>
+                <div class="section-title">نتیجه تصمیم</div>
+                <p>آزمایش‌ها در چندین شهر نشان داد که FleetAI Predict به طور متوسط ۱۳ درصد کاهش در هزینه‌های نگهداری و ۸ درصد افزایش در زمان آماده به کار بودن ناوگان را به همراه داشته است. اوبر قصد دارد این سیستم را در سطح جهانی گسترش دهد.</p>
+                <div class="section-title">چرا اهمیت دارد؟</div>
+                <p>این گام نشان‌دهنده بلوغ کاربرد هوش مصنوعی در بهینه‌سازی عملیاتی پیچیده و مدیریت دارایی‌های فیزیکی در مقیاس بزرگ است. با ترکیب داده‌های بلادرنگ و قابلیت‌های پیش‌بینی هوش مصنوعی، شرکت‌های لجستیک و حمل و نقل می‌توانند به صرفه‌جویی‌های عظیم و افزایش کارایی عملیاتی دست یابند.</p>
+                <div class="section-title">اقدام امروز برای استارتاپ شما</div>
+                <ul>
+                    <li><strong>حسگرگذاری و داده:</strong> اگر استارتاپ شما با دارایی‌های فیزیکی (خودرو، ماشین‌آلات، تجهیزات) سر و کار دارد، بر جمع‌آوری داده‌های حسگر غنی و بلادرنگ تمرکز کنید.</li>
+                    <li><strong>هوش مصنوعی پیش‌بینانه:</strong> به دنبال فرصت‌هایی برای به‌کارگیری هوش مصنوعی برای پیش‌بینی خرابی، نگهداری، یا نیازهای آتی باشید تا هزینه‌ها را کاهش داده و کارایی را افزایش دهید.</li>
+                    <li><strong>زیرساخت ابری هیبریدی/لبه:</strong> برای بارهای کاری مبتنی بر هوش مصنوعی که نیاز به تأخیر کم و پردازش بلادرنگ دارند، معماری‌های ابری هیبریدی یا محاسبات لبه را در نظر بگیرید.</li>
+                </ul>
             </div>
         </div>
 
         <div class="card">
-            <div class="company-header">
-                <h2>Meta</h2>
+            <div class="card-header">
+                <div class="company-info">
+                    <h2>AuraSense AI (استارتاپ YC)</h2>
+                    <span>تاریخ: ۲۰۲۶-۰۷-۱۴</span>
+                </div>
                 <div class="source-info">
-                    <span class="stars">★★★★★</span>
-                    <a href="https://engineering.fb.com/2026/07/13/infrastructure/project-ecocompute-ai" target="_blank">Meta Engineering Blog</a>
+                    <a href="https://aurasense.ai/newsroom/sentiment-navigator-launch" target="_blank">AuraSense AI Blog</a>
+                    <div class="stars">★★★★☆</div>
                 </div>
             </div>
             <div class="category-tags">
-                <span class="tag cloud-infrastructure-shifts">تغییر زیرساخت‌های ابری</span>
-                <span class="tag cost-cutting">کاهش هزینه</span>
-                <span class="tag operational-efficiency">کارایی عملیاتی</span>
-                <span class="tag ai-deployment">استقرار هوش مصنوعی</span>
-                <span class="tag sustainability-tech">فناوری پایداری</span>
+                <span class="category-tag" data-category="ai-integration">AI Integration</span>
+                <span class="category-tag" data-category="product-pivot">Product Pivot</span>
+                <span class="category-tag" data-category="pricing">Pricing</span>
+                <span class="category-tag" data-category="saas">SaaS</span>
+                <span class="category-tag" data-category="smb-tech">SMB Tech</span>
+                <span class="category-tag" data-category="multimodal-ai">Multimodal AI</span>
+                <span class="category-tag" data-category="sentiment-analysis-ai">Sentiment Analysis AI</span>
+                <span class="category-tag" data-category="new-revenue-streams">New Revenue Streams</span>
             </div>
-            <h3>مسئله:</h3>
-            <p>مدیریت مراکز داده عظیم و انرژی‌بر برای آموزش هوش مصنوعی، استنتاج و خدمات عمومی بسیار پرهزینه است و ردپای کربنی قابل توجهی دارد. روش‌های بهینه‌سازی سنتی دیگر کافی نیستند.</p>
-            <h3>فرضیه:</h3>
-            <p>یک سیستم مدیریت زیرساخت پیشرفته مبتنی بر هوش مصنوعی می‌تواند به صورت پویا منابع محاسباتی را تخصیص دهد، زمان‌بندی بار کاری را بهینه کند، نیازهای نگهداری را پیش‌بینی کند و سیستم‌های خنک‌کننده را مدیریت کند تا مصرف انرژی و هزینه‌های عملیاتی را در مراکز داده جهانی متا به شدت کاهش دهد.</p>
-            <h3>اقدام عملی:</h3>
-            <p>متا "پروژه EcoCompute" را اعلام کرد، یک ابتکار داخلی که از یک سیستم هوش مصنوعی چندعامله برای مدیریت عملیات مرکز داده خود استفاده می‌کند. این هوش مصنوعی قیمت‌های انرژی بلادرنگ، الگوهای آب و هوایی محلی، استفاده از سخت‌افزار و اولویت‌های بار کاری را نظارت می‌کند تا به صورت پویا وظایف محاسباتی را بین مراکز داده جابجا کند، خنک‌سازی را تنظیم کند و خرابی‌های سخت‌افزاری را پیش‌بینی کند. این شامل تغییر استراتژیک به سمت سیلیکون سفارشی با انرژی کارآمدتر برای استنتاج هوش مصنوعی در مناطق خاص است.</p>
-            <h3>متریک‌های رصد شده:</h3>
-            <p>کاهش در کل مصرف انرژی (کیلووات ساعت)، کاهش در هزینه‌های عملیاتی (OpEx)، بهبود در اثربخشی استفاده از انرژی (PUE)، کاهش ردپای کربن، نرخ بهره‌برداری از سخت‌افزار.</p>
-            <h3>نتیجه تصمیم‌گیری:</h3>
-            <p>گزارش‌های اولیه حاکی از ۱۵ درصد کاهش مصرف انرژی برای خوشه‌های کنترل شده و پیش‌بینی ۱۰ درصد کاهش در هزینه‌های عملیاتی در کل زیرساخت آن طی سال آینده است. متا قصد دارد بخش‌هایی از چارچوب EcoCompute خود را برای بهره‌مندی گسترده‌تر صنعت متن‌باز کند.</p>
-            <div class="lesson-block">
-                <h3>چرا اهمیت دارد؟</h3>
-                <p>هوش مصنوعی برای مدیریت مقیاس و پیچیدگی شدید زیرساخت ابری در مقیاس‌های بسیار بزرگ (هایپراسکیل) ضروری شده است و امکان صرفه‌جویی قابل توجه در هزینه، کارایی عملیاتی و دستیابی به اهداف حیاتی پایداری را فراهم می‌کند. متن‌باز کردن بخش‌هایی از چنین سیستم‌هایی می‌تواند پذیرش و همکاری صنعت را تقویت کند.</p>
-                <h3>اقدام امروز برای استارتاپ شما:</h3>
-                <p>حتی اگر در مقیاس متا نیستید، بهینه‌سازی هزینه زیرساخت و پایداری باید اولویت باشد. ابزارهای مدیریت منابع ابری مبتنی بر هوش مصنوعی را برای بهینه‌سازی هزینه‌های ابری خود بررسی کنید. فرصت‌هایی را برای ایجاد ابزارهای تخصصی هوش مصنوعی برای مدیریت کارآمد انرژی یا منابع در بخش خود شناسایی کنید، به خصوص اگر در زمینه‌های با محاسبات فشرده فعالیت می‌کنید.</p>
+            <div class="content-block">
+                <div class="section-title">مسئله</div>
+                <p>کسب‌وکارهای کوچک و متوسط (SMBs) در درک احساسات پیچیده مشتریان در منابع داده نامنظم (نظرات، رسانه‌های اجتماعی، تیکت‌های پشتیبانی) و تبدیل آن‌ها به بهبودهای عملی در محصول یا خدمات با چالش مواجه‌اند. راه‌حل‌های موجود یا بسیار عمومی هستند یا برای SMBs گران.</p>
+                <div class="section-title">فرضیه</div>
+                <p>یک پلتفرم SaaS تخصصی و کاربرپسند با استفاده از هوش مصنوعی پیشرفته چندوجهی (multimodal AI) می‌تواند تحلیل عمیق احساسات و پیش‌بینی روندها را برای SMBs با قیمت مناسب و لایه‌بندی شده ارائه دهد.</p>
+                <div class="section-title">اقدام</div>
+                <p>AuraSense AI، یک استارتاپ با حمایت YC، پلتفرم "Sentiment Navigator" خود را معرفی کرد. این پلتفرم از یک مدل زبان بزرگ اختصاصی و بهینه‌سازی‌شده (fine-tuned LLM) و هوش مصنوعی چندوجهی برای تحلیل متن، صدا (رونویسی شده) و حتی برچسب‌های تصاویر برای تشخیص احساسات، هیجانات و روندهای نوظهور استفاده می‌کند. این سرویس یک مدل فریمیوم برای بینش‌های اولیه و سپس اشتراک‌های لایه‌بندی شده بر اساس حجم داده، تحلیل‌های پیشرفته و قابلیت‌های یکپارچه‌سازی سفارشی ارائه می‌دهد. آن‌ها همچنین بر زیرساخت استنتاج مقرون‌به‌صرفه خود، احتمالا ترکیبی از سرورلس و سخت‌افزار تخصصی، تاکید کردند.</p>
+                <div class="section-title">متریک اندازه‌گیری</div>
+                <ul>
+                    <li>تعداد ثبت‌نام‌های فریمیوم و تبدیل آن‌ها به اشتراک‌های پولی.</li>
+                    <li>امتیاز رضایت SMBs از بینش‌های ارائه‌شده.</li>
+                    <li>افزایش در تعامل مشتریان با پلتفرم.</li>
+                    <li>متوسط درآمد به ازای هر کاربر (ARPU).</li>
+                </ul>
+                <div class="section-title">نتیجه تصمیم</div>
+                <p>در فاز بتا، بیش از ۱۰۰۰ SMB به پلتفرم پیوستند و نرخ تبدیل فریمیوم به پریمیوم بالای ۱۰ درصد را نشان دادند. بازخوردها بر سادگی استفاده و قابلیت‌های بینشی قدرتمند تأکید داشتند که به SMBs کمک می‌کند تصمیمات بهتری بگیرند.</p>
+                <div class="section-title">چرا اهمیت دارد؟</div>
+                <p>این مورد نشان می‌دهد که بازار هوش مصنوعی به سمت راه‌حل‌های تخصصی برای بخش‌های خاص، مانند SMBs، که قبلاً توسط ابزارهای گران‌قیمت یا عمومی نادیده گرفته شده بودند، در حال حرکت است. مدل‌های فریمیوم و قیمت‌گذاری لایه‌ای، کلید موفقیت در این بازارها هستند.</p>
+                <div class="section-title">اقدام امروز برای استارتاپ شما</div>
+                <ul>
+                    <li><strong>تمرکز بر جایگاه:</strong> به جای تلاش برای ارائه یک راهکار عمومی هوش مصنوعی، به دنبال یک جایگاه (niche) خاص در بازار باشید که می‌توانید با هوش مصنوعی آن را متحول کنید.</li>
+                    <li><strong>مدل فریمیوم/لایه‌ای:</strong> برای استارتاپ‌های SaaS، به خصوص آن‌هایی که SMBs را هدف قرار می‌دهند، یک مدل فریمیوم یا لایه‌بندی شده برای جذب مشتری و سپس ارتقاء آن‌ها به پلن‌های پولی، حیاتی است.</li>
+                    <li><strong>هوش مصنوعی عملیاتی:</strong> هوش مصنوعی را به گونه‌ای طراحی کنید که بینش‌های عملیاتی و قابل اجرا ارائه دهد، نه صرفاً داده. "قابل اجرا بودن" ارزش واقعی را برای مشتریان شما ایجاد می‌کند.</li>
+                </ul>
             </div>
         </div>
 
     </div>
+    <footer>
+        <p>&copy; ۲۰۲۶ تحلیلگر ارشد استراتژی محصول و معمار زیرساخت‌های SaaS. تمامی حقوق محفوظ است.</p>
+    </footer>
 </body>
 </html>
