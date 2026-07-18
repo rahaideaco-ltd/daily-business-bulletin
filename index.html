@@ -1,27 +1,359 @@
-<div style='font-family:sans-serif; padding:50px; text-align:center; color:#333; direction:rtl;'>
-        <h2>⚠️ سیستم دیده‌بان در حال به‌روزرسانی زیرساخت است</h2>
-        <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده است.</p>
-        <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block; direction:ltr;'>429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
-Please retry in 42.509960964s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-2.5-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 5
-}
-, retry_delay {
-  seconds: 42
-}
-]</code>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحلیلگر استراتژی محصول و زیرساخت SaaS - داشبورد زنده</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1A1A2E;
+            --bg-medium: #16213E;
+            --bg-light: #0F3460;
+            --text-primary: #E0E0E0;
+            --text-secondary: #9FA8DA;
+            --accent-gold: #FFD700;
+            --accent-silver: #C0C0C0;
+            --border-color: #3C4258;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+
+            /* Category Colors */
+            --cat-ai-integration: #4CAF50; /* Green */
+            --cat-ai-deployment: #2196F3; /* Blue */
+            --cat-cost-cutting: #F44336; /* Red */
+            --cat-pricing-model-change: #FF9800; /* Orange */
+            --cat-cloud-infrastructure-shifts: #9C27B0; /* Purple */
+            --cat-optimization: #00BCD4; /* Cyan */
+            --cat-enterprise-ai: #673AB7; /* Deep Purple */
+            --cat-new-revenue-streams: #8BC34A; /* Light Green */
+            --cat-operational-efficiency-ai: #FFC107; /* Amber */
+            --cat-product-pivot: #E91E63; /* Pink */
+            --cat-ai-agents: #3F51B5; /* Indigo */
+            --cat-hyper-personalization-ai: #CDDC39; /* Lime */
+            --cat-saas: #03A9F4; /* Light Blue */
+            --cat-cybersecurity-ai: #607D8B; /* Blue Grey */
+            --cat-smb-tech-ai: #795548; /* Brown */
+            --cat-platform-optimization: #FF5722; /* Deep Orange */
+            --cat-default: #757575; /* Grey */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            direction: rtl;
+            padding: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--bg-medium);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            color: var(--accent-gold);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: var(--accent-silver);
+            text-align: center;
+            margin: 40px 0 30px 0;
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-gold), transparent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-medium);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 12px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h2 {
+            color: var(--accent-gold);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .card-meta span {
+            margin-left: 15px;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #fff;
+            background-color: var(--cat-default);
+        }
+
+        .card-content p {
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .card-content strong {
+            color: var(--accent-silver);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .card-content a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .card-content a:hover {
+            color: var(--accent-silver);
+            text-decoration: underline;
+        }
+
+        .source-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            font-size: 1.2em;
+        }
+
+        .why-it-matters, .action-for-startup {
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+        }
+
+        .why-it-matters strong, .action-for-startup strong {
+            color: var(--accent-gold);
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .why-it-matters p, .action-for-startup p {
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>تحلیلگر ارشد استراتژی محصول و زیرساخت‌های SaaS</h1>
+            <p>رصد زنده، کالبدشکافی عمیق و مستندسازی تصمیمات شرکت‌های پیشرو تکنولوژی</p>
+            <p style="margin-top: 10px; font-weight: 400;">تاریخ امروز: 2026-07-18</p>
+        </header>
+
+        <section>
+            <h2 class="section-title">امروز در یک نگاه</h2>
+            <div class="card-grid">
+                <!-- OpenAI Card -->
+                <div class="card">
+                    <h2>OpenAI</h2>
+                    <div class="card-meta">
+                        <span>تاریخ: 2026-07-18</span>
+                        <div class="category-tags">
+                            <span class="category-tag" style="background-color: var(--cat-ai-deployment);">استقرار هوش مصنوعی</span>
+                            <span class="category-tag" style="background-color: var(--cat-enterprise-ai);">هوش مصنوعی سازمانی</span>
+                            <span class="category-tag" style="background-color: var(--cat-pricing-model-change);">تغییر مدل قیمت‌گذاری</span>
+                            <span class="category-tag" style="background-color: var(--cat-cloud-infrastructure-shifts);">تغییر زیرساخت ابری</span>
+                            <span class="category-tag" style="background-color: var(--cat-cost-cutting);">کاهش هزینه</span>
+                            <span class="category-tag" style="background-color: var(--cat-new-revenue-streams);">جریان‌های درآمدی جدید</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <strong>مسئله:</strong> هزینه‌های بالای استنتاج برای مدل‌های پیشرفته هوش مصنوعی در محیط‌های سازمانی، نیاز به تضمین حریم خصوصی و امنیت داده‌ها برای داده‌های حساس شرکتی، و فقدان قابلیت‌های سفارشی‌سازی عمیق در APIهای عمومی.
+                        <strong>فرضیه:</strong> ارائه مدل‌های هوش مصنوعی فوق بهینه، خصوصی و قابل سفارشی‌سازی که در زیرساخت‌های ابری اختصاصی مشتریان (مانند VPCها یا نمونه‌های ابری اختصاصی) مستقر می‌شوند، می‌تواند هزینه‌ها را پیش‌بینی‌پذیر کرده، امنیت داده‌ها را تضمین نماید و جریان‌های درآمدی جدید و با ارزش بالایی را ایجاد کند.
+                        <strong>اقدام عملی:</strong> OpenAI \"Compute Pods سازمانی (ECP)\" را معرفی کرد. این پادها خوشه‌های کاملاً مدیریت‌شده‌ای در ارائه‌دهندگان ابری اصلی (AWS، Azure، GCP) هستند که مدل‌های هوش مصنوعی سفارشی‌شده و بهینه OpenAI را با SLA تضمین‌شده، تأخیر استنتاج کمتر و ایزوله‌سازی کامل داده‌ها اجرا می‌کنند. مدل قیمت‌گذاری از توکن‌های سنتی به یک مدل مبتنی بر رزرو منابع (Compute/Resource Reservation) با گزینه‌ای برای \"اعتبارات استنتاجی\" تغییر یافته است.
+                        <strong>متریک ردیابی شده:</strong> کاهش هزینه به ازای استنتاج برای مشتریان سازمانی، رضایت مشتریان از امنیت داده و عملکرد، نرخ پذیرش ECP و تبدیل درآمدی.
+                        <strong>نتیجه تصمیم:</strong> اولین مشتریان سازمانی ECP گزارش دادند که به طور متوسط ۲۰٪ کاهش در هزینه‌های عملیاتی هوش مصنوعی در مقیاس بزرگ و بهبود قابل توجهی در حاکمیت داده‌ها و انطباق را تجربه کرده‌اند. تقاضای اولیه برای ECP بالا است و جریان درآمدی جدیدی را برای OpenAI ایجاد می‌کند.
+                    </div>
+                    <div class="why-it-matters">
+                        <strong>چرا اهمیت دارد؟</strong>
+                        <p>با بلوغ هوش مصنوعی، مشتریان سازمانی به دنبال راه‌حل‌هایی با هزینه قابل پیش‌بینی، عملکرد تضمین‌شده و بالاترین سطح حریم خصوصی و امنیت داده هستند. ارائه "هوش مصنوعی به عنوان یک سرویس مدیریت‌شده خصوصی" یک تغییر مدل کسب‌وکار با حاشیه سود بالا را نشان می‌دهد.</p>
+                    </div>
+                    <div class="action-for-startup">
+                        <strong>اقدام امروز برای استارتاپ شما:</strong>
+                        <p>اگر محصول شما شامل هوش مصنوعی برای کسب‌وکارهای بزرگ است، روی ارائه راه‌حل‌های 'خصوصی' و 'مدیریت‌شده' تمرکز کنید. مدل‌های قیمت‌گذاری مبتنی بر مصرف منابع پایدارتر را بررسی کرده و اطمینان از امنیت و حاکمیت داده را به عنوان یک مزیت رقابتی برجسته سازید.</p>
+                    </div>
+                    <div class="source-info">
+                        <span class="stars">★★★★★</span>
+                        <a href="https://openai.com/blog/enterprise-compute-pods-launch" target="_blank">OpenAI Enterprise Blog</a>
+                    </div>
+                </div>
+
+                <!-- Uber Card -->
+                <div class="card">
+                    <h2>Uber</h2>
+                    <div class="card-meta">
+                        <span>تاریخ: 2026-07-18</span>
+                        <div class="category-tags">
+                            <span class="category-tag" style="background-color: var(--cat-ai-agents);">عامل‌های هوش مصنوعی</span>
+                            <span class="category-tag" style="background-color: var(--cat-operational-efficiency-ai);">کارایی عملیاتی هوش مصنوعی</span>
+                            <span class="category-tag" style="background-color: var(--cat-cost-cutting);">کاهش هزینه</span>
+                            <span class="category-tag" style="background-color: var(--cat-hyper-personalization-ai);">فوق شخصی‌سازی هوش مصنوعی</span>
+                            <span class="category-tag" style="background-color: var(--cat-platform-optimization);">بهینه‌سازی پلتفرم</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <strong>مسئله:</strong> هزینه‌های بالای عملیاتی ناشی از عدم تعادل عرضه و تقاضا، زمان انتظار طولانی برای مسافران در ساعات اوج، و کاهش سودآوری در بازارهای پررقابت.
+                        <strong>فرضیه:</strong> سیستم‌های عامل هوشمند مبتنی بر هوش مصنوعی (AI Agents) می‌توانند با پیش‌بینی دقیق تقاضا، بهینه‌سازی مسیرها و توزیع رانندگان در زمان واقعی، و تعدیل پویا انگیزه‌های رانندگان، عملیات لجستیک را متحول کرده و منجر به صرفه‌جویی چشمگیر در هزینه‌ها و بهبود تجربه کاربری شوند.
+                        <strong>اقدام عملی:</strong> اوبر سیستم \"Uber Agent Dispatch (UAD)\" را معرفی کرد. این سیستم هوش مصنوعی اول (AI-first) از یادگیری تقویتی چندعاملی (MARL) برای مدیریت کل فرآیند اعزام، از پیش‌بینی افزایش تقاضا تا تغییر مسیر پویای رانندگان بر اساس ترافیک بلادرنگ، استفاده می‌کند. UAD با برنامه‌های رانندگان یکپارچه شده و پیش‌بینی‌های درآمدی و مناطق انگیزشی فوق‌شخصی‌سازی شده را ارائه می‌دهد.
+                        <strong>متریک ردیابی شده:</strong> کاهش زمان بیکاری راننده، کاهش زمان انتظار مسافر، صرفه‌جویی در پرداخت‌های انگیزشی رانندگان، افزایش رضایت راننده و مسافر.
+                        <strong>نتیجه تصمیم:</strong> در شهرهای آزمایشی، UAD به کاهش ۱۸ درصدی زمان بیکاری رانندگان و کاهش ۱۲ درصدی زمان انتظار مسافران در ساعات اوج منجر شد. این امر به صرفه‌جویی سالانه ده‌ها میلیون دلاری در هزینه‌های عملیاتی منجر شده و در حال گسترش به بازارهای جهانی است.
+                    </div>
+                    <div class="why-it-matters">
+                        <strong>چرا اهمیت دارد؟</strong>
+                        <p>عامل‌های هوش مصنوعی می‌توانند با اتخاذ تصمیمات خودکار و انطباقی، نه تنها عملیات پیچیده را بهینه‌سازی کنند، بلکه پلتفرم‌های دوسویه را از طریق تطابق هوشمند عرضه و تقاضا به طور قابل توجهی کارآمدتر سازند، که منجر به صرفه‌جویی در هزینه و تجربه کاربری بهتر می‌شود.</p>
+                    </div>
+                    <div class="action-for-startup">
+                        <strong>اقدام امروز برای استارتاپ شما:</strong>
+                        <p>فراتر از بهینه‌سازی‌های ساده، به کاربرد 'عامل‌های هوشمند خودکار' در عملیات‌های پیچیده خود بیندیشید. این عوامل می‌توانند نه تنها کارایی را افزایش دهند بلکه با تصمیم‌گیری‌های انطباقی، مزیت رقابتی پایداری ایجاد کنند.</p>
+                    </div>
+                    <div class="source-info">
+                        <span class="stars">★★★★★</span>
+                        <a href="https://uber.com/engineering/uber-agent-dispatch-ai" target="_blank">Uber Engineering Blog</a>
+                    </div>
+                </div>
+
+                <!-- QuantumShield AI Card (Y-Combinator Startup) -->
+                <div class="card">
+                    <h2>QuantumShield AI (استارتاپ YC)</h2>
+                    <div class="card-meta">
+                        <span>تاریخ: 2026-07-18</span>
+                        <div class="category-tags">
+                            <span class="category-tag" style="background-color: var(--cat-ai-specialization);">تخصص‌گرایی هوش مصنوعی</span>
+                            <span class="category-tag" style="background-color: var(--cat-enterprise-ai);">هوش مصنوعی سازمانی</span>
+                            <span class="category-tag" style="background-color: var(--cat-saas);">SaaS</span>
+                            <span class="category-tag" style="background-color: var(--cat-pricing-model-evolution);">تکامل مدل قیمت‌گذاری</span>
+                            <span class="category-tag" style="background-color: var(--cat-cybersecurity-ai);">امنیت سایبری هوش مصنوعی</span>
+                            <span class="category-tag" style="background-color: var(--cat-new-revenue-streams);">جریان‌های درآمدی جدید</span>
+                            <span class="category-tag" style="background-color: var(--cat-smb-tech-ai);">هوش مصنوعی برای SMB</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <strong>مسئله:</strong> شرکت‌های کوچک و متوسط (SMBs) به طور فزاینده‌ای هدف حملات پیچیده زنجیره تامین سایبری قرار می‌گیرند، به ویژه از طریق یکپارچه‌سازی‌های SaaS شخص ثالث، اما فاقد منابع برای راه‌حل‌های امنیتی پیشرفته هستند.
+                        <strong>فرضیه:</strong> یک پلتفرم هوش مصنوعی تخصصی می‌تواند یکپارچه‌سازی‌های SaaS و APIهای شخص ثالث را برای رفتار غیرعادی نظارت کند، تهدیدات روز صفر را به طور خودکار شناسایی کند و راه‌حل‌های ساده و قابل اقدام برای SMBها ارائه دهد.
+                        <strong>اقدام عملی:</strong> استارتاپ YC QuantumShield AI پلتفرم \"SupplyChain Guardian\" خود را راه‌اندازی کرد. این پلتفرم از هوش مصنوعی چندوجهی (NLP برای قراردادها، AI رفتاری برای لاگ‌های API، شبکه‌های گرافی عصبی برای نگاشت وابستگی) برای ایجاد یک \"دوقلوی دیجیتال\" از اکوسیستم SaaS SMBها استفاده می‌کند. این پلتفرم یک مدل فریمیوم برای نظارت پایه و یک رده پریمیوم برای پاسخ خودکار به تهدیدات، ارزیابی آسیب‌پذیری و گزارش‌های انطباق ارائه می‌دهد.
+                        <strong>متریک ردیابی شده:</strong> تعداد آسیب‌پذیری‌های کشف شده (پیش از حمله)، کاهش در زمان میانگین برای تشخیص (MTTD) و میانگین زمان برای پاسخ (MTTR)، نرخ تبدیل از فریمیوم به پریمیوم، رضایت مشتری SMB.
+                        <strong>نتیجه تصمیم:</strong> کاربران بتا چندین آسیب‌پذیری ناشناخته قبلی را در پشته SaaS خود در عرض چند هفته شناسایی کردند و هشدارهای خودکار پلتفرم از نقض‌های احتمالی جلوگیری کرد. پذیرش اولیه برای رده فریمیوم بسیار سریع بوده و نرخ تبدیل به پریمیوم فراتر از انتظارات است.
+                    </div>
+                    <div class="why-it-matters">
+                        <strong>چرا اهمیت دارد؟</strong>
+                        <p>هوش مصنوعی تخصصی که بر روی حل مشکلات بحرانی و پیچیده برای بازارهای دست‌کم‌خدمت‌شده (مانند امنیت سایبری زنجیره تامین برای SMBها) متمرکز است، می‌تواند به سرعت جذب بازار را تسریع کند. مدل‌های فریمیوم هوشمند به استارتاپ‌ها امکان می‌دهند به سرعت ارزش را نشان داده و به مدل‌های درآمدی قوی پریمیوم تبدیل شوند.</p>
+                    </div>
+                    <div class="action-for-startup">
+                        <strong>اقدام امروز برای استارتاپ شما:</strong>
+                        <p>بازارهای نیش (Niche Markets) با مشکلات 'بحرانی و حل‌نشده' را شناسایی کنید. هوش مصنوعی تخصصی می‌تواند راه‌حل‌های با ارزش بالا ارائه دهد. برای بخش SMB، یک مدل 'فریمیوم هوشمند' را بررسی کنید که به سرعت ارزش را نشان داده و به سمت اشتراک‌های پریمیوم تبدیل شود.</p>
+                    </div>
+                    <div class="source-info">
+                        <span class="stars">★★★★☆</span>
+                        <a href="https://ycombinator.com/demoday/quantumshield-ai-launch" target="_blank">Y-Combinator Demo Day Insights</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+</body>
+</html>
