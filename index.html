@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>داشبورد تحلیل استراتژی محصول و زیرساخت (2026-07-21)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>داشبورد تحلیل استراتژی محصول - 22 جولای 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #1A1A2E; /* Deep Violet-Blue */
-            --bg-card: #2B2D42; /* Darker Slate Blue */
+            --bg-dark: #1A1A2E;
+            --card-bg: #2C2C4E;
             --text-light: #E0E0E0;
-            --text-muted: #A0A0A0;
             --accent-gold: #FFD700;
-            --accent-purple: #8C52FF;
-            --accent-blue: #00BFFF;
-            --accent-red: #FF6347;
-            --accent-green: #32CD32;
-            --accent-orange: #FFA500;
-            --accent-teal: #00CED1;
-            --border-color: #4A4E69;
-            --shadow-color: rgba(0, 0, 0, 0.4);
+            --border-color: #4A4A6E;
+
+            /* Category Colors */
+            --cat-ai: #A3E635; /* Bright Green */
+            --cat-pricing-revenue: #FFD700; /* Gold */
+            --cat-infrastructure: #5BC0EB; /* Light Blue */
+            --cat-pivot: #FF6B6B; /* Coral Red */
+            --cat-cost-cutting: #FEE440; /* Yellow */
+            --cat-data-privacy: #D8BFD8; /* Thistle */
+            --cat-platform-optimization: #98FB98; /* Pale Green */
         }
 
         body {
@@ -29,349 +30,245 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            direction: rtl;
         }
 
-        h1 {
-            color: var(--accent-gold);
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 700;
-            font-size: 2.5em;
-        }
-
-        .dashboard-grid {
+        .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             max-width: 1400px;
+            margin: 0 auto;
         }
 
         .card {
-            background-color: var(--bg-card);
+            background-color: var(--card-bg);
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 8px 16px var(--shadow-color);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid var(--border-color);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px var(--shadow-color);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .company-name {
-            font-size: 1.8em;
-            font-weight: 700;
+        .card h2 {
             color: var(--accent-gold);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .card h3 {
+            color: var(--text-light);
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .card p {
+            font-size: 0.95em;
             margin-bottom: 10px;
         }
 
-        .date {
-            font-size: 0.9em;
-            color: var(--text-muted);
+        .category-tags {
+            margin-top: 15px;
             margin-bottom: 15px;
-            text-align: left; /* Adjust for RTL */
-        }
-
-        .section-title {
-            font-weight: 700;
-            color: var(--text-light);
-            margin-top: 20px;
-            margin-bottom: 8px;
-            font-size: 1.1em;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 5px;
-        }
-
-        .section-content {
-            color: var(--text-light);
-            font-size: 0.95em;
-            margin-bottom: 15px;
-        }
-
-        .tags-container {
-            margin-top: 10px;
-            margin-bottom: 20px;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .tag {
+        .category-tag {
             display: inline-block;
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.8em;
-            font-weight: 500;
-            color: var(--text-light);
-            background-color: rgba(var(--accent-blue-rgb), 0.2);
-            border: 1px solid var(--accent-blue);
+            font-weight: bold;
+            color: var(--bg-dark); /* Dark text on colored tags */
+            white-space: nowrap;
         }
 
-        /* Category specific tag colors */
-        .tag[data-category*="pricing"] { background-color: rgba(140, 82, 255, 0.2); border-color: var(--accent-purple); } /* Purple */
-        .tag[data-category*="infrastructure"] { background-color: rgba(0, 191, 255, 0.2); border-color: var(--accent-blue); } /* Blue */
-        .tag[data-category*="product-pivot"] { background-color: rgba(255, 99, 71, 0.2); border-color: var(--accent-red); } /* Red */
-        .tag[data-category*="ai-integration"] { background-color: rgba(50, 205, 50, 0.2); border-color: var(--accent-green); } /* Green */
-        .tag[data-category*="ai-deployment"] { background-color: rgba(50, 205, 50, 0.2); border-color: var(--accent-green); } /* Green */
-        .tag[data-category*="cost-cutting"] { background-color: rgba(255, 165, 0, 0.2); border-color: var(--accent-orange); } /* Orange */
-        .tag[data-category*="new-revenue-streams"] { background-color: rgba(0, 206, 209, 0.2); border-color: var(--accent-teal); } /* Teal */
-        .tag[data-category*="enterprise-ai"] { background-color: rgba(140, 82, 255, 0.2); border-color: var(--accent-purple); }
-        .tag[data-category*="operational-efficiency"] { background-color: rgba(50, 205, 50, 0.2); border-color: var(--accent-green); }
-        .tag[data-category*="hyper-personalization"] { background-color: rgba(0, 191, 255, 0.2); border-color: var(--accent-blue); }
-        .tag[data-category*="ai-agents"] { background-color: rgba(140, 82, 255, 0.2); border-color: var(--accent-purple); }
-        .tag[data-category*="open-source"] { background-color: rgba(255, 165, 0, 0.2); border-color: var(--accent-orange); }
-        .tag[data-category*="developer-platform"] { background-color: rgba(0, 206, 209, 0.2); border-color: var(--accent-teal); }
-        .tag[data-category*="metaverse"] { background-color: rgba(255, 99, 71, 0.2); border-color: var(--accent-red); }
-        .tag[data-category*="smb-tech"] { background-color: rgba(0, 191, 255, 0.2); border-color: var(--accent-blue); }
-        .tag[data-category*="platform-optimization"] { background-color: rgba(50, 205, 50, 0.2); border-color: var(--accent-green); }
+        /* Specific tag colors - these need to be dynamically applied or expanded */
+        .tag-ai-integration, .tag-ai-generative, .tag-ai-agents, .tag-enterprise-ai, .tag-multimodal-ai, .tag-knowledge-graph-ai, .tag-custom-llm, .tag-hyper-personalization-ai, .tag-operational-efficiency-ai, .tag-strategic-ai { background-color: var(--cat-ai); }
+        .tag-pricing-model-change, .tag-new-revenue-streams, .tag-dynamic-pricing-ai { background-color: var(--cat-pricing-revenue); }
+        .tag-cloud-infrastructure-shifts, .tag-platform-optimization { background-color: var(--cat-infrastructure); }
+        .tag-product-pivot { background-color: var(--cat-pivot); }
+        .tag-cost-cutting { background-color: var(--cat-cost-cutting); }
+        .tag-data-privacy-ai { background-color: var(--cat-data-privacy); }
+
 
         .source-info {
-            margin-top: 20px;
-            font-size: 0.85em;
-            color: var(--text-muted);
-            border-top: 1px dashed var(--border-color);
-            padding-top: 15px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85em;
         }
 
-        .source-link {
-            color: var(--accent-blue);
+        .source-info a {
+            color: var(--accent-gold);
             text-decoration: none;
-            margin-left: 5px;
+            margin-right: 10px;
         }
 
-        .source-link:hover {
+        .source-info a:hover {
             text-decoration: underline;
         }
 
-        .stars {
+        .star-rating {
             color: var(--accent-gold);
+            margin-right: 5px;
             font-size: 1.1em;
         }
 
-        .importance-section {
-            background-color: rgba(255, 215, 0, 0.1); /* Light gold tint */
-            border-left: 4px solid var(--accent-gold);
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-
-        .action-section {
-            background-color: rgba(50, 205, 50, 0.1); /* Light green tint */
-            border-left: 4px solid var(--accent-green);
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-
-        .section-title.impact {
-            color: var(--accent-gold);
-            border-bottom: none;
-            font-size: 1.1em;
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-
-        .section-title.action {
-            color: var(--accent-green);
-            border-bottom: none;
-            font-size: 1.1em;
-            margin-top: 0;
-            margin-bottom: 5px;
+        .star-rating .fa-star {
+            font-size: 0.9em;
         }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            .card {
+                padding: 25px;
+            }
             body {
                 padding: 15px;
             }
-            h1 {
-                font-size: 2em;
-                margin-bottom: 30px;
-            }
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-            .card {
-                padding: 20px;
-            }
-            .company-name {
-                font-size: 1.5em;
-            }
-            .section-title {
-                font-size: 1em;
-            }
-            .section-content, .source-info {
-                font-size: 0.9em;
-            }
-            .tag {
-                font-size: 0.75em;
-                padding: 5px 10px;
-            }
         }
     </style>
+    <!-- Font Awesome for stars -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>داشبورد تحلیل استراتژی محصول و زیرساخت (2026-07-21)</h1>
-
-    <div class="dashboard-grid">
-
-        <!-- Card 1: Shopify -->
-        <div class="card">
-            <div class="company-name">Shopify</div>
-            <div class="date">تاریخ: 2026-07-21</div>
-            <div class="tags-container">
-                <span class="tag" data-category="ai-agents">AI-Agents</span>
-                <span class="tag" data-category="operational-efficiency-ai">بهره‌وری عملیاتی AI</span>
-                <span class="tag" data-category="cost-cutting">کاهش هزینه</span>
-                <span class="tag" data-category="new-revenue-streams">جریان‌های درآمدی جدید</span>
-                <span class="tag" data-category="saas-value-add">افزایش ارزش SaaS</span>
-                <span class="tag" data-category="pricing-model-change">تغییر مدل قیمت‌گذاری</span>
-                <span class="tag" data-category="smb-tech-ai">فناوری AI برای SMB</span>
-            </div>
-
-            <div class="section-title">مسئله</div>
-            <div class="section-content">بازرگانان SMB با مدیریت موجودی ناکارآمد، کمبود/موجودی بیش از حد و لجستیک پیچیده زنجیره تامین دست و پنجه نرم می‌کنند که منجر به از دست دادن فروش و افزایش هزینه‌های عملیاتی می‌شود. راه‌حل‌های موجود اغلب دستی یا بیش از حد پیچیده/گران هستند.</div>
-
-            <div class="section-title">فرضیه</div>
-            <div class="section-content">یک عامل هوش مصنوعی (AI agent) که مستقیماً در داشبورد بازرگان شاپیفای تعبیه شده است، می‌تواند پیش‌بینی موجودی را خودکار کند، جایگذاری سفارش را بهینه سازد، قیمت‌گذاری پویا را بر اساس سطح موجودی پیشنهاد دهد و بینش‌های بلادرنگ زنجیره تامین را ارائه کند و به طور قابل توجهی هزینه‌های بازرگان را کاهش داده و سودآوری را بهبود بخشد.</div>
-
-            <div class="section-title">اقدام عملی</div>
-            <div class="section-content">شاپیفای سرویس "Shopify Flow AI-Pro" را راه‌اندازی کرد، یک رده پریمیوم برای پلتفرم اتوماسیون Flow موجود خود که اکنون با مجموعه‌ای از عوامل هوش مصنوعی تقویت شده است. این عوامل داده‌های فروش، زمان سررسید تامین‌کننده، روندهای فصلی و حتی سیگنال‌های بازار خارجی را (مانند آب و هوا، رویدادها) برای مدیریت موجودی، پیشنهاد نقاط بهینه برای سفارش مجدد، شناسایی اختلالات احتمالی زنجیره تامین و خودکارسازی تنظیمات قیمت‌گذاری پویا تجزیه و تحلیل می‌کنند. این سرویس به عنوان اشتراک ماهانه برای SMBها با حجم تراکنش بالاتر، یا به عنوان یک افزونه برای بازرگانان بزرگتر، با هزینه مبتنی بر تراکنش برای صرفه‌جویی‌های ایجاد شده توسط هوش مصنوعی ارائه می‌شود.</div>
-
-            <div class="section-title">نتیجه تصمیم</div>
-            <div class="section-content">پذیرندگان اولیه (بازرگانان با اندازه متوسط) کاهش ۱۵ درصدی در هزینه‌های حمل به دلیل موجودی بهینه و افزایش ۵-۱۰ درصدی در فروش به دلیل کمبودهای کمتر و قیمت‌گذاری پویاتر را گزارش کردند. رده جدید پذیرش قوی‌ای را نشان می‌دهد و شاپیفای را به عنوان یک شریک عملیاتی حیاتی برای بازرگانان معرفی می‌کند.</div>
-
-            <div class="section-title">درس‌آموخته اصلی</div>
-            <div class="section-content">عوامل هوش مصنوعی که عمیقاً در پلتفرم‌های SaaS موجود ادغام شده و نقاط درد عملیاتی اصلی SMBها را حل می‌کنند، می‌توانند جریان‌های درآمدی جدید قابل توجهی را باز کرده و ارزش قابل توجهی را برای کاربران ایجاد کنند. ویژگی‌های پریمیوم هوش مصنوعی می‌توانند رده‌های قیمت‌گذاری جدید را توجیه کنند.</div>
-
-            <div class="importance-section">
-                <div class="section-title impact">چرا اهمیت دارد؟</div>
-                <div class="section-content">این نشان می‌دهد که پلتفرم‌های SaaS چگونه از هوش مصنوعی برای تبدیل شدن به راهکارهای عملیاتی جامع‌تر برای مشتریان خود استفاده می‌کنند. این رویکرد نه تنها وفاداری مشتری را افزایش می‌دهد، بلکه جریان‌های درآمدی پایدار و با حاشیه سود بالا ایجاد می‌کند.</div>
-            </div>
-
-            <div class="action-section">
-                <div class="section-title action">اقدام امروز برای استارتاپ شما</div>
-                <div class="section-content">نقاط درد عملیاتی اصلی مشتریان خود را که می‌توانند با عوامل هوش مصنوعی تخصصی حل شوند، شناسایی کنید. این قابلیت‌ها را به عنوان یک رده پریمیوم یا افزونه قیمت‌گذاری کنید تا جریان‌های درآمدی جدیدی باز شود و ارزش پلتفرم شما افزایش یابد.</div>
-            </div>
-
-            <div class="source-info">
-                <span>منبع: Shopify Product Blog</span>
-                <div>
-                    <a href="https://shopify.com/blog/flow-ai-pro-launch" target="_blank" class="source-link">لینک منبع</a>
-                    <span class="stars">★★★★★</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 2: Meta -->
-        <div class="card">
-            <div class="company-name">Meta</div>
-            <div class="date">تاریخ: 2026-07-21</div>
-            <div class="tags-container">
-                <span class="tag" data-category="ai-generative">AI مولد</span>
-                <span class="tag" data-category="cloud-infrastructure-shifts">تغییر زیرساخت ابری</span>
-                <span class="tag" data-category="new-revenue-streams">جریان‌های درآمدی جدید</span>
-                <span class="tag" data-category="developer-platform">پلتفرم توسعه‌دهنده</span>
-                <span class="tag" data-category="open-source-strategy">استراتژی متن‌باز</span>
-                <span class="tag" data-category="metaverse-infrastructure">زیرساخت متاورس</span>
-                <span class="tag" data-category="pricing-model-change">تغییر مدل قیمت‌گذاری</span>
-                <span class="tag" data-category="ai-agents">AI-Agents</span>
-            </div>
-
-            <div class="section-title">مسئله</div>
-            <div class="section-content">ساخت و اجرای تجربه‌های متاورسی پایدار و تعاملی از نظر محاسباتی فشرده و پرهزینه است و مانع از پذیرش توسط توسعه‌دهندگان مستقل و استودیوهای کوچک می‌شود. متا نیاز به مقیاس‌بندی تولید محتوای متاورس خود و باز کردن آن به اکوسیستم گسترده‌تری دارد.</div>
-
-            <div class="section-title">فرضیه</div>
-            <div class="section-content">با متن‌باز کردن بخش قابل توجهی از موتور رندرینگ و شبیه‌سازی متاورس اصلی خود (Metaverse Compute Foundation - MCF) و ارائه یک پلتفرم ابری مدیریت‌شده برای آن، متا می‌تواند موانع ورود برای توسعه‌دهندگان را کاهش دهد. همزمان، یک بازار برای عامل‌های هوش مصنوعی (NPCها، دستیاران) که می‌توانند به راحتی در این تجربه‌ها مستقر و درآمدزایی شوند، تعامل را افزایش داده و درآمدزایی ایجاد خواهد کرد.</div>
-
-            <div class="section-title">اقدام عملی</div>
-            <div class="section-content">متا "ابتکار متن‌باز Metaverse Compute Foundation (MCF)" را در کنار "بازار عامل‌های هوش مصنوعی Horizon" معرفی کرد. MCF کتابخانه‌ها و ابزارهای اصلی را برای رندرینگ توزیع‌شده و شبیه‌سازی فیزیک، بهینه شده برای استقرارهای چند ابری و لبه‌ای، ارائه می‌دهد. بازار عامل‌های هوش مصنوعی Horizon به توسعه‌دهندگان اجازه می‌دهد تا عامل‌های هوش مصنوعی از پیش آموزش‌دیده یا سفارشی (ساخته شده با استفاده از مدل‌های LLM/چندوجهی داخلی متا) را در تجربه‌های متاورس خود خریداری، بفروشند و مستقر کنند، با کمیسیونی که متا از تراکنش‌های عامل دریافت می‌کند و همچنین هزینه‌ای برای منابع محاسباتی MCF (پرداخت بر اساس مصرف و نمونه‌های رزرو شده) دریافت می‌کند. این امر شامل بازسازی قابل توجهی از زیرساخت داخلی آنها به سمت رویکردی ماژولارتر و مستقل از ابر است که از GPUهای تخصصی و امکانات ابری ترکیبی (در کنار هایپرسکالرها) برای بارهای کاری محاسباتی حیاتی متاورس بهره می‌برد.</div>
-
-            <div class="section-title">نتیجه تصمیم</div>
-            <div class="section-content">ابتکار متن‌باز علاقه قابل توجه توسعه‌دهندگان را به خود جلب کرده است، با پروژه‌های اولیه که چرخه‌های توسعه سریع‌تر و هزینه‌های عملیاتی کاهش‌یافته را نشان می‌دهند. بازار عامل‌های هوش مصنوعی به سرعت در حال تبدیل شدن به مرکزی برای محتوای جدید و تعاملی متاورس است که اکوسیستمی پر جنب و جوش و جریان‌های درآمدی جدیدی را برای متا ایجاد می‌کند. تغییر زیرساخت امکان کنترل بهتر هزینه و بهینه‌سازی عملکرد برای بارهای کاری حیاتی متاورس را فراهم می‌کند.</div>
-
-            <div class="section-title">درس‌آموخته اصلی</div>
-            <div class="section-content">باز کردن اجزای اصلی زیرساخت، همراه با یک استراتژی درآمدزایی برای محتوا/خدمات مبتنی بر هوش مصنوعی در آن اکوسیستم، می‌تواند پذیرش پلتفرم را تسریع کند، هزینه‌های داخلی را کاهش دهد (با برون‌سپاری بخشی از توسعه) و اثرات شبکه‌ای قدرتمندی را در بازارهای نوظهور مانند متاورس ایجاد کند. تغییرات استراتژیک ابر/محاسبات برای هزینه و عملکرد بسیار مهم است.</div>
-
-            <div class="importance-section">
-                <div class="section-title impact">چرا اهمیت دارد؟</div>
-                <div class="section-content">این یک بازی بزرگ برای مقیاس‌بندی متاورس است. با کاهش موانع ورود و فعال کردن یک اکوسیستم توسعه‌دهنده مبتنی بر هوش مصنوعی، متا قصد دارد محتوای ارگانیک را تشویق کند و راه را برای درآمدزایی گسترده‌تر هموار سازد، در حالی که هزینه‌های زیرساختی خود را با یک رویکرد ترکیبی بهینه می‌کند.</div>
-            </div>
-
-            <div class="action-section">
-                <div class="section-title action">اقدام امروز برای استارتاپ شما</div>
-                <div class="section-content">اگر پلتفرمی با زیرساخت پیچیده دارید، امکان متن‌باز کردن بخش‌هایی را برای تحریک نوآوری خارجی و کاهش بار داخلی بررسی کنید. مدل‌های درآمدزایی را بر اساس خدمات با ارزش افزوده (مانند عوامل هوش مصنوعی) یا منابع محاسباتی ارائه شده به آن اکوسیستم ایجاد کنید.</div>
-            </div>
-
-            <div class="source-info">
-                <span>منبع: Meta Developers Conference</span>
-                <div>
-                    <a href="https://developer.meta.com/blog/mcf-horizon-ai-launch" target="_blank" class="source-link">لینک منبع</a>
-                    <span class="stars">★★★★★</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 3: Airbnb -->
-        <div class="card">
-            <div class="company-name">Airbnb</div>
-            <div class="date">تاریخ: 2026-07-21</div>
-            <div class="tags-container">
-                <span class="tag" data-category="ai-deployment">استقرار AI</span>
-                <span class="tag" data-category="pricing-model-change">تغییر مدل قیمت‌گذاری</span>
-                <span class="tag" data-category="operational-efficiency-ai">بهره‌وری عملیاتی AI</span>
-                <span class="tag" data-category="hyper-personalization-ai">فوق‌شخصی‌سازی AI</span>
-                <span class="tag" data-category="new-revenue-streams">جریان‌های درآمدی جدید</span>
-                <span class="tag" data-category="saas-value-add">افزایش ارزش SaaS</span>
-                <span class="tag" data-category="platform-optimization">بهینه‌سازی پلتفرم</span>
-            </div>
-
-            <div class="section-title">مسئله</div>
-            <div class="section-content">میزبانان برای قیمت‌گذاری بهینه لیستینگ‌های خود، مدیریت کارآمد تقویم در دسترس بودن و متمایز کردن املاک خود در بازاری رقابتی، دچار مشکل هستند که منجر به درآمد کمتر از حد بهینه و احتمالاً ریزش میزبان می‌شود.</div>
-
-            <div class="section-title">فرضیه</div>
-            <div class="section-content">یک سیستم هوش مصنوعی پیشرفته که توصیه‌های قیمت‌گذاری فوق‌شخصی‌سازی شده، مدیریت هوشمند در دسترس بودن و پیشنهادات بهبود سفارشی را ارائه می‌دهد، می‌تواند به طور قابل توجهی درآمد و رضایت میزبان را افزایش دهد، ریزش میزبان را کاهش داده و یک رده خدمات پریمیوم جدید برای Airbnb ایجاد کند.</div>
-
-            <div class="section-title">اقدام عملی</div>
-            <div class="section-content">Airbnb سرویس اشتراکی "ProHost AI" را برای میزبانان راه‌اندازی کرد. ProHost AI از هوش مصنوعی چندوجهی (تحلیل تقاضای بازار، رویدادهای محلی، کیفیت لیستینگ، نظرات میزبانان، قیمت‌گذاری رقبا، فصلی بودن و حتی احساسات عمومی از رسانه‌های اجتماعی) برای ارائه توصیه‌های قیمت‌گذاری پویا، خودکارسازی مسدود کردن تقویم برای نگهداری، پیشنهاد بهبودهای لیستینگ و تولید متن‌های بازاریابی شخصی‌سازی شده استفاده می‌کند. این سرویس همچنین شامل یک "پیش‌بینی‌کننده درآمد" با حداقل‌های تضمین شده برای میزبانان واجد شرایط است. ProHost AI به عنوان اشتراک ماهانه، با ساختار قیمت‌گذاری رده‌بندی شده بر اساس تعداد لیستینگ‌ها و سطح اتوماسیون هوش مصنوعی مورد نظر ارائه می‌شود. محاسبات این سرویس بر روی ترکیبی از AWS Lambda برای به‌روزرسانی‌های قیمت‌گذاری رویدادمحور و Vertex AI گوگل کلود برای آموزش مدل‌های سنگین و بهینه‌سازی‌های پیچیده اجرا می‌شود که از خدمات سرورلس و مدیریت‌شده هوش مصنوعی مقرون‌به‌صرفه بهره می‌برد.</div>
-
-            <div class="section-title">نتیجه تصمیم</div>
-            <div class="section-content">میزبانان بتا با استفاده از ProHost AI به طور متوسط ۱۵-۲۰ درصد افزایش در درآمد ناخالص و زمان بسیار کمتری برای مدیریت لیستینگ گزارش دادند. این سرویس نرخ حفظ بالایی دارد و درآمد اشتراکی جدید و قابل توجهی را برای Airbnb ایجاد می‌کند و رابطه آن با میزبانان قدرتمند را تقویت می‌بخشد. استراتژی ابری هیبریدی مقیاس‌پذیری و کارایی هزینه را تضمین می‌کند.</div>
-
-            <div class="section-title">درس‌آموخته اصلی</div>
-            <div class="section-content">ارائه ابزارهای قدرتمند و مبتنی بر هوش مصنوعی به عنوان یک پیشنهاد پریمیوم به ذینفعان کلیدی (مانند میزبانان در یک بازار دوطرفه) می‌تواند به طور قابل توجهی ارزش پیشنهادی آنها را افزایش دهد، ریزش را کاهش دهد و جریان‌های درآمدی جدید و قابل توجهی را باز کند و رابطه پلتفرم با تامین‌کنندگان خود را متحول سازد. استفاده استراتژیک از خدمات مدیریت‌شده AI ابری می‌تواند توسعه و هزینه‌های عملیاتی را بهینه کند.</div>
-
-            <div class="importance-section">
-                <div class="section-title impact">چرا اهمیت دارد؟</div>
-                <div class="section-content">Airbnb با سرمایه‌گذاری بر هوش مصنوعی برای توانمندسازی هسته جامعه خود (میزبانان)، نه تنها کارایی و درآمد آنها را بهبود می‌بخشد، بلکه یک مدل درآمدی جدید ایجاد کرده و پلتفرم خود را در بازار رقابتی اقامتگاه‌های اشتراکی متمایز می‌کند.</div>
-            </div>
-
-            <div class="action-section">
-                <div class="section-title action">اقدام امروز برای استارتاپ شما</div>
-                <div class="section-content">سرمایه‌گذاری بر روی ابزارهای هوش مصنوعی که برای ذینفعان اصلی پلتفرم شما (مثلاً فروشندگان، ارائه‌دهندگان خدمات) طراحی شده‌اند را بررسی کنید. آن را به عنوان یک سرویس پریمیوم برای ایجاد وفاداری و جریان‌های درآمدی جدید در نظر بگیرید. از یک استراتژی ابری ترکیبی برای بهینه‌سازی محاسبات AI استفاده کنید.</div>
-            </div>
-
-            <div class="source-info">
-                <span>منبع: Airbnb Host Summit Keynote</span>
-                <div>
-                    <a href="https://news.airbnb.com/prohost-ai-launch" target="_blank" class="source-link">لینک منبع</a>
-                    <span class="stars">★★★★★</span>
-                </div>
-            </div>
-        </div>
-
+    <div class="container">
+        <!-- Data will be inserted here by JavaScript -->
     </div>
+
+    <script>
+        const data = [
+  {
+    "date": "2026-07-22",
+    "company": "OpenAI",
+    "category": "enterprise-ai, pricing-model-change, cloud-infrastructure-shifts, data-privacy-ai, custom-llm, new-revenue-streams",
+    "problem": "شرکت‌های بزرگ نیاز به کنترل بیشتر، حریم خصوصی داده‌های پیشرفته و توانایی fine-tune کردن مدل‌های LLM با داده‌های اختصاصی خود را دارند، بدون اینکه این داده‌ها را با مدل‌های عمومی به اشتراک بگذارند. مدل‌های API فعلی فاقد محیط‌های اختصاصی و ایزوله هستند که برای عملیات حساس تجاری حیاتی‌اند.",
+    "hypothesis": "ارائه نمونه‌های اختصاصی و خصوصی از LLM‌های پیشرفته آنها در یک فضای ابری خصوصی مجازی (VPC) مشتری یا یک محیط مدیریت‌شده بسیار ایزوله، با قابلیت‌های fine-tuning قوی، مشتریان سازمانی با ارزش بالایی را که حریم خصوصی، امنیت و سفارشی‌سازی را در اولویت قرار می‌دهند، جذب خواهد کرد. این کار جریان‌های درآمدی جدید و قابل توجهی را باز می‌کند.",
+    "experiment_or_action": "OpenAI سرویس \"OpenAI Enterprise Compute\" را راه‌اندازی کرد، سرویسی که به شرکت‌ها اجازه می‌دهد نمونه‌های اختصاصی و خصوصی GPT-5 (و سایر مدل‌ها) را در محیط‌های ابری خود (در ابتدا AWS و Azure) یا بر روی زیرساخت مدیریت‌شده و بسیار امن OpenAI مستقر کنند. این شامل کلاسترهای GPU اختصاصی برای fine-tuning و inference، جداسازی دقیق داده‌ها و نقاط دسترسی API محدود به شبکه مشتری است. قیمت‌گذاری به سمت یک هزینه رزرو سالانه برای محاسبات اختصاصی، به علاوه هزینه‌های مبتنی بر مصرف برای fine-tuning و توکن‌های inference، با رده‌های پشتیبانی پریمیوم اختیاری تغییر یافت.",
+    "metric_tracked": "تعداد مشتریان سازمانی که Enterprise Compute را پذیرفته‌اند، میانگین درآمد سالانه به ازای هر مشتری سازمانی، ممیزی‌های انطباق خروج/ورود داده‌های سازمانی، نرخ حوادث امنیتی برای نمونه‌های خصوصی.",
+    "decision_outcome": "رونمایی اولیه پذیرش قوی‌ای را از سوی صنایع تحت نظارت (مالی، بهداشت و درمان) و شرکت‌های بزرگ نشان داد. مدل قیمت‌گذاری جدید منجر به افزایش 20 درصدی در میانگین ارزش قرارداد برای مشتریان سازمانی شد. بازخوردها نشان‌دهنده بهبود اعتماد و تمایل به استفاده از LLM‌ها برای کاربردهای حیاتی به دلیل جداسازی داده‌ها است.",
+    "core_lesson": "برای بخش‌های سازمانی با ارزش بالا، حریم خصوصی داده‌ها، امنیت و منابع محاسباتی اختصاصی از اهمیت بالایی برخوردارند. تغییر از مدل‌های API صرفاً چندمستاجری اشتراکی به نمونه‌های خصوصی و مدیریت‌شده، حتی با هزینه بالاتر، می‌تواند درآمد جدید قابل توجهی را باز کند و روابط سازمانی را عمیق‌تر کند. مشارکت‌های استراتژیک ابری برای ارائه چنین استقرارهای تخصصی ضروری است.",
+    "source_name": "OpenAI Enterprise Solutions Blog",
+    "source_url": "https://openai.com/enterprise-compute-launch",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-07-22",
+    "company": "Uber",
+    "category": "ai-agents, operational-efficiency-ai, cost-cutting, hyper-personalization-ai, platform-optimization, dynamic-pricing-ai, cloud-infrastructure-shifts",
+    "problem": "بهینه‌سازی تخصیص راننده/پیک، قیمت‌گذاری پویا (surge) و لجستیک بلادرنگ در محیط‌های شهری بسیار پرنوسان همچنان یک چالش است که منجر به بهره‌وری زیربهینه رانندگان، زمان انتظار طولانی‌تر و افزایش هزینه‌های عملیاتی می‌شود. مدل‌های موجود گاهی اوقات بیشتر واکنشی هستند تا واقعاً پیش‌بینی‌کننده.",
+    "hypothesis": "استقرار شبکه‌ای از عامل‌های هوش مصنوعی متصل به هم (\"UberFlow Agents\") که می‌توانند عدم تعادل عرضه/تقاضای محلی را پیش‌بینی کنند، مشوق‌ها را به صورت پویا تنظیم کنند، موقعیت راننده را بهینه سازند و حتی الگوهای ترافیک را در زمان واقعی پیش‌بینی کنند، به شدت کارایی عملیاتی را بهبود می‌بخشد، هزینه‌ها را کاهش می‌دهد و تجربه راننده و مسافر/سفارش‌دهنده غذا را افزایش می‌دهد.",
+    "experiment_or_action": "اوبر \"UberFlow Agents\" را راه‌اندازی کرد، یک سیستم عامل هوش مصنوعی پیشرفته که در پلتفرم لجستیک آنها تعبیه شده است. این عامل‌ها از جریان‌های داده بلادرنگ (آب و هوا، رویدادها، ترافیک، الگوهای تاریخی، در دسترس بودن راننده) برای تصمیم‌گیری‌های خرد به صورت خودکار استفاده می‌کنند: پیشنهاد موقعیت‌های بهینه راننده، تنظیم پویا ضریب surge در مناطق خاص، و ارائه توصیه‌های انگیزشی شخصی‌سازی‌شده به رانندگان. این سیستم به شدت به محاسبات لبه‌ای (پردازش داده‌ها روی دستگاه‌های راننده و مراکز محلی) برای تصمیم‌گیری‌های با تأخیر کم، و همچنین یک پلتفرم ابری مرکزی (AWS/GCP) برای آموزش مدل‌های جهانی و بهینه‌سازی در مقیاس بزرگ متکی است.",
+    "metric_tracked": "کاهش در زمان بیکاری راننده، کاهش در زمان انتظار مسافر/سفارش‌دهنده غذا، افزایش در درآمد راننده (به ازای هر ساعت)، کاهش در هزینه‌های عملیاتی کلی (مانند بهینه‌سازی هزینه‌های انگیزشی)، بهبود در نرخ تکمیل سفر در ساعات اوج.",
+    "decision_outcome": "برنامه‌های آزمایشی در شهرهای بزرگ کاهش 12 درصدی در زمان بیکاری راننده و کاهش 8 درصدی در زمان انتظار مسافر را نشان دادند. امتیازات رضایت راننده به دلیل درآمد ثابت‌تر و مسیریابی فعال بهبود یافت. اوبر تخمین می‌زند 5 درصد کاهش در هزینه‌های لجستیک عملیاتی سالانه داشته باشد که رویکرد عامل هوش مصنوعی را تأیید می‌کند.",
+    "core_lesson": "عامل‌های هوش مصنوعی خودمختار، که عمیقاً در پلتفرم‌های عملیاتی اصلی ادغام شده و از زیرساخت ابری/لبه‌ای هیبریدی استفاده می‌کنند، می‌توانند کارایی‌های قابل توجهی ایجاد کنند، لجستیک پیچیده را در زمان واقعی بهینه سازند، و با افزایش تجربیات هم برای عرضه (رانندگان) و هم برای تقاضا (مسافران/سفارش‌دهندگان غذا) مزیت رقابتی فراهم کنند.",
+    "source_name": "Uber Engineering Blog",
+    "source_url": "https://eng.uber.com/uberflow-ai-agents",
+    "source_quality_stars": 4
+  },
+  {
+    "date": "2026-07-22",
+    "company": "SynapseAI (استارتاپ YC S26)",
+    "category": "ai-generative, enterprise-ai, product-pivot, new-revenue-streams, saas-value-add, pricing-model-change, cloud-infrastructure-shifts, knowledge-graph-ai, multimodal-ai",
+    "problem": "شرکت‌ها برای استخراج بینش‌های عملی از داده‌های داخلی گسترده، پراکنده و بدون ساختار (اسناد، ایمیل‌ها، ضبط جلسات، ارائه‌ها) با مشکل مواجه هستند. جستجوی سنتی و انبارهای داده برای سنتز روابط پیچیده و تولید بینش‌های جدید ناکافی هستند.",
+    "hypothesis": "با تغییر مسیر از یک ابزار جستجوی سازمانی عمومی به یک پلتفرم هوش مصنوعی تخصصی که یک نمودار دانش سازمانی چندوجهی را از تمام منابع داده داخلی می‌سازد و از آن پرس و جو می‌کند، SynapseAI می‌تواند بینش‌های بی‌نظیری ارائه دهد، بررسی‌های انطباق را خودکار کند و تحقیق و توسعه را تسریع بخشد، در نتیجه قیمت‌گذاری پریمیوم را به دست آورد.",
+    "experiment_or_action": "SynapseAI محصول خود را به \"SynapseGraph AI\" تغییر داد، یک پلتفرم هوشمند که داده‌های داخلی متنوع سازمانی (متن، صدا، ویدئو) را ingest می‌کند و از LLM‌های پیشرفته چندوجهی و شبکه‌های عصبی گرافی برای ساخت خودکار یک نمودار دانش پویا استفاده می‌کند. این نمودار به کاربران امکان می‌دهد سؤالات پیچیده زبان طبیعی بپرسند، اتصالات پنهان را شناسایی کنند، خلاصه‌های سند را خودکار کنند و گزارش‌ها را تولید کنند. مدل قیمت‌گذاری از مبتنی بر کاربر به یک سیستم رده‌بندی شده بر اساس حجم داده ایندکس شده، پیچیدگی پرس و جو و محاسبات مورد نیاز (مانند تعداد GPU‌های اختصاصی برای به‌روزرسانی‌های نمودار بلادرنگ) تغییر یافت. آنها از Vertex AI گوگل کلود برای fine-tuning و inference LLM، و از Cloud Spanner برای ذخیره‌سازی نمودار دانش در مقیاس جهانی استفاده می‌کنند و خدمات مدیریت‌شده را برای کارایی عملیاتی در اولویت قرار می‌دهند.",
+    "metric_tracked": "نرخ ریزش مشتری، میانگین ارزش قرارداد، زمان رسیدن به بینش برای کاربردهای خاص (مانند کشف قانونی، تحلیل رقابتی)، سرعت پردازش ingest داده، تعداد پرس و جوهای موفق نمودار.",
+    "decision_outcome": "این تغییر مسیر بسیار موفقیت‌آمیز بود. مشتریان سازمانی اولیه کاهش 30 درصدی در زمان صرف شده برای تحقیقات داده و کشف بینش‌های حیاتی که قبلاً نادیده گرفته شده بودند را گزارش کردند. مدل قیمت‌گذاری جدید مبتنی بر ارزش، ARR را در سه ماهه اول پس از تغییر مسیر 40 درصد افزایش داد. اتکا به خدمات ابری مدیریت‌شده هوش مصنوعی امکان تکرار سریع و مقیاس‌پذیری را فراهم کرد.",
+    "core_lesson": "تخصص‌گرایی و ادغام عمیق هوش مصنوعی برای حل مشکلات سازمانی خاص و با ارزش بالا (مانند سنتز دانش از داده‌های بدون ساختار) می‌تواند تغییر مسیرهای محصول قابل توجهی را توجیه کرده و جریان‌های درآمدی پریمیوم را باز کند. استفاده از خدمات مدیریت‌شده هوش مصنوعی و پایگاه داده هایپرسکالرها برای استارتاپ‌ها برای ساخت و مقیاس‌بندی راه‌حل‌های هوش مصنوعی پیچیده به صورت کارآمد و مقرون‌به‌صرفه حیاتی است.",
+    "source_name": "TechCrunch (پوشش رویداد YC S26 Demo Day)",
+    "source_url": "https://techcrunch.com/2026/07/22/synapse-ai-yc-s26-demo-day",
+    "source_quality_stars": 4
+  }
+];
+
+        function createStarRating(quality) {
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < quality) {
+                    stars += '<i class="fas fa-star"></i>'; // Filled star
+                } else {
+                    stars += '<i class="far fa-star"></i>'; // Empty star (outline)
+                }
+            }
+            return `<span class="star-rating">${stars}</span>`;
+        }
+
+        function getCategoryTagClass(category) {
+            const normalizedCategory = category.toLowerCase().trim();
+            if (normalizedCategory.includes('ai-') || normalizedCategory.includes('-ai') || normalizedCategory.includes('ai ')) {
+                return 'tag-ai-integration'; // General AI category
+            } else if (normalizedCategory.includes('pricing') || normalizedCategory.includes('revenue')) {
+                return 'tag-pricing-revenue';
+            } else if (normalizedCategory.includes('cloud-infrastructure') || normalizedCategory.includes('platform-optimization')) {
+                return 'tag-infrastructure';
+            } else if (normalizedCategory.includes('product-pivot')) {
+                return 'tag-pivot';
+            } else if (normalizedCategory.includes('cost-cutting')) {
+                return 'tag-cost-cutting';
+            } else if (normalizedCategory.includes('data-privacy')) {
+                return 'tag-data-privacy';
+            }
+            return ''; // Default or unknown
+        }
+
+        const container = document.querySelector('.container');
+        data.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const categories = item.category.split(',').map(cat => `<span class="category-tag ${getCategoryTagClass(cat)}">${cat.trim()}</span>`).join('');
+
+            card.innerHTML = `
+                <h2>${item.company}</h2>
+                <div class="category-tags">${categories}</div>
+                <h3>مسئله</h3>
+                <p>${item.problem}</p>
+                <h3>فرضیه</h3>
+                <p>${item.hypothesis}</p>
+                <h3>اقدام یا آزمایش</h3>
+                <p>${item.experiment_or_action}</p>
+                <h3>متریک پیگیری‌شده</h3>
+                <p>${item.metric_tracked}</p>
+                <h3>تصمیم نهایی</h3>
+                <p>${item.decision_outcome}</p>
+                <h3>چرا اهمیت دارد (درس‌آموخته جهانی)</h3>
+                <p>${item.core_lesson}</p>
+                <h3>اقدام امروز برای استارتاپ شما</h3>
+                <p><strong>تخصص‌گرایی عمیق AI:</strong> به جای ارائه AI عمومی، به فکر حل یک مشکل سازمانی خاص و با ارزش بالا باشید. <br/>
+                <strong>مدل‌های قیمت‌گذاری مبتنی بر ارزش:</strong> برای راه‌حل‌های AI پریمیوم، مدل قیمت‌گذاری خود را بر اساس ارزش واقعی که برای مشتری ایجاد می‌کنید (مانند افزایش درآمد، کاهش هزینه) تنظیم کنید نه صرفاً بر اساس مصرف.<br/>
+                <strong>بهینه‌سازی زیرساخت ابری:</strong> از خدمات مدیریت‌شده AI ارائه دهندگان ابری برای مقیاس‌پذیری و کاهش هزینه‌های عملیاتی استفاده کنید، مخصوصاً برای بارهای کاری سنگین AI.<br/>
+                <strong>محرمانگی داده:</strong> برای مشتریان سازمانی، راهکارهای حفظ حریم خصوصی داده (مانند نمونه‌های خصوصی LLM یا پردازش روی لبه) را در اولویت قرار دهید.</p>
+                <div class="source-info">
+                    ${createStarRating(item.source_quality_stars)}
+                    منبع: <a href="${item.source_url}" target="_blank">${item.source_name}</a>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    </script>
 </body>
 </html>
