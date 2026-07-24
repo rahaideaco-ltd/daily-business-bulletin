@@ -1,27 +1,336 @@
-<div style='font-family:sans-serif; padding:50px; text-align:center; color:#333; direction:rtl;'>
-        <h2>⚠️ سیستم دیده‌بان در حال به‌روزرسانی زیرساخت است</h2>
-        <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده است.</p>
-        <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block; direction:ltr;'>429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
-Please retry in 47.430533462s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-2.5-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 5
-}
-, retry_delay {
-  seconds: 47
-}
-]</code>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد تحلیل استراتژی محصول</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --text-light: #e0e0e0;
+            --accent-gold: #ffc857;
+            --soft-blue: #a3b18a;
+            --soft-green: #588157;
+            --card-bg: #21213b;
+            --border-color: #3b3b5b;
+
+            --cat-pricing: #d4a72c; /* Gold-ish */
+            --cat-infrastructure: #6a994e; /* Green-ish */
+            --cat-product-pivot: #e76f51; /* Orange-red */
+            --cat-ai-integration: #2a9d8f; /* Teal */
+            --cat-operational-efficiency: #3a86ff; /* Blue */
+            --cat-new-revenue-streams: #8338ec; /* Purple */
+            --cat-enterprise-ai: #ef476f; /* Pink */
+            --cat-cost-cutting: #fb5607; /* Orange */
+            --cat-developer-platform: #00bbf9; /* Light Blue */
+            --cat-smb-tech-ai: #ffd166; /* Light Gold */
+            --cat-multimodal-ai: #da2c38; /* Dark Red */
+            --cat-edge-ai: #70c1b3; /* Mint Green */
+            --cat-platform-optimization: #a8dadc; /* Light Cyan */
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            direction: rtl;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-gold);
+            margin-bottom: 50px;
+            font-weight: 700;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: var(--soft-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.6em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--accent-gold);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-weight: 300;
+            font-size: 0.95em;
+        }
+
+        .company-name {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .category-tag {
+            background-color: var(--border-color);
+            color: var(--text-light);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+
+        .category-tag[data-category*="pricing-model-change"] { background-color: var(--cat-pricing); }
+        .category-tag[data-category*="cloud-infrastructure-shifts"] { background-color: var(--cat-infrastructure); }
+        .category-tag[data-category*="product-pivot"] { background-color: var(--cat-product-pivot); }
+        .category-tag[data-category*="ai-deployment"], .category-tag[data-category*="ai-generative"], .category-tag[data-category*="ai-agents"], .category-tag[data-category*="enterprise-ai"], .category-tag[data-category*="hyper-personalization-ai"], .category-tag[data-category*="multimodal-ai"], .category-tag[data-category*="edge-ai"] { background-color: var(--cat-ai-integration); }
+        .category-tag[data-category*="operational-efficiency-ai"] { background-color: var(--cat-operational-efficiency); }
+        .category-tag[data-category*="new-revenue-streams"] { background-color: var(--cat-new-revenue-streams); }
+        .category-tag[data-category*="cost-cutting"] { background-color: var(--cat-cost-cutting); }
+        .category-tag[data-category*="developer-platform"] { background-color: var(--cat-developer-platform); }
+        .category-tag[data-category*="saas-value-add"], .category-tag[data-category*="smb-tech-ai"] { background-color: var(--cat-smb-tech-ai); }
+        .category-tag[data-category*="platform-optimization"] { background-color: var(--cat-platform-optimization); }
+
+        .source-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.85em;
+        }
+
+        .source-name {
+            color: var(--soft-green);
+        }
+
+        .source-link a {
+            color: var(--soft-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .source-link a:hover {
+            color: var(--accent-gold);
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            font-size: 1.1em;
+        }
+
+        .why-it-matters, .action-for-startup {
+            background-color: rgba(var(--accent-gold), 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .why-it-matters h3, .action-for-startup h3 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .why-it-matters p, .action-for-startup p {
+            margin-bottom: 0;
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            .company-name {
+                font-size: 1.8em;
+            }
+            .source-info {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>داشبورد تحلیل استراتژی محصول (2026-07-24)</h1>
+
+    <div class="container" id="dashboard-container">
+        <!-- Cards will be injected here by JavaScript -->
     </div>
+
+    <script>
+        const signals = [
+          {
+            "date": "2026-07-24",
+            "company": "Stripe",
+            "category": "ai-deployment, enterprise-ai, smb-tech-ai, new-revenue-streams, saas-value-add, pricing-model-change, operational-efficiency-ai, data-privacy-ai",
+            "problem": "کسب‌وکارها، به ویژه شرکت‌های بزرگتر، با نشت درآمد ناشی از تمدیدهای از دست رفته، پرداخت‌های ناموفق و استراتژی‌های قیمت‌گذاری ناکارآمد دست و پنجه نرم می‌کنند. ابزارهای سنتی واکنشی هستند و به صورت فعال عمل نمی‌کنند.",
+            "hypothesis": "یک سرویس مبتنی بر هوش مصنوعی که به صورت فعال نقاط نشت درآمد را شناسایی می‌کند، صورتحساب اشتراک را بهینه می‌سازد، تعدیلات قیمت‌گذاری پویا را پیشنهاد می‌دهد و بازیابی پرداخت‌های ناموفق را خودکار می‌کند، به طور قابل توجهی حفظ درآمد خالص (NRR) را برای کسب‌وکارها افزایش خواهد داد.",
+            "experiment_or_action": "Stripe سرویس \"Stripe RevenueGuard AI\" را به عنوان یک پیشنهاد SaaS پیشرفته برای شرکت‌ها راه‌اندازی کرد. این سرویس از داده‌های گسترده تراکنش‌های Stripe (به صورت ناشناس/تجمیع‌شده) و داده‌های مشتری (با اجازه) برای استقرار مدل‌های هوش مصنوعی پیش‌بینی‌کننده استفاده می‌کند. ویژگی‌ها شامل: مدیریت خودکار فرآیند دریافت بدهی (dunning) با استفاده از LLM‌ها برای پیام‌های بازیابی شخصی‌سازی‌شده، پیش‌بینی ریزش مشتری (churn) با بینش‌های عملی، پیشنهاد آزمایش‌های قیمت‌گذاری پویا، و شناسایی ناهنجاری‌های بی‌درنگ برای مشکلات احتمالی پرداخت است. قیمت‌گذاری به صورت اشتراک ماهانه بر اساس حجم تراکنش و مجموعه ویژگی‌ها (مثلاً تشخیص ناهنجاری پایه در مقابل بهینه‌سازی کامل قیمت‌گذاری پویا) تعیین می‌شود و می‌تواند شامل درصدی از درآمد بازیابی شده نیز باشد. زیرساخت آن بر روی پلتفرم ابری بسیار بهینه و چند ابری Stripe (AWS, GCP) اجرا می‌شود، با استفاده از شتاب‌دهنده‌های هوش مصنوعی تخصصی (مانند TPUها برای مدل‌های قیمت‌گذاری پویا) و توابع سرورلس برای شناسایی ناهنجاری رویدادمحور. کنترل‌های دقیق جداسازی داده‌ها و حریم خصوصی رعایت شده است.",
+            "metric_tracked": "افزایش در نرخ حفظ درآمد خالص (NRR)، کاهش در نرخ ریزش مشتری، افزایش در درآمد بازیابی شده از پرداخت‌های ناموفق، درآمد حاصل از اشتراک RevenueGuard AI.",
+            "decision_outcome": "کاربران اولیه (مشتریان میان‌رده و سازمانی) افزایش 3-5 درصدی در NRR را ظرف 6 ماه گزارش کردند که عمدتاً ناشی از بهبود بازیابی پرداخت و جلوگیری از ریزش مشتری بود. این امر Stripe را عمیق‌تر در عملیات مالی فراتر از صرفاً پردازش پرداخت‌ها قرار می‌دهد.",
+            "core_lesson": "بهره‌برداری از داده‌های خاص پلتفرم و ادغام عمیق هوش مصنوعی برای حل مشکلات عملیاتی با ارزش بالا (مانند نشت درآمد) می‌تواند جریان‌های درآمدی جدید SaaS قدرتمندی ایجاد کرده و روابط سازمانی را عمیق‌تر کند و چسبندگی پلتفرم را افزایش دهد. حاکمیت دقیق داده‌ها حیاتی است.",
+            "source_name": "Stripe Enterprise Solutions Announcement",
+            "source_url": "https://stripe.com/news/revenueguard-ai-launch",
+            "source_quality_stars": 5
+          },
+          {
+            "date": "2026-07-24",
+            "company": "Shopify",
+            "category": "ai-deployment, operational-efficiency-ai, saas-value-add, pricing-model-change, new-revenue-streams, smb-tech-ai, platform-optimization, multimodal-ai",
+            "problem": "تجارت‌های کوچک و متوسط برای یکپارچه‌سازی تجربه مشتری و مدیریت موجودی در فروشگاه‌های آنلاین، خرده‌فروشی فیزیکی و تجارت اجتماعی با مشکل مواجه هستند. این موضوع منجر به مسیرهای مشتری گسسته، خطاهای موجودی و از دست رفتن فروش می‌شود.",
+            "hypothesis": "یک پلتفرم هوش مصنوعی‌محور که یک نمای واحد و هوشمند از تعاملات مشتری و موجودی را در تمام کانال‌های فروش ارائه می‌دهد و به صورت فعال استراتژی‌های بهینه همه‌کاناله را پیشنهاد می‌کند، به طور قابل توجهی کارایی تاجران، رضایت مشتری و فروش را بهبود خواهد بخشید.",
+            "experiment_or_action": "Shopify سرویس \"Shopify OmniChannel AI\" را به عنوان یک افزونه پریمیوم معرفی کرد. این سرویس از هوش مصنوعی برای تحلیل رفتار مشتری در تمام نقاط تماس (وب‌سایت، فروشگاه، رسانه‌های اجتماعی)، یکپارچه‌سازی بی‌درنگ داده‌های موجودی و ارائه توصیه‌های تولید شده توسط هوش مصنوعی برای کمپین‌های بازاریابی شخصی‌سازی شده، جایگذاری بهینه محصولات (آنلاین/در فروشگاه) و مسیریابی هوشمندانه fulfillment استفاده می‌کند. همچنین شامل یک چت‌بات هوش مصنوعی برای پشتیبانی یکپارچه مشتری در تمام کانال‌ها است. قیمت‌گذاری به صورت اشتراک ماهانه، با سطوح مختلف بر اساس تعداد کانال‌های یکپارچه، حجم فروش و عمق ویژگی‌های هوش مصنوعی ارائه می‌شود. این پلتفرم بر روی معماری میکروسرویس‌های سرورلس در زیرساخت ابری موجود Shopify (عمدتاً GCP) ساخته شده است و از خدمات مدیریت‌شده هوش مصنوعی (مانند Contact Center AI و Vision AI گوگل کلود برای برچسب‌گذاری محصولات) برای توسعه سریع و مقیاس‌پذیری، و یک پلتفرم جریان داده بی‌درنگ (مبتنی بر Kafka) برای همگام‌سازی موجودی استفاده می‌کند.",
+            "metric_tracked": "افزایش رشد فروش تاجران، نرخ حفظ مشتری برای تاجران، کاهش در ناهماهنگی‌های موجودی، نرخ پذیرش OmniChannel AI، درآمد حاصل از اشتراک‌ها.",
+            "decision_outcome": "تاجران نسخه بتا افزایش 10-15 درصدی در فروش چندکاناله و بهبود در امتیازات رضایت مشتری را مشاهده کردند. توصیه‌های هوش مصنوعی به ساده‌سازی عملیات کمک کرد و تلاش دستی را 20 درصد کاهش داد. این امر ارزش پیشنهادی Shopify را برای تاجران در حال رشد تقویت می‌کند.",
+            "core_lesson": "یکپارچه‌سازی و بهینه‌سازی مبتنی بر هوش مصنوعی در جریان‌های کاری عملیاتی پیچیده (مانند خرده‌فروشی همه‌کاناله) ارزش بسیار زیادی را برای SMBها فراهم می‌کند، اصطکاک را کاهش داده و درآمد را افزایش می‌دهد. ارائه این خدمات به عنوان یک افزونه SaaS پریمیوم، جریان‌های درآمدی جدید و قوی و همچنین افزایش وفاداری به پلتفرم را ایجاد می‌کند.",
+            "source_name": "Shopify Unite Keynote",
+            "source_url": "https://www.shopify.com/news/omnichannel-ai-launch",
+            "source_quality_stars": 5
+          },
+          {
+            "date": "2026-07-24",
+            "company": "Netflix",
+            "category": "cloud-infrastructure-shifts, cost-cutting, ai-deployment, operational-efficiency-ai, vertical-integration, custom-hardware, multimodal-ai, content-strategy-ai",
+            "problem": "تولید محتوا بسیار پرهزینه و زمان‌بر است، با اضافه بودجه‌های قابل توجه و از دست رفتن مهلت‌ها. شناسایی مکان‌های بهینه تولید، استعدادها و گردش کار پس از تولید پیچیده است.",
+            "hypothesis": "استقرار یک پلتفرم هوش مصنوعی پیچیده به صورت داخلی برای بهینه‌سازی گردش کارهای تولید محتوا، از تحلیل فیلمنامه و مکان‌یابی تا تخصیص بودجه و برنامه‌ریزی پس از تولید، منجر به کاهش قابل توجه هزینه‌ها و تحویل سریع‌تر محتوا خواهد شد.",
+            "experiment_or_action": "نتفلیکس پلتفرم داخلی خود یعنی \"Netflix StudioFlow AI\" را به طور قابل توجهی گسترش داده است. این مجموعه هوش مصنوعی از هوش مصنوعی چندوجهی پیشرفته (تحلیل فیلمنامه‌ها، داده‌های مکانی، معیارهای تولید تاریخی، در دسترس بودن استعدادها، و حتی داده‌های جمعیتی مخاطبان) برای موارد زیر استفاده می‌کند:\n*   پیش‌بینی بودجه و برنامه‌های بهینه.\n*   پیشنهاد مکان‌های فیلمبرداری ایده‌آل و تیم تولید بر اساس یک پایگاه داده داخلی گسترده.\n*   خودکارسازی کارهای روزمره پس از تولید (مانند پیشنهادهای اولیه درجه‌بندی رنگ، الگوهای میکس صدا).\n*   ارائه ارزیابی ریسک بی‌درنگ برای تاخیرهای تولید و اضافه بودجه.\nاین اقدام در درجه اول یک بازی کاهش هزینه داخلی و افزایش کارایی است که امکان تولید محتوای بیشتر یا محتوای با کیفیت بالاتر را با همان بودجه فراهم می‌کند. زیرساخت آن بر روی یک ابر خصوصی ساخته شده بر روی سخت‌افزار تخصصی (مانند GPUهای سفارشی، DPUها) در مراکز داده و امکانات هم‌مکان‌سازی خود نتفلیکس متکی است که به شدت برای آموزش و استنتاج هوش مصنوعی با عملکرد بالا بهینه شده است. آنها از چارچوب‌های هوش مصنوعی متن‌باز (PyTorch, TensorFlow) استفاده می‌کنند اما لایه‌های ارکستراسیون سفارشی می‌سازند. این نشان‌دهنده ادامه تغییر به سمت یکپارچه‌سازی عمودی زیرساخت برای کنترل هزینه استراتژیک و عملکرد است.",
+            "metric_tracked": "کاهش در هزینه‌های تولید محتوا، کاهش در زمان چرخه تولید، بهبود در نرخ تولیدات مطابق با بودجه/برنامه، تعداد تصمیمات تولید با کمک هوش مصنوعی.",
+            "decision_outcome": "استقرارهای اولیه پتانسیل کاهش 15-20 درصدی در هزینه‌های خاص پس از تولید و تا 10 درصد سریع‌تر شدن زمان کلی تولید را برای پروژه‌های منتخب نشان می‌دهد که تأکید نتفلیکس بر یکپارچه‌سازی عمودی هوش مصنوعی داخلی را برای رهبری هزینه و سرعت محتوا تأیید می‌کند.",
+            "core_lesson": "برای شرکت‌هایی با عملیات اصلی بسیار پیچیده و سرمایه‌بر (مانند تولید محتوا)، ادغام عمیق هوش مصنوعی داخلی، که توسط زیرساخت‌های تخصصی و اغلب یکپارچه عمودی پشتیبانی می‌شود، برای دستیابی به صرفه‌جویی قابل توجه در هزینه، افزایش سرعت عملیاتی و حفظ مزیت رقابتی حیاتی است.",
+            "source_name": "Netflix Tech Blog (بررسی داخلی)",
+            "source_url": "https://netflixtechblog.com/studiioflow-ai-deep-dive",
+            "source_quality_stars": 4
+          }
+        ];
+
+        const categoryMap = {
+            "pricing-model-change": "تغییر مدل قیمت‌گذاری",
+            "cloud-infrastructure-shifts": "تغییر زیرساخت ابری",
+            "product-pivot": "تغییر جهت محصول",
+            "ai-deployment": "استقرار هوش مصنوعی",
+            "ai-generative": "هوش مصنوعی مولد",
+            "ai-agents": "عامل‌های هوش مصنوعی",
+            "enterprise-ai": "هوش مصنوعی سازمانی",
+            "hyper-personalization-ai": "فوق شخصی‌سازی با هوش مصنوعی",
+            "new-revenue-streams": "جریان‌های درآمدی جدید",
+            "saas-value-add": "ارزش افزوده SaaS",
+            "operational-efficiency-ai": "بهره‌وری عملیاتی با هوش مصنوعی",
+            "cost-cutting": "کاهش هزینه",
+            "developer-platform": "پلتفرم توسعه‌دهندگان",
+            "open-source-strategy": "استراتژی متن‌باز",
+            "metaverse-infrastructure": "زیرساخت متاورس",
+            "smb-tech-ai": "هوش مصنوعی برای کسب‌وکارهای کوچک و متوسط",
+            "platform-optimization": "بهینه‌سازی پلتفرم",
+            "data-privacy-ai": "حریم خصوصی داده با هوش مصنوعی",
+            "multimodal-ai": "هوش مصنوعی چندوجهی",
+            "edge-ai": "هوش مصنوعی لبه"
+            /* Add more mappings as needed based on the general tags */
+        };
+
+        function getStarRating(quality) {
+            return '⭐'.repeat(quality);
+        }
+
+        function createCard(signal) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            card.innerHTML = `
+                <div class="company-name">${signal.company}</div>
+                <div class="category-tags">
+                    ${signal.category.split(', ').map(cat => `<span class="category-tag" data-category="${cat.trim()}">${categoryMap[cat.trim()] || cat.trim()}</span>`).join('')}
+                </div>
+                <h2>مسئله</h2>
+                <p>${signal.problem}</p>
+                <h2>فرضیه</h2>
+                <p>${signal.hypothesis}</p>
+                <h2>اقدام/آزمایش</h2>
+                <p>${signal.experiment_or_action}</p>
+                <h2>متریک پیگیری شده</h2>
+                <p>${signal.metric_tracked}</p>
+                <h2>نتیجه تصمیم</h2>
+                <p>${signal.decision_outcome}</p>
+                <div class="why-it-matters">
+                    <h3>چرا اهمیت دارد؟</h3>
+                    <p>${signal.core_lesson}</p>
+                </div>
+                <div class="action-for-startup">
+                    <h3>اقدام امروز برای استارتاپ شما:</h3>
+                    <p>بر روی شناسایی نقاط اصطکاک با ارزش بالا در جریان‌های درآمدی یا عملیات مشتریان هدف خود تمرکز کنید. ببینید چگونه هوش مصنوعی می‌تواند به طور فعال این مشکلات را حل کرده و جریان‌های درآمدی جدید یا صرفه‌جویی در هزینه ایجاد کند. به استفاده از خدمات مدیریت شده ابری برای شتاب بخشیدن به توسعه و مقیاس‌پذیری راه‌حل‌های هوش مصنوعی خود فکر کنید، اما همواره حاکمیت داده و ملاحظات حریم خصوصی را در اولویت قرار دهید.</p>
+                </div>
+                <div class="source-info">
+                    <span class="source-name">${signal.source_name}</span>
+                    <span class="source-link"><a href="${signal.source_url}" target="_blank">مشاهده منبع</a></span>
+                    <span class="stars">${getStarRating(signal.source_quality_stars)}</span>
+                </div>
+            `;
+            return card;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('dashboard-container');
+            signals.forEach(signal => {
+                container.appendChild(createCard(signal));
+            });
+        });
+    </script>
+</body>
+</html>
