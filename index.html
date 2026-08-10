@@ -3,366 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>داشبورد تحلیل استراتژی محصول SaaS و AI</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>داشبورد تحلیل استراتژی محصول SaaS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #1a1a2e; /* Deep blue/purple */
-            --bg-medium: #1f4068; /* Slightly lighter blue */
-            --text-light: #e0e0e0; /* Off-white */
-            --accent-gold: #FFD700; /* Gold */
-            --accent-silver: #C0C0C0; /* Silver */
-            --border-color: #0b1c2b; /* Darker border */
-            --card-bg: #16213e; /* Dark card background */
+            --primary-bg: #1A202C; /* Darker blue-grey */
+            --secondary-bg: #2D3748; /* Slightly lighter blue-grey for cards */
+            --text-color: #E2E8F0; /* Light grey */
+            --accent-color: #63B3ED; /* Light blue */
+            --border-color: #4A5568; /* Medium grey-blue */
+            --shadow-color: rgba(0, 0, 0, 0.3);
 
-            /* Category Colors - Luxurious Palette */
-            --cat-pricing: #A3B18A; /* Soft Green */
-            --cat-infrastructure: #588157; /* Deeper Green */
-            --cat-ai-agents: #3A5A40; /* Darker Green */
-            --cat-new-revenue: #DAD7CD; /* Light Neutral */
-            --cat-enterprise-ai: #BDBFBF; /* Silver/Gray */
-            --cat-smb-tech-ai: #A9BCD0; /* Soft Blue */
-            --cat-generative-ai: #8D99AE; /* Slate Blue */
-            --cat-hyper-personalization: #EDAE49; /* Golden Yellow */
-            --cat-fintech: #A593E0; /* Lavender */
-            --cat-media-tech: #E4572E; /* Orange-Red */
-            --cat-custom-hardware: #41424C; /* Dark Charcoal */
-            --cat-compliance: #98C1D9; /* Lighter Blue */
-            --cat-platform-optimization: #F7CAC9; /* Peach */
-            --cat-ai-as-a-service: #D1B3C4; /* Muted Pink */
-            --cat-operational-efficiency: #C7E0F4; /* Sky Blue */
-            --cat-content-strategy: #B0C4DE; /* Light Steel Blue */
+            /* Category Colors */
+            --cat-pricing: #F6AD55; /* Orange */
+            --cat-infrastructure: #A78BFA; /* Purple */
+            --cat-product-pivot: #FC8181; /* Red */
+            --cat-ai: #68D391; /* Green */
+            --cat-general: #CBD5E0; /* Light grey */
         }
 
         body {
             font-family: 'Vazirmatn', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: var(--primary-bg);
+            color: var(--text-color);
             line-height: 1.6;
             direction: rtl;
             text-align: right;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px;
+        header {
+            background-color: var(--secondary-bg);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-bottom: 2rem;
         }
 
-        h1 {
-            text-align: center;
-            color: var(--accent-gold);
-            margin-bottom: 40px;
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--accent-color);
             font-weight: 700;
         }
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .card {
-            background-color: var(--card-bg);
+            background-color: var(--secondary-bg);
             border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 16px var(--shadow-color);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
             border: 1px solid var(--border-color);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-        }
-
-        .card h2 {
-            color: var(--accent-gold);
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .card h3 {
-            color: var(--accent-silver);
-            font-size: 1.2em;
-            margin-top: 20px;
-            margin-bottom: 8px;
-            font-weight: 400;
-        }
-
-        .card p {
-            font-size: 0.95em;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        .card strong {
-            color: var(--accent-silver);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         .card-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .card-header h2 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .card-header p {
+            font-size: 0.9rem;
+            color: #A0AEC0; /* Lighter grey */
+            margin: 0;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+        }
+        .card-header p strong {
+            color: var(--text-color);
         }
 
-        .card-header .date {
-            font-size: 0.9em;
-            color: var(--accent-silver);
-            opacity: 0.8;
-            flex-basis: 100%;
-            margin-bottom: 10px;
+        .source-info {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #A0AEC0;
+            margin-bottom: 1rem;
         }
-
-        .company-info {
-            flex-grow: 1;
+        .source-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-right: 0.5rem;
+        }
+        .source-info a:hover {
+            text-decoration: underline;
+        }
+        .stars {
+            color: #F6AD55; /* Gold for stars */
+            margin-right: 0.5rem;
         }
 
         .category-tags {
-            margin-top: 10px;
+            margin-bottom: 1.5rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            font-size: 0.8em;
+            gap: 0.5rem;
         }
 
         .category-tag {
-            padding: 6px 10px;
-            border-radius: 5px;
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--primary-bg);
             white-space: nowrap;
-            color: var(--bg-dark); /* Dark text on category tags */
-            font-weight: 700;
         }
 
-        /* Specific category tag colors */
-        .tag-pricing-model-change { background-color: var(--cat-pricing); }
-        .tag-cloud-infrastructure-shifts { background-color: var(--cat-infrastructure); }
-        .tag-ai-agents { background-color: var(--cat-ai-agents); }
-        .tag-new-revenue-streams { background-color: var(--cat-new-revenue); }
-        .tag-enterprise-ai { background-color: var(--cat-enterprise-ai); }
-        .tag-smb-tech-ai { background-color: var(--cat-smb-tech-ai); }
-        .tag-generative-ai { background-color: var(--cat-generative-ai); }
-        .tag-hyper-personalization-ai { background-color: var(--cat-hyper-personalization); }
-        .tag-fintech-ai { background-color: var(--cat-fintech); }
-        .tag-media-tech-ai { background-color: var(--cat-media-tech); }
-        .tag-custom-hardware { background-color: var(--cat-custom-hardware); color: var(--text-light); } /* exception for dark bg */
-        .tag-compliance-ai { background-color: var(--cat-compliance); }
-        .tag-platform-optimization { background-color: var(--cat-platform-optimization); }
-        .tag-ai-as-a-service { background-color: var(--cat-ai-as-a-service); }
-        .tag-operational-efficiency-ai { background-color: var(--cat-operational-efficiency); }
-        .tag-content-strategy-ai { background-color: var(--cat-content-strategy); }
-        .tag-multimodal-ai { background-color: #B2DFDB; } /* light teal */
-        .tag-edge-ai { background-color: #FFECB3; } /* light yellow */
-        /* Fallback for unlisted categories */
-        .category-tag:not([class*="tag-"]) { background-color: #6C757D; }
+        /* Specific category colors */
+        .cat-pricing-model-change { background-color: var(--cat-pricing); }
+        .cat-cloud-infrastructure-shifts { background-color: var(--cat-infrastructure); }
+        .cat-product-pivot { background-color: var(--cat-product-pivot); }
+        /* Grouping many AI/strategy/revenue related tags under AI green */
+        .cat-ai-agents, .cat-generative-ai, .cat-hyper-personalization-ai, .cat-multimodal-ai, .cat-enterprise-ai, .cat-smb-tech-ai, .cat-ai-as-a-service, .cat-fintech-ai, .cat-ecommerce-ai, .cat-media-tech-ai, .cat-operational-efficiency-ai, .cat-content-strategy-ai, .cat-data-privacy-ai, .cat-compliance-ai, .cat-sovereign-ai, .cat-yc-startup, .cat-workforce-management-ai, .cat-predictive-analytics-ai, .cat-managed-ai-services, .cat-cost-cutting-ai, .cat-platform-optimization, .cat-new-revenue-streams, .cat-value-based-pricing, .cat-freemium-model, .cat-b2b-saas, .cat-saas-value-add, .cat-low-code-ai, .cat-strategic-ai, .cat-developer-platform, .cat-sustainability-ai, .cat-fraud-detection-ai, .cat-predictive-maintenance-ai, .cat-metaverse-ai, .cat-explainable-ai { background-color: var(--cat-ai); }
+        /* Infrastructure components */
+        .cat-custom-hardware, .cat-edge-ai, .cat-hybrid-cloud, .cat-multi-cloud, .cat-serverless-ai, .cat-infrastructure-optimization-ai, .cat-vertical-integration { background-color: var(--border-color); color: var(--text-color);}
+        /* Default for any unmapped category */
+        .cat-default { background-color: var(--cat-general); }
 
-        .source-info {
-            margin-top: 20px;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 15px;
-            font-size: 0.85em;
-            color: var(--accent-silver);
+
+        .card-section {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
         }
 
-        .source-info a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            transition: color 0.2s ease-in-out;
+        .card-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
-        .source-info a:hover {
-            color: var(--text-light);
-        }
-
-        .star-rating {
-            color: var(--accent-gold);
-            font-size: 1.1em;
-            margin-right: 5px;
-        }
-
-        .section-highlight {
-            background-color: rgba(255, 215, 0, 0.1); /* Light gold tint */
-            border-right: 3px solid var(--accent-gold);
-            padding: 10px 15px;
-            margin-top: 15px;
-            border-radius: 5px;
-        }
-
-        .section-highlight h4 {
-            color: var(--accent-gold);
+        .card-section h3 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
             margin-top: 0;
-            margin-bottom: 5px;
-            font-size: 1.1em;
-            font-weight: 700;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+        }
+
+        .card-section p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .card-section strong {
+            color: var(--text-color);
+        }
+
+        .section-why-it-matters, .section-startup-action {
+            background-color: var(--primary-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border: 1px solid var(--accent-color);
+        }
+        .section-why-it-matters h3, .section-startup-action h3 {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.7rem;
         }
 
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
             .grid-container {
                 grid-template-columns: 1fr;
+                padding: 0 1rem 1rem;
             }
-            .card-header {
-                flex-direction: column;
-                align-items: flex-end;
+            .card {
+                padding: 1.5rem;
             }
-            .card-header .date {
-                text-align: left;
-                margin-bottom: 5px;
+            .card-header h2 {
+                font-size: 1.5rem;
             }
-            .company-info {
-                width: 100%;
+            .card-header p {
+                font-size: 0.8rem;
             }
-            h1 {
-                font-size: 1.8em;
+            .card-section h3 {
+                font-size: 1rem;
+            }
+            .card-section p {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>داشبورد تحلیل استراتژی محصول SaaS و AI</h1>
-        <div class="grid-container">
+    <header>
+        <h1>داشبورد تحلیل استراتژی محصول SaaS</h1>
+    </header>
 
-            <div class="card">
+    <main class="grid-container">
+    </main>
+
+    <script>
+        const historicalData = [
+  {
+    "date": "2026-08-08",
+    "company": "OpenAI",
+    "category": "enterprise-ai, ai-agents, data-privacy-ai, compliance-ai, new-revenue-streams, pricing-model-change, b2b-saas, explainable-ai, cloud-infrastructure-shifts, sovereign-ai",
+    "problem": "Enterprises using advanced AI models face significant challenges in ensuring compliance with evolving AI regulations (e.g., EU AI Act, national data privacy laws), maintaining data privacy within AI operations, and providing explainability for AI-driven decisions, leading to legal risks, audit complexities, and loss of trust.",
+    "hypothesis": "OpenAI can leverage its deep expertise in large language models and AI safety research to offer a managed, enterprise-grade \"AI Governance & Compliance Agent\" service that provides real-time monitoring, policy enforcement, data anonymization, and explainable AI (XAI) features for enterprise AI deployments, positioning itself as a trusted partner in AI adoption.",
+    "experiment_or_action": "OpenAI launched \"TrustGuard AI,\" a new suite of managed AI services specifically designed for enterprise AI governance and compliance. TrustGuard AI includes: An autonomous AI agent for continuous monitoring of model outputs and data usage against regulatory frameworks; advanced data anonymization and privacy-preserving AI techniques for sensitive enterprise data; integrated XAI dashboards providing transparent insights into model decisions for audit purposes; and automated policy enforcement across internal AI applications. Pricing: High-value, custom enterprise contracts based on the number of models/agents monitored, data volume processed, level of XAI required, and dedicated compliance support. This marks a shift towards offering specialized, managed AI solutions beyond raw model access. Infrastructure relies on dedicated, often sovereign cloud instances or hybrid deployments for maximum data control.",
+    "metric_tracked": "Number of enterprise clients for TrustGuard, reduction in client's AI-related compliance risks, time saved on AI model auditing, client satisfaction with XAI clarity, average contract value.",
+    "decision_outcome": "Early pilots demonstrated a significant reduction in audit preparation time (up to 50%) and enhanced confidence in AI compliance for major financial and healthcare institutions. The bespoke enterprise pricing model proved effective in capturing substantial budgets allocated for AI risk management, confirming a new high-margin revenue stream.",
+    "core_lesson": "As AI adoption matures, the demand for robust AI governance, privacy, and explainability solutions becomes critical for enterprises. OpenAI can productize its internal safety and research expertise into high-value, managed B2B SaaS offerings, requiring specialized, secure, and often sovereign cloud infrastructure to address enterprise compliance needs, moving beyond just providing foundational models.",
+    "source_name": "OpenAI Enterprise Solutions Blog / The Information",
+    "source_url": "https://openai.com/enterprise/trustguard-ai",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-08-08",
+    "company": "Airbnb",
+    "category": "platform-optimization, ai-agents, multimodal-ai, hyper-personalization-ai, new-revenue-streams, pricing-model-change, saas-value-add, operational-efficiency-ai, smb-tech-ai, cloud-infrastructure-shifts",
+    "problem": "Airbnb hosts, especially new or part-time ones, struggle to optimize their listings for maximum bookings and revenue, manage guest communications efficiently, and stay competitive. This often leads to suboptimal pricing, missed booking opportunities, and higher operational workload for hosts.",
+    "hypothesis": "Airbnb can deploy a sophisticated \"Host AI Assistant\" that uses multimodal AI to analyze listing details, market demand, local events, and guest reviews to provide real-time, actionable recommendations for dynamic pricing, content optimization, and personalized guest interactions, offered as a premium service to hosts.",
+    "experiment_or_action": "Airbnb introduced \"HostSmart AI,\" a premium subscription service for hosts. HostSmart AI features: AI-driven dynamic pricing recommendations based on real-time demand, local events, and competitor analysis; generative AI for optimizing listing titles, descriptions, and even suggesting photo improvements after analyzing listing visuals and guest reviews; AI-powered automated guest messaging templates for common inquiries, personalized based on guest profiles and past interactions; and predictive analytics on potential booking gaps. Pricing: Tiered monthly subscription for hosts, based on the number of active listings and the level of AI assistance (e.g., basic pricing suggestions vs. fully managed communication templates). This adds a new SaaS-like revenue stream beyond booking commissions. Infrastructure enhancements involve scaling multimodal AI capabilities across existing cloud providers.",
+    "metric_tracked": "HostSmart AI subscription uptake, increase in host earnings for subscribers, reduction in host response times, improvement in listing visibility scores, host satisfaction, new revenue generated from subscriptions.",
+    "decision_outcome": "Pilot programs showed HostSmart AI subscribers achieved a 10-15% increase in booking revenue and a 20% reduction in time spent on guest communication. The tiered subscription model proved popular, indicating hosts are willing to pay for AI tools that directly increase their earnings and reduce workload.",
+    "core_lesson": "For platform businesses, AI can be productized as a premium \"SaaS-like\" value-add for key stakeholders (e.g., hosts on Airbnb, merchants on Shopify). Leveraging multimodal AI for hyper-personalization and operational efficiency can create significant new revenue streams and increase platform stickiness, requiring robust cloud infrastructure to support these complex AI workloads.",
+    "source_name": "Airbnb Host News / The Verge",
+    "source_url": "https://news.airbnb.com/hostsmart-ai-launch",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-08-09",
+    "company": "Meta",
+    "category": "cloud-infrastructure-shifts, new-revenue-streams, enterprise-ai, custom-hardware, ai-as-a-service, pricing-model-change, operational-efficiency-ai, multimodal-ai",
+    "problem": "High cost and complexity of training and deploying truly large-scale, cutting-edge AI models, especially multimodal ones, are prohibitive for many enterprises and advanced researchers. General cloud GPUs are often insufficient or too expensive for state-of-the-art research/deployment.",
+    "hypothesis": "Meta can leverage its deep expertise and proprietary custom AI hardware/infrastructure (built for its own massive AI needs like Llama, Metaverse AI) by offering it as a premium \"Meta AI Compute Cloud\" service, directly competing at the highest end of AI infrastructure, creating a new B2B revenue stream and ecosystem play.",
+    "experiment_or_action": "Meta launched \"Meta AI Compute Cloud,\" offering dedicated access to its custom AI accelerators (e.g., MTIA/next-gen custom silicon) and optimized infrastructure (e.g., purpose-built data centers, specialized interconnects) for training and fine-tuning very large foundation models or running high-throughput inference for multimodal AI. Pricing is usage-based (compute-hours on custom chips, data transfer), with tiered enterprise support. This is a clear pivot in infrastructure strategy towards external monetization.",
+    "metric_tracked": "Adoption rate by research institutions and large enterprises, revenue from compute usage, utilization rates of Meta's custom hardware, feedback on performance/cost-efficiency compared to alternatives.",
+    "decision_outcome": "Early adopters reported up to 30% cost savings for equivalent performance on specific large-scale AI tasks compared to leading public clouds, or unlocking previously infeasible experiments due to scale. This validates Meta's move into high-end AI infrastructure as a service.",
+    "core_lesson": "Companies with significant internal, specialized AI infrastructure (especially custom hardware) can turn this strategic asset into a major new B2B revenue stream by offering it as a highly differentiated compute service, addressing critical scalability and cost challenges for advanced AI development.",
+    "source_name": "Meta Newsroom",
+    "source_url": "https://about.fb.com/news/meta-ai-compute-cloud",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-08-09",
+    "company": "Stripe",
+    "category": "fintech-ai, enterprise-ai, smb-tech-ai, ai-agents, new-revenue-streams, pricing-model-change, saas-value-add, operational-efficiency-ai, compliance-ai",
+    "problem": "Small and medium businesses (SMBs) struggle with proactive financial management, cash flow forecasting, and staying compliant with evolving financial regulations (e.g., tax, reporting), often leading to cash flow issues or penalties. Existing tools are often siloed or too complex.",
+    "hypothesis": "Stripe can deploy an \"AI Financial Co-Pilot\" for businesses, leveraging its vast transaction data and payment processing insights to provide predictive cash flow analysis, automated reconciliation, and AI-driven compliance checks/report generation, offered as a premium service within the Stripe dashboard.",
+    "experiment_or_action": "Stripe launched \"Stripe CFO AI,\" a new subscription tier for its business users. CFO AI offers: AI-powered cash flow predictions based on historical transactions and market trends; automated expense categorization and reconciliation; proactive alerts for potential compliance issues (e.g., pending tax deadlines, suspicious transaction patterns); and generative AI assistance for financial report drafting. Pricing: Tiered monthly subscription based on transaction volume and advanced features (e.g., multi-currency support, advanced forecasting models).",
+    "metric_tracked": "Number of CFO AI subscriptions, reduction in financial errors/penalties for subscribers, time saved on financial management, business growth for subscribers, average revenue per user (ARPU) increase.",
+    "decision_outcome": "Pilot businesses reported a 15-20% improvement in cash flow stability and a significant reduction in time spent on bookkeeping and compliance (up to 40%). The premium subscription model showed strong adoption, indicating businesses are willing to pay for AI that directly impacts their financial health and operational efficiency.",
+    "core_lesson": "Embedding specialized AI agents that provide predictive financial intelligence and automate compliance within existing financial platforms (like Stripe) creates a compelling new premium SaaS offering. This not only enhances platform stickiness but also unlocks significant new revenue streams by addressing core pain points for businesses.",
+    "source_name": "Stripe News",
+    "source_url": "https://stripe.com/news/stripe-cfo-ai-launch",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-08-09",
+    "company": "Netflix",
+    "category": "generative-ai, hyper-personalization-ai, new-revenue-streams, pricing-model-change, content-strategy-ai, media-tech-ai, cloud-infrastructure-shifts, edge-ai, multimodal-ai, platform-optimization",
+    "problem": "Subscriber growth in mature markets is slowing, and content fatigue can set in. Traditional linear storytelling, even with personalization, has limits in engagement. Netflix needs novel ways to differentiate and offer unique value to justify premium pricing or attract new subscribers.",
+    "hypothesis": "Netflix can leverage advanced generative AI to create truly \"adaptive and interactive narratives,\" where elements of content (e.g., character dialogue variations, minor plot forks, environmental details) dynamically adjust in real-time based on viewer choices, historical viewing patterns, or even biometric feedback (e.g., emotional response via optional camera input), creating a deeply personalized and re-watchable experience.",
+    "experiment_or_action": "Netflix launched \"NarrativeFlow,\" a new premium subscription tier (+5 USD/month). This tier offers exclusive access to a growing library of AI-adaptive content, starting with interactive specials and extending to select series. Viewers can opt-in for AI-guided personalization that subtly alters aspects of the narrative based on their engagement profile. It also includes \"Co-Creative Watch Parties\" where groups can collectively influence AI-generated story elements. Infrastructure involves significant investment in real-time generative AI rendering and content orchestration on a global scale, leveraging specialized edge computing solutions for low-latency adaptation.",
+    "metric_tracked": "NarrativeFlow subscription uptake, engagement time with adaptive content, content re-watch rates, subscriber churn reduction, average revenue per user (ARPU) increase for the new tier.",
+    "decision_outcome": "Initial data showed NarrativeFlow subscribers spent 25% more time engaging with adaptive content compared to traditional content, and reported higher satisfaction and novelty. The new premium tier attracted a niche but highly engaged audience, validating the demand for AI-driven, interactive entertainment and creating a new high-margin revenue stream.",
+    "core_lesson": "For media platforms, pushing the boundaries of hyper-personalization with generative AI into \"adaptive content\" can unlock new premium subscription tiers and significantly boost engagement and stickiness. This requires substantial investment in real-time AI rendering infrastructure, including edge computing, to deliver seamless experiences.",
+    "source_name": "Netflix Newsroom",
+    "source_url": "https://about.netflix.com/news/narrativeflow-ai-content",
+    "source_quality_stars": 5
+  }
+];
+
+        const todayData = [
+  {
+    "date": "2026-08-10",
+    "company": "Shopify",
+    "category": "ecommerce-ai, operational-efficiency-ai, new-revenue-streams, pricing-model-change, saas-value-add, hyper-personalization-ai, generative-ai, platform-optimization, cloud-infrastructure-shifts",
+    "problem": "Shopify merchants, especially growing ones, struggle with optimizing inventory, accurately forecasting demand, and executing hyper-personalized marketing campaigns across multiple channels. This often leads to lost sales, excess inventory costs, and inefficient ad spend, hindering their growth and profitability.",
+    "hypothesis": "Shopify can leverage its vast merchant data and advanced AI capabilities to offer a premium \"Predictive Commerce AI Suite.\" This suite would provide real-time demand forecasting, dynamic inventory reordering, and AI-generated, hyper-personalized marketing campaigns across channels, solving critical operational challenges for merchants and creating a new high-value revenue stream.",
+    "experiment_or_action": "Shopify launched \"Shopify Nexus AI,\" a new premium subscription tier specifically designed for its rapidly growing and enterprise-level merchants. Nexus AI features: AI-driven granular demand forecasting based on historical sales, market trends, and external events; automated smart inventory reorder suggestions directly integrated with suppliers; generative AI for creating hyper-personalized ad copy, product descriptions, and even visual assets for multi-channel marketing campaigns (email, social, ads); and an AI agent for optimizing multi-channel campaign spend. Pricing: Tiered monthly subscription based on the Gross Merchandise Volume (GMV) processed through Nexus AI features and the level of advanced analytics/generative capabilities utilized. This represents a significant pivot to productizing advanced AI for merchant growth. Infrastructure relies on scalable, real-time AI inference engines integrated deeply within Shopify's existing multi-cloud architecture.",
+    "metric_tracked": "Number of Shopify Nexus AI subscriptions, increase in subscriber GMV, reduction in subscriber's inventory holding costs, improvement in marketing campaign ROI for subscribers, churn reduction among Nexus AI subscribers, new revenue generated from subscriptions.",
+    "decision_outcome": "Early adopters of Shopify Nexus AI reported an average 12-18% increase in GMV, a 15-20% reduction in excess inventory, and a 25% improvement in marketing ROI. The premium subscription model demonstrated strong adoption among growing merchants, confirming their willingness to invest in AI tools that directly impact their top and bottom lines.",
+    "core_lesson": "For e-commerce platforms, integrating advanced predictive and generative AI into core business functions (like inventory, demand, and marketing) as a premium SaaS offering creates significant new revenue streams and enhances merchant success and stickiness. This requires robust, scalable, and real-time AI infrastructure capable of processing vast amounts of commerce data.",
+    "source_name": "Shopify Merchant Blog / TechCrunch",
+    "source_url": "https://www.shopify.com/news/shopify-nexus-ai",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-08-10",
+    "company": "Uber",
+    "category": "operational-efficiency-ai, cost-cutting-ai, hyper-personalization-ai, ai-agents, platform-optimization, cloud-infrastructure-shifts, predictive-analytics-ai, workforce-management-ai",
+    "problem": "Uber faces persistent challenges with high driver/delivery partner churn, sub-optimal engagement, and inconsistent service quality across its global network. Traditional, generalized incentive programs are often ineffective, leading to increased driver acquisition costs and reduced platform reliability.",
+    "hypothesis": "Uber can deploy a sophisticated \"AI Workforce Engagement Engine\" that uses advanced predictive analytics and hyper-personalization to offer tailored incentives, proactive support, and dynamic work recommendations to individual drivers/partners. This would significantly improve retention, boost engagement, and enhance overall operational efficiency, leading to substantial cost savings and improved service reliability.",
+    "experiment_or_action": "Uber launched \"DriveSmart AI,\" an opt-in program for its drivers and delivery partners, designed to optimize their experience and retention. DriveSmart AI features: A predictive AI model that identifies individual churn risk and suggests personalized intervention strategies; AI-driven dynamic incentives (e.g., targeted bonuses, quest recommendations) tailored to individual driving patterns and preferences; real-time optimal driving zone recommendations based on predictive demand heatmaps and partner availability; and micro-learning modules powered by generative AI for skill enhancement and service quality improvement. Infrastructure involves massive real-time data streaming, federated learning models for on-device personalization where privacy allows, and AI model inference at scale across Uber's global cloud infrastructure, with significant edge computing components for low-latency, localized demand prediction. Pricing: DriveSmart AI is not a direct revenue stream from partners but a strategic cost-cutting and efficiency initiative for Uber, aiming to reduce driver acquisition costs and improve service reliability and availability.",
+    "metric_tracked": "Driver/partner churn reduction, increase in average weekly active hours per partner, improvement in service reliability metrics (e.g., lower cancellation rates, faster pickup/delivery times), reduction in driver acquisition costs, partner satisfaction scores, engagement with personalized recommendations.",
+    "decision_outcome": "Pilot programs in key cities showed a 15% reduction in driver churn and a 10% increase in active hours among DriveSmart AI participants. This led to an estimated 8% reduction in overall operational costs related to workforce management and a noticeable improvement in service consistency, validating the significant ROI of AI-driven workforce optimization.",
+    "core_lesson": "For platform businesses reliant on a large, flexible workforce, AI-driven hyper-personalization of engagement, incentives, and operational guidance can dramatically reduce operational costs, increase retention, and improve overall service quality and reliability. This demands massive, real-time AI infrastructure with capabilities ranging from centralized cloud processing to localized edge intelligence.",
+    "source_name": "Uber Investor Relations / Forbes",
+    "source_url": "https://investor.uber.com/news/uber-drivesmart-ai-launch",
+    "source_quality_stars": 4
+  },
+  {
+    "date": "2026-08-10",
+    "company": "DataVault AI (YC S26)",
+    "category": "yc-startup, enterprise-ai, data-privacy-ai, compliance-ai, new-revenue-streams, b2b-saas, cloud-infrastructure-shifts, sovereign-ai, ai-agents, managed-ai-services",
+    "problem": "Enterprises, particularly those in regulated industries (e.g., healthcare, finance), face immense challenges in ensuring strict data privacy and regulatory compliance (e.g., GDPR, EU AI Act, HIPAA) when moving sensitive data to cloud environments for AI training and analytics. Manual anonymization is slow and error-prone, and generic tools often compromise data utility or fail to meet specific regulatory standards.",
+    "hypothesis": "A specialized B2B SaaS startup can offer an \"AI-Native Sovereign Data Anonymization & Governance as a Service\" solution. This service would leverage advanced AI agents to automatically detect, categorize, anonymize, and govern sensitive data within enterprise cloud data lakes, providing auditable trails and seamless integration with AI pipelines, with a strong emphasis on sovereign deployment options.",
+    "experiment_or_action": "YC-backed DataVault AI launched its flagship product, \"Sovereign Anonymization Agent.\" This B2B SaaS platform uses advanced privacy-preserving AI (PPAI) and large language models (LLMs) to automatically identify and classify PII/PHI (Personally Identifiable Information / Protected Health Information) in both structured and unstructured enterprise data. It applies context-aware anonymization techniques, including synthetic data generation, k-anonymity, and differential privacy, ensuring regulatory compliance while preserving data utility for AI. The platform offers flexible deployment options: dedicated cloud instances (including sovereign cloud regions for maximum data residency control) or on-premise solutions for highly sensitive environments. Pricing: Usage-based per GB of data processed and per AI agent deployed, with premium tiers for custom anonymization policies, enhanced audit trails, and dedicated sovereign cloud support.",
+    "metric_tracked": "Number of enterprise clients, volume of data processed, reduction in client's data privacy compliance risks, audit success rates for clients, customer satisfaction with data utility post-anonymization, new revenue generated, average contract value.",
+    "decision_outcome": "Initial enterprise pilots with financial and healthcare institutions demonstrated a 60% reduction in time spent on data anonymization processes and a 95% success rate in regulatory compliance audits for processed data. The sovereign deployment option was a key differentiator for high-value clients, leading to average contract values significantly higher than anticipated. This validated DataVault AI's niche in critical enterprise AI governance.",
+    "core_lesson": "The increasing stringency of AI and data privacy regulations creates a significant and high-value market for specialized B2B SaaS startups. Offering AI-native solutions for automated data anonymization, governance, and compliance, especially with sovereign deployment options, can address critical enterprise pain points, unlock substantial revenue streams, and differentiate a startup in a crowded AI landscape.",
+    "source_name": "Y Combinator Blog / Wall Street Journal",
+    "source_url": "https://www.ycombinator.com/companies/datavault-ai",
+    "source_quality_stars": 5
+  }
+];
+
+        const allData = [...todayData, ...historicalData].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const gridContainer = document.querySelector('.grid-container');
+
+        const categoryColorMap = {
+            'pricing-model-change': 'cat-pricing-model-change',
+            'cloud-infrastructure-shifts': 'cat-cloud-infrastructure-shifts',
+            'product-pivot': 'cat-product-pivot',
+            'custom-hardware': 'cat-custom-hardware',
+            'edge-ai': 'cat-custom-hardware', /* Grouped for consistency */
+            'hybrid-cloud': 'cat-custom-hardware', /* Grouped for consistency */
+            'multi-cloud': 'cat-custom-hardware',
+            'serverless-ai': 'cat-custom-hardware',
+            'infrastructure-optimization-ai': 'cat-custom-hardware',
+            'vertical-integration': 'cat-custom-hardware',
+            // Grouping many AI/strategy/revenue related tags under AI green
+            'ai-agents': 'cat-ai-agents',
+            'generative-ai': 'cat-ai-agents',
+            'hyper-personalization-ai': 'cat-ai-agents',
+            'multimodal-ai': 'cat-ai-agents',
+            'enterprise-ai': 'cat-ai-agents',
+            'smb-tech-ai': 'cat-ai-agents',
+            'ai-as-a-service': 'cat-ai-agents',
+            'fintech-ai': 'cat-ai-agents',
+            'ecommerce-ai': 'cat-ai-agents',
+            'media-tech-ai': 'cat-ai-agents',
+            'operational-efficiency-ai': 'cat-ai-agents',
+            'content-strategy-ai': 'cat-ai-agents',
+            'data-privacy-ai': 'cat-ai-agents',
+            'compliance-ai': 'cat-ai-agents',
+            'sovereign-ai': 'cat-ai-agents',
+            'yc-startup': 'cat-ai-agents',
+            'workforce-management-ai': 'cat-ai-agents',
+            'predictive-analytics-ai': 'cat-ai-agents',
+            'managed-ai-services': 'cat-ai-agents',
+            'cost-cutting-ai': 'cat-ai-agents',
+            'platform-optimization': 'cat-ai-agents',
+            'new-revenue-streams': 'cat-ai-agents',
+            'value-based-pricing': 'cat-ai-agents',
+            'freemium-model': 'cat-ai-agents',
+            'b2b-saas': 'cat-ai-agents',
+            'saas-value-add': 'cat-ai-agents',
+            'low-code-ai': 'cat-ai-agents',
+            'strategic-ai': 'cat-ai-agents',
+            'developer-platform': 'cat-ai-agents',
+            'sustainability-ai': 'cat-ai-agents',
+            'fraud-detection-ai': 'cat-ai-agents',
+            'predictive-maintenance-ai': 'cat-ai-agents',
+            'metaverse-ai': 'cat-ai-agents',
+            'explainable-ai': 'cat-ai-agents',
+            'open-source-strategy': 'cat-ai-agents',
+            'ai-monetization': 'cat-ai-agents',
+            'infrastructure-co-design': 'cat-custom-hardware',
+            'operational-automation': 'cat-ai-agents',
+            'cost-optimization': 'cat-ai-agents',
+            'platform-value-add': 'cat-ai-agents',
+            'ai-native-operations': 'cat-ai-agents',
+            'future-security-ai': 'cat-ai-agents',
+            'ai-hyper-specialization': 'cat-ai-agents',
+            'fintech-ai': 'cat-ai-agents',
+            'ecommerce-ai': 'cat-ai-agents',
+            'logistics-ai': 'cat-ai-agents',
+            'security-ai': 'cat-ai-agents',
+            'media-tech-ai': 'cat-ai-agents',
+            'content-strategy-ai': 'cat-ai-agents',
+            'metaverse-infrastructure': 'cat-ai-agents',
+            'ai-specialization': 'cat-ai-agents',
+            'ai-generative': 'cat-ai-agents',
+            'operational-transformation-ai': 'cat-ai-agents',
+            'cloud-cost-optimization': 'cat-ai-agents',
+            'pricing-model-evolution': 'cat-pricing-model-change',
+            'pricing-model-refinement': 'cat-pricing-model-change',
+            'high-value-segments': 'cat-ai-agents',
+        };
+
+        function getCategoryClass(category) {
+            return categoryColorMap[category.trim().toLowerCase()] || 'cat-default';
+        }
+
+        function getStars(count) {
+            return '⭐'.repeat(count);
+        }
+
+        function generateWhyItMatters(item) {
+            if (item.date === "2026-08-10") {
+                if (item.company === "Shopify") {
+                    return "این مورد نشان می‌دهد که پلتفرم‌های تجارت الکترونیک می‌توانند با تعمیق یکپارچگی هوش مصنوعی پیش‌بینی‌کننده و مولد در هسته عملیات تجار (مانند مدیریت موجودی، پیش‌بینی تقاضا و بازاریابی فوق‌شخصی)، جریان‌های درآمدی پریمیوم جدیدی را خلق کرده و موفقیت و چسبندگی بازرگانان را به شکل چشمگیری افزایش دهند. این یک استراتژی حیاتی برای رشد در بازارهای اشباع شده است.";
+                } else if (item.company === "Uber") {
+                    return "این مورد نشان می‌دهد که برای پلتفرم‌هایی که به نیروی کار انعطاف‌پذیر و گسترده متکی هستند، هوش مصنوعی فوق‌شخصی‌سازی شده در مدیریت مشارکت و انگیزه‌بخشی می‌تواند هزینه‌های عملیاتی را به شدت کاهش داده، نرخ حفظ را افزایش داده و کیفیت و پایداری سرویس را به طرز چشمگیری بهبود بخشد. این یک اهرم استراتژیک برای کارایی و مزیت رقابتی است.";
+                } else if (item.company === "DataVault AI (YC S26)") {
+                    return "این مورد نشان می‌دهد که سخت‌گیری فزاینده مقررات هوش مصنوعی و حریم خصوصی داده‌ها (مانند EU AI Act) یک بازار بسیار ارزشمند و روبه‌رشد برای استارتاپ‌های B2B SaaS تخصصی ایجاد می‌کند. راه‌حل‌های AI-native برای ناشناس‌سازی خودکار داده‌ها، حکمرانی و انطباق، به‌ویژه با گزینه‌های استقرار 'هوش مصنوعی حاکمیتی' (Sovereign AI)، می‌توانند به سرعت به یک عامل تمایز کلیدی و جریان درآمدی قابل توجه تبدیل شوند.";
+                }
+            }
+            return "این مورد نشان می‌دهد که " + item.core_lesson + " این روند برای کسب‌وکارها در جهت نوآوری و حفظ مزیت رقابتی حیاتی است.";
+        }
+
+        function generateStartupAction(item) {
+            if (item.date === "2026-08-10") {
+                if (item.company === "Shopify") {
+                    return "استارتاپ‌های فعال در حوزه تجارت الکترونیک یا ابزارهای SaaS برای SMBs باید بر شناسایی نقاط درد عملیاتی پرهزینه برای کاربران خود تمرکز کنند (مانند بهینه‌سازی زنجیره تامین یا تولید محتوای بازاریابی) و راه‌حل‌های هوش مصنوعی پیشرفته و مولد را به عنوان خدمات ارزش افزوده پریمیوم ارائه دهند. به زیرساخت‌های ابری مقیاس‌پذیر و بلادرنگ برای پشتیبانی از این حجم داده و هوش مصنوعی توجه ویژه داشته باشید.";
+                } else if (item.company === "Uber") {
+                    return "استارتاپ‌های فعال در اقتصاد گیگ (Gig Economy) یا پلتفرم‌هایی با نیروی کار بزرگ و توزیع شده باید بر توسعه موتورهای هوش مصنوعی برای درک رفتار فردی کاربران یا شرکای خود تمرکز کنند. ارائه مشوق‌های شخصی‌سازی شده، توصیه‌های عملیاتی و پشتیبانی پیش‌بینی‌کننده می‌تواند به شکل چشمگیری نرخ حفظ را افزایش داده، هزینه‌ها را کاهش داده و عملیات را بهینه کند. سرمایه‌گذاری در زیرساخت‌های هوش مصنوعی بلادرنگ و توزیع شده (شامل محاسبات لبه) ضروری است.";
+                } else if (item.company === "DataVault AI (YC S26)") {
+                    return "استارتاپ‌های B2B باید نقاط تلاقی بین چالش‌های نظارتی (مانند حریم خصوصی داده، انطباق هوش مصنوعی) و نیازهای عملیاتی کسب‌وکارها (مانند تحلیل داده‌های بزرگ، آموزش هوش مصنوعی) را شناسایی کنند. توسعه عامل‌های هوش مصنوعی تخصصی که می‌توانند این چالش‌ها را به صورت خودکار، ایمن و قابل حسابرسی حل کنند، فرصت‌های عظیمی را برای ایجاد خدمات SaaS با حاشیه سود بالا، به‌ویژه با ارائه گزینه‌های استقرار ابری حاکمیتی یا On-Premise، فراهم می‌کند.";
+                }
+            }
+            // Generic action for historical data
+            let coreLessonActionable = item.core_lesson.replace("For ", "اگر استارتاپ شما در حوزه ")
+                                                   .replace("can ", "می‌تواند ")
+                                                   .replace("demands ", "نیاز به ")
+                                                   .replace("requires ", "نیاز به ")
+                                                   .replace("creates ", "خلق می‌کند ")
+                                                   .replace("becomes critical for enterprises.", "برای شرکت‌ها حیاتی می‌شود.");
+            return "استارتاپ شما باید: " + coreLessonActionable + " فرصت‌های مشابهی را برای خلق ارزش از طریق هوش مصنوعی بررسی کنید. به دنبال نقاط درد شدید در بازار خود باشید و هوش مصنوعی را به عنوان یک راهکار پریمیوم یا کارآمد پیاده‌سازی کنید.";
+        }
+
+
+        allData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const categories = item.category.split(',').map(cat => `<span class="category-tag ${getCategoryClass(cat)}">${cat.trim().replace(/-/g, ' ')}</span>`).join('');
+
+            card.innerHTML = `
                 <div class="card-header">
-                    <div class="date">تاریخ: 2026-08-09</div>
-                    <div class="company-info">
-                        <h2>Meta</h2>
-                    </div>
-                </div>
-                <h3>چالش (Problem):</h3>
-                <p>هزینه بالا و پیچیدگی آموزش و استقرار مدل‌های هوش مصنوعی واقعاً در مقیاس بزرگ و پیشرفته، به ویژه مدل‌های چندوجهی، برای بسیاری از شرکت‌ها و محققان پیشرفته بازدارنده است. پردازنده‌های گرافیکی ابری عمومی اغلب برای تحقیقات یا استقرار پیشرفته کافی نیستند یا بیش از حد گران تمام می‌شوند.</p>
-                <h3>فرضیه (Hypothesis):</h3>
-                <p>متا می‌تواند از تخصص عمیق و زیرساخت/سخت‌افزار هوش مصنوعی سفارشی اختصاصی خود (ساخته شده برای نیازهای عظیم AI خود مانند Llama، هوش مصنوعی متاورس) با ارائه آن به عنوان یک سرویس ابری محاسبات هوش مصنوعی "Meta AI Compute Cloud" استفاده کند که مستقیماً در بالاترین رده زیرساخت‌های هوش مصنوعی رقابت کرده و جریان درآمد B2B و یک اکوسیستم جدید ایجاد کند.</p>
-                <h3>اقدام عملی (Experiment/Action):</h3>
-                <p>متا "Meta AI Compute Cloud" را راه‌اندازی کرد که دسترسی اختصاصی به شتاب‌دهنده‌های هوش مصنوعی سفارشی (مانند MTIA/نسل بعدی سیلیکون سفارشی) و زیرساخت بهینه شده (مانند مراکز داده هدفمند، اتصالات متقابل تخصصی) را برای آموزش و بهینه‌سازی مدل‌های بنیادی بسیار بزرگ یا اجرای استنتاج با توان عملیاتی بالا برای هوش مصنوعی چندوجهی ارائه می‌دهد. قیمت‌گذاری مبتنی بر مصرف (ساعت‌های محاسباتی روی تراشه‌های سفارشی، انتقال داده) با پشتیبانی سازمانی چند سطحی است. این یک تغییر واضح در استراتژی زیرساخت به سمت درآمدزایی خارجی است.</p>
-                <h3>متریک رصد شده (Metric Tracked):</h3>
-                <p>نرخ پذیرش توسط مؤسسات تحقیقاتی و شرکت‌های بزرگ، درآمد حاصل از مصرف محاسبات، نرخ بهره‌برداری از سخت‌افزار سفارشی متا، بازخورد در مورد عملکرد/کارایی هزینه در مقایسه با گزینه‌های دیگر.</p>
-                <h3>نتیجه تصمیم (Decision Outcome):</h3>
-                <p>پذیرندگان اولیه تا 30% صرفه‌جویی در هزینه برای عملکرد معادل در وظایف هوش مصنوعی در مقیاس بزرگ خاص در مقایسه با ابرهای عمومی پیشرو، یا باز کردن امکان آزمایش‌هایی که قبلاً به دلیل مقیاس غیرممکن بودند، گزارش کردند. این امر حرکت متا را به سمت زیرساخت هوش مصنوعی پیشرفته به عنوان یک سرویس تأیید می‌کند.</p>
-                <h3>درس آموخته اصلی (Core Lesson):</h3>
-                <p>شرکت‌هایی با زیرساخت هوش مصنوعی داخلی، تخصصی (به ویژه سخت‌افزار سفارشی) می‌توانند این دارایی استراتژیک را با ارائه آن به عنوان یک سرویس محاسباتی بسیار متمایز، که چالش‌های مقیاس‌پذیری و هزینه را برای توسعه هوش مصنوعی پیشرفته برطرف می‌کند، به یک جریان درآمدی B2B جدید و مهم تبدیل کنند.</p>
-                <div class="section-highlight">
-                    <h4>چرا اهمیت دارد:</h4>
-                    <p>نشان‌دهنده یک تغییر استراتژیک از شرکت‌های فناوری بزرگ است که دارایی‌های زیرساخت داخلی خود را به جریان‌های درآمدی B2B با حاشیه بالا تبدیل می‌کنند. این امر به طور مستقیم به چالش‌های هزینه و مقیاس‌پذیری در آموزش و استنتاج مدل‌های پیشرفته هوش مصنوعی پاسخ می‌دهد.</p>
-                </div>
-                <div class="section-highlight">
-                    <h4>اقدام امروز برای استارتاپ شما:</h4>
-                    <p>اگر استارتاپ شما به محاسبات هوش مصنوعی در مقیاس بزرگ و سفارشی نیاز دارد، به دنبال ارائه‌دهندگان جدیدی باشید که سخت‌افزار تخصصی و زیرساخت بهینه ارائه می‌دهند. برای شرکت‌هایی با زیرساخت داخلی AI قابل توجه، فرصت‌های تجاری‌سازی قابلیت‌های شما را کاوش کنید.</p>
+                    <h2>${item.company}</h2>
+                    <p><strong>تاریخ:</strong> ${item.date}</p>
                 </div>
                 <div class="source-info">
-                    <span class="star-rating">★★★★★</span>
-                    منبع: <a href="https://about.fb.com/news/meta-ai-compute-cloud" target="_blank">Meta Newsroom</a>
-                    <div class="category-tags">
-                        <span class="category-tag tag-cloud-infrastructure-shifts">cloud-infrastructure-shifts</span>
-                        <span class="category-tag tag-new-revenue-streams">new-revenue-streams</span>
-                        <span class="category-tag tag-enterprise-ai">enterprise-ai</span>
-                        <span class="category-tag tag-custom-hardware">custom-hardware</span>
-                        <span class="category-tag tag-ai-as-a-service">ai-as-a-service</span>
-                        <span class="category-tag tag-pricing-model-change">pricing-model-change</span>
-                        <span class="category-tag tag-operational-efficiency-ai">operational-efficiency-ai</span>
-                        <span class="category-tag tag-multimodal-ai">multimodal-ai</span>
-                    </div>
+                    <span class="stars">${getStars(item.source_quality_stars)}</span>
+                    <a href="${item.source_url}" target="_blank">${item.source_name}</a>
                 </div>
-            </div>
+                <div class="category-tags">${categories}</div>
 
-            <div class="card">
-                <div class="card-header">
-                    <div class="date">تاریخ: 2026-08-09</div>
-                    <div class="company-info">
-                        <h2>Stripe</h2>
-                    </div>
+                <div class="card-section">
+                    <h3>مشکل:</h3>
+                    <p>${item.problem}</p>
                 </div>
-                <h3>چالش (Problem):</h3>
-                <p>کسب‌وکارهای کوچک و متوسط (SMBs) با مدیریت فعال جریان نقدینگی، پیش‌بینی مالی، و رعایت مقررات مالی در حال تکامل (مانند مالیات، گزارش‌دهی) دست و پنجه نرم می‌کنند، که اغلب منجر به مشکلات جریان نقدینگی یا جریمه می‌شود. ابزارهای موجود اغلب جداگانه یا بیش از حد پیچیده هستند.</p>
-                <h3>فرضیه (Hypothesis):</h3>
-                <p>استرایپ می‌تواند یک "همکار مالی هوش مصنوعی" را برای کسب‌وکارها مستقر کند که از داده‌های تراکنش گسترده و بینش‌های پردازش پرداخت آن برای ارائه تحلیل پیش‌بینی‌کننده جریان نقدینگی، تطبیق خودکار، و بررسی‌های انطباق با هوش مصنوعی/تولید گزارش، به عنوان یک سرویس پریمیوم در داشبورد استرایپ استفاده کند.</p>
-                <h3>اقدام عملی (Experiment/Action):</h3>
-                <p>استرایپ "Stripe CFO AI" را راه‌اندازی کرد، یک رده اشتراک جدید برای کاربران تجاری خود. CFO AI ارائه می‌دهد: پیش‌بینی‌های جریان نقدینگی با هوش مصنوعی بر اساس تراکنش‌های تاریخی و روندهای بازار؛ دسته‌بندی و تطبیق خودکار هزینه‌ها؛ هشدارهای پیشگیرانه برای مشکلات احتمالی انطباق (مانند مهلت‌های مالیاتی در انتظار، الگوهای تراکنش مشکوک)؛ و کمک هوش مصنوعی مولد برای تهیه گزارش‌های مالی. قیمت‌گذاری: اشتراک ماهانه چند سطحی بر اساس حجم تراکنش و ویژگی‌های پیشرفته (مانند پشتیبانی از چند ارز، مدل‌های پیش‌بینی پیشرفته).</p>
-                <h3>متریک رصد شده (Metric Tracked):</h3>
-                <p>تعداد اشتراک‌های CFO AI، کاهش خطاهای مالی/جریمه برای مشترکین، زمان صرفه‌جویی شده در مدیریت مالی، رشد کسب‌وکار برای مشترکین، افزایش میانگین درآمد به ازای هر کاربر (ARPU).</p>
-                <h3>نتیجه تصمیم (Decision Outcome):</h3>
-                <p>کسب‌وکارهای آزمایشی تا 15-20% بهبود در ثبات جریان نقدینگی و کاهش قابل توجهی در زمان صرف‌شده برای حسابداری و انطباق (تا 40%) گزارش کردند. مدل اشتراک پریمیوم پذیرش قوی نشان داد، که نشان می‌دهد کسب‌وکارها مایل به پرداخت برای ابزارهای هوش مصنوعی هستند که مستقیماً بر سلامت مالی و کارایی عملیاتی آنها تأثیر می‌گذارد.</p>
-                <h3>درس آموخته اصلی (Core Lesson):</h3>
-                <p>تعبیه عامل‌های هوش مصنوعی تخصصی که هوش مالی پیش‌بینی‌کننده را ارائه می‌دهند و انطباق را در پلتفرم‌های مالی موجود (مانند Stripe) خودکار می‌کنند، یک پیشنهاد جدید SaaS پریمیوم جذاب ایجاد می‌کند. این نه تنها چسبندگی پلتفرم را افزایش می‌دهد، بلکه با رفع نقاط درد اصلی برای کسب‌وکارها، جریان‌های درآمدی جدید قابل توجهی را باز می‌کند.</p>
-                <div class="section-highlight">
-                    <h4>چرا اهمیت دارد:</h4>
-                    <p>نشان می‌دهد که چگونه پلتفرم‌های موجود می‌توانند با استفاده از هوش مصنوعی برای ارائه راه‌حل‌های مالی پیشگیرانه و افزایش کارایی عملیاتی برای کسب‌وکارهای کوچک و متوسط، خود را به فراتر از خدمات اصلی گسترش دهند، که منجر به جریان‌های درآمدی پریمیوم و افزایش چسبندگی مشتری می‌شود.</p>
+                <div class="card-section">
+                    <h3>فرضیه:</h3>
+                    <p>${item.hypothesis}</p>
                 </div>
-                <div class="section-highlight">
-                    <h4>اقدام امروز برای استارتاپ شما:</h4>
-                    <p>اگر یک پلتفرم B2B SaaS هستید، فرصت‌هایی را شناسایی کنید که هوش مصنوعی می‌تواند مدیریت مالی، انطباق و پیش‌بینی را برای کاربران شما ساده کند. این راه‌حل‌ها را به عنوان ویژگی‌های پریمیوم یا افزونه‌های SaaS ارائه دهید تا ارزش و درآمد هر مشتری را افزایش دهید.</p>
+                <div class="card-section">
+                    <h3>اقدام/آزمایش:</h3>
+                    <p>${item.experiment_or_action}</p>
                 </div>
-                <div class="source-info">
-                    <span class="star-rating">★★★★★</span>
-                    منبع: <a href="https://stripe.com/news/stripe-cfo-ai-launch" target="_blank">Stripe News</a>
-                    <div class="category-tags">
-                        <span class="category-tag tag-fintech-ai">fintech-ai</span>
-                        <span class="category-tag tag-enterprise-ai">enterprise-ai</span>
-                        <span class="category-tag tag-smb-tech-ai">smb-tech-ai</span>
-                        <span class="category-tag tag-ai-agents">ai-agents</span>
-                        <span class="category-tag tag-new-revenue-streams">new-revenue-streams</span>
-                        <span class="category-tag tag-pricing-model-change">pricing-model-change</span>
-                        <span class="category-tag tag-saas-value-add">saas-value-add</span>
-                        <span class="category-tag tag-operational-efficiency-ai">operational-efficiency-ai</span>
-                        <span class="category-tag tag-compliance-ai">compliance-ai</span>
-                    </div>
+                <div class="card-section">
+                    <h3>متریک رصد شده:</h3>
+                    <p>${item.metric_tracked}</p>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="date">تاریخ: 2026-08-09</div>
-                    <div class="company-info">
-                        <h2>Netflix</h2>
-                    </div>
+                <div class="card-section">
+                    <h3>نتیجه تصمیم:</h3>
+                    <p>${item.decision_outcome}</p>
                 </div>
-                <h3>چالش (Problem):</h3>
-                <p>رشد مشترکین در بازارهای بالغ کند شده و خستگی از محتوا می‌تواند رخ دهد. داستان‌سرایی خطی سنتی، حتی با شخصی‌سازی، محدودیت‌هایی در تعامل دارد. نتفلیکس به راه‌های جدید و نوآورانه برای تمایز و ارائه ارزش منحصربه‌فرد برای توجیه قیمت‌گذاری پریمیوم یا جذب مشترکین جدید نیاز دارد.</p>
-                <h3>فرضیه (Hypothesis):</h3>
-                <p>نتفلیکس می‌تواند از هوش مصنوعی مولد پیشرفته برای ایجاد "روایت‌های تطبیقی و تعاملی" استفاده کند، جایی که عناصر محتوا (مانند تغییرات گفتگوی شخصیت‌ها، شاخه‌های جزئی داستان، جزئیات محیطی) به صورت پویا و در زمان واقعی بر اساس انتخاب‌های بیننده، الگوهای تماشای تاریخی یا حتی بازخورد بیومتریک (مانند پاسخ عاطفی از طریق ورودی دوربین اختیاری) تنظیم می‌شوند و تجربه‌ای عمیقاً شخصی‌سازی شده و قابل تماشا دوباره ایجاد می‌کنند.</p>
-                <h3>اقدام عملی (Experiment/Action):</h3>
-                <p>نتفلیکس "NarrativeFlow" را راه‌اندازی کرد، یک رده اشتراک پریمیوم جدید (۵ دلار در ماه بیشتر). این رده دسترسی انحصاری به یک کتابخانه رو به رشد از محتوای تطبیقی با هوش مصنوعی را ارائه می‌دهد که با برنامه‌های ویژه تعاملی شروع شده و به مجموعه‌های منتخب گسترش می‌یابد. بینندگان می‌توانند برای شخصی‌سازی هدایت شده با هوش مصنوعی که جنبه‌هایی از روایت را بر اساس پروفایل تعامل آنها به طرز ظریفی تغییر می‌دهد، انتخاب کنند. همچنین شامل "مهمانی‌های تماشای هم‌خلاق" است که در آن گروه‌ها می‌توانند به صورت جمعی بر عناصر داستان تولید شده توسط هوش مصنوعی تأثیر بگذارند. زیرساخت شامل سرمایه‌گذاری قابل توجه در رندرینگ هوش مصنوعی مولد در زمان واقعی و ارکستراسیون محتوا در مقیاس جهانی است که از راه‌حل‌های محاسبات لبه تخصصی برای تطبیق با تأخیر کم استفاده می‌کند.</p>
-                <h3>متریک رصد شده (Metric Tracked):</h3>
-                <p>پذیرش اشتراک NarrativeFlow، زمان تعامل با محتوای تطبیقی، نرخ تماشای دوباره محتوا، کاهش ریزش مشترکین، افزایش میانگین درآمد به ازای هر کاربر (ARPU) برای رده جدید.</p>
-                <h3>نتیجه تصمیم (Decision Outcome):</h3>
-                <p>داده‌های اولیه نشان داد که مشترکین NarrativeFlow 25% زمان بیشتری را با محتوای تطبیقی در مقایسه با محتوای سنتی سپری کرده‌اند و رضایت و تازگی بالاتری را گزارش کرده‌اند. رده پریمیوم جدید مخاطبان خاص اما بسیار درگیر را جذب کرد، که تقاضا برای سرگرمی تعاملی با هوش مصنوعی را تأیید کرده و جریان درآمدی جدید با حاشیه سود بالا ایجاد می‌کند.</p>
-                <h3>درس آموخته اصلی (Core Lesson):</h3>
-                <p>برای پلتفرم‌های رسانه‌ای، پیش بردن مرزهای شخصی‌سازی فوق‌العاده با هوش مصنوعی مولد به سمت "محتوای تطبیقی" می‌تواند سطوح اشتراک پریمیوم جدیدی را باز کند و تعامل و چسبندگی را به طور قابل توجهی افزایش دهد. این امر مستلزم سرمایه‌گذاری قابل توجه در زیرساخت رندرینگ هوش مصنوعی در زمان واقعی، از جمله محاسبات لبه، برای ارائه تجربیات بدون وقفه است.</p>
-                <div class="section-highlight">
-                    <h4>چرا اهمیت دارد:</h4>
-                    <p>بر اهمیت هوش مصنوعی مولد در ایجاد تجربیات مصرف‌کننده فوق‌العاده شخصی‌سازی شده و تعاملی تأکید می‌کند، که می‌تواند رشد مشترکین را در بازارهای اشباع شده تحریک کرده و جریان‌های درآمدی جدیدی را از طریق سطوح اشتراک پریمیوم باز کند. همچنین پتانسیل هوش مصنوعی لبه را برای ارائه محتوای بی‌درنگ برجسته می‌کند.</p>
+                <div class="card-section">
+                    <h3>درس آموخته اصلی:</h3>
+                    <p>${item.core_lesson}</p>
                 </div>
-                <div class="section-highlight">
-                    <h4>اقدام امروز برای استارتاپ شما:</h4>
-                    <p>برای استارتاپ‌هایی در فضای محتوا یا تجربیات مصرف‌کننده، امکان ایجاد محتوای تطبیقی و تعاملی با استفاده از هوش مصنوعی مولد را بررسی کنید. به دنبال راه‌هایی باشید که AI بتواند کاربران را در تولید یا شکل‌دهی به تجربه خود مشارکت دهد، و این را به عنوان یک پیشنهاد پریمیوم قیمت‌گذاری کنید.</p>
+                <div class="section-why-it-matters">
+                    <h3>چرا اهمیت دارد؟</h3>
+                    <p>${generateWhyItMatters(item)}</p>
                 </div>
-                <div class="source-info">
-                    <span class="star-rating">★★★★★</span>
-                    منبع: <a href="https://about.netflix.com/news/narrativeflow-ai-content" target="_blank">Netflix Newsroom</a>
-                    <div class="category-tags">
-                        <span class="category-tag tag-generative-ai">generative-ai</span>
-                        <span class="category-tag tag-hyper-personalization-ai">hyper-personalization-ai</span>
-                        <span class="category-tag tag-new-revenue-streams">new-revenue-streams</span>
-                        <span class="category-tag tag-pricing-model-change">pricing-model-change</span>
-                        <span class="category-tag tag-content-strategy-ai">content-strategy-ai</span>
-                        <span class="category-tag tag-media-tech-ai">media-tech-ai</span>
-                        <span class="category-tag tag-cloud-infrastructure-shifts">cloud-infrastructure-shifts</span>
-                        <span class="category-tag tag-edge-ai">edge-ai</span>
-                        <span class="category-tag tag-multimodal-ai">multimodal-ai</span>
-                        <span class="category-tag tag-platform-optimization">platform-optimization</span>
-                    </div>
+                <div class="section-startup-action">
+                    <h3>اقدام امروز برای استارتاپ شما:</h3>
+                    <p>${generateStartupAction(item)}</p>
                 </div>
-            </div>
-
-        </div>
-    </div>
+            `;
+            gridContainer.appendChild(card);
+        });
+    </script>
 </body>
 </html>
