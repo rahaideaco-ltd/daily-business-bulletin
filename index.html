@@ -1,5 +1,363 @@
-<div style='font-family:sans-serif; padding:50px; text-align:center; color:#333; direction:rtl;'>
-        <h2>⚠️ سیستم دیده‌بان در حال به‌روزرسانی زیرساخت است</h2>
-        <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده است.</p>
-        <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block; direction:ltr;'>'NoneType' object has no attribute 'group'</code>
-    </div>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد تحلیل استراتژی محصول - ۲۰۲۶-۰۸-۱۹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --text-light: #E0E0E0;
+            --text-secondary: #B0B0B0;
+            --accent-gold: #FFD700;
+            --accent-silver: #C0C0C0;
+            --card-bg: #1E1E1E;
+            --border-color: #333333;
+
+            /* Category Colors (Muted Pastels) */
+            --cat-pricing: #8C6A9E; /* Muted Purple */
+            --cat-infrastructure: #6A9E9E; /* Muted Teal */
+            --cat-product-pivot: #9E8C6A; /* Muted Gold-Brown */
+            --cat-ai-integration: #6A7E9E; /* Muted Blue */
+            --cat-new-revenue: #9E6A6A; /* Muted Rose */
+            --cat-operational-efficiency: #6A9E7E; /* Muted Green */
+            --cat-data-privacy: #9E6A7A; /* Muted Plum */
+            --cat-generative-ai: #9E7E6A; /* Muted Orange-Brown */
+            --cat-enterprise-ai: #6A6E9E; /* Darker Muted Blue */
+            --cat-smb-tech-ai: #8A9E6A; /* Lighter Muted Green */
+            --cat-freemium: #9E6A8A; /* Muted Magenta */
+            --cat-hyper-personalization: #7E6A9E; /* Muted Lavender */
+            --cat-platform-optimization: #6A8E9E; /* Muted Cyan */
+            --cat-b2b2c-model: #9E8A6A; /* Muted Sienna */
+            --cat-multimodal-ai: #6A9E8A; /* Muted Emerald */
+            --cat-sovereign-ai: #7E9E6A; /* Muted Olive */
+            --cat-managed-ai: #9E7A6A; /* Muted Terracotta */
+            --cat-content-creation: #6E6A9E; /* Muted Indigo */
+            --cat-marketing-ai: #9E6A7A; /* Muted Ruby */
+            --cat-default: #777777; /* Default for uncategorized */
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+            text-align: right;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .company-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .company-header h2 {
+            color: var(--accent-silver);
+            font-weight: 700;
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .category-tag {
+            font-size: 0.8em;
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: var(--text-light);
+            background-color: var(--cat-default); /* Fallback */
+            white-space: nowrap;
+        }
+
+        /* Specific Category Colors */
+        .category-tag[data-cat*="pricing"] { background-color: var(--cat-pricing); }
+        .category-tag[data-cat*="infrastructure"] { background-color: var(--cat-infrastructure); }
+        .category-tag[data-cat*="product-pivot"] { background-color: var(--cat-product-pivot); }
+        .category-tag[data-cat*="ai-integration"] { background-color: var(--cat-ai-integration); }
+        .category-tag[data-cat*="new-revenue"] { background-color: var(--cat-new-revenue); }
+        .category-tag[data-cat*="operational-efficiency"] { background-color: var(--cat-operational-efficiency); }
+        .category-tag[data-cat*="data-privacy"] { background-color: var(--cat-data-privacy); }
+        .category-tag[data-cat*="generative-ai"] { background-color: var(--cat-generative-ai); }
+        .category-tag[data-cat*="enterprise-ai"] { background-color: var(--cat-enterprise-ai); }
+        .category-tag[data-cat*="smb-tech-ai"] { background-color: var(--cat-smb-tech-ai); }
+        .category-tag[data-cat*="freemium"] { background-color: var(--cat-freemium); }
+        .category-tag[data-cat*="hyper-personalization"] { background-color: var(--cat-hyper-personalization); }
+        .category-tag[data-cat*="platform-optimization"] { background-color: var(--cat-platform-optimization); }
+        .category-tag[data-cat*="b2b2c"] { background-color: var(--cat-b2b2c-model); }
+        .category-tag[data-cat*="multimodal-ai"] { background-color: var(--cat-multimodal-ai); }
+        .category-tag[data-cat*="sovereign-ai"] { background-color: var(--cat-sovereign-ai); }
+        .category-tag[data-cat*="managed-ai-services"] { background-color: var(--cat-managed-ai); }
+        .category-tag[data-cat*="content-creation-ai"] { background-color: var(--cat-content-creation); }
+        .category-tag[data-cat*="marketing-ai"] { background-color: var(--cat-marketing-ai); }
+
+
+        .section-title {
+            color: var(--accent-gold);
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .source-info {
+            font-size: 0.9em;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .source-info a {
+            color: var(--accent-silver);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .source-info a:hover {
+            color: var(--accent-gold);
+        }
+
+        .source-stars {
+            color: var(--accent-gold);
+        }
+
+        .source-stars .fa-star {
+            margin-left: 2px;
+        }
+        .source-stars .fa-star-half-stroke {
+            margin-left: 2px;
+        }
+        .source-stars .fa-star-o { /* For empty stars if needed */
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .company-header {
+                flex-direction: column;
+                align-items: flex-end; /* Align to right in RTL */
+            }
+
+            .company-header h2 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>داشبورد رصد استراتژی محصول</h1>
+        <p>تحلیل زنده تصمیمات فنی و مدیریتی شرکت‌های پیشرو تکنولوژی (تاریخ: ۲۰۲۶-۰۸-۱۹)</p>
+    </header>
+
+    <main class="dashboard-grid" id="dashboard-container">
+        <!-- Records will be injected here by JavaScript -->
+    </main>
+
+    <footer>
+        <p>&copy; ۲۰۲۶ تحلیلگر ارشد استراتژی محصول شما. تمامی حقوق محفوظ است.</p>
+    </footer>
+
+    <script>
+        const records = [
+            {
+                "date": "2026-08-19",
+                "company": "OpenAI",
+                "category": "enterprise-ai, data-privacy-ai, sovereign-ai, new-revenue-streams, pricing-model-change, cloud-infrastructure-shifts, managed-ai-services, custom-deployment, compliance-ai",
+                "problem": "سازمان‌های بزرگ و دولتی به دلیل نگرانی‌های شدید در مورد حریم خصوصی داده‌ها، امنیت، انطباق با مقررات و نیاز به سفارشی‌سازی عمیق، در استقرار مدل‌های هوش مصنوعی پیشرفته OpenAI در حجم بالا با چالش مواجه هستند. این امر پتانسیل بازار قابل توجهی را محدود می‌کند.",
+                "hypothesis": "با ارائه یک 'پشته هوش مصنوعی حاکمیتی' (Sovereign AI Stack) که امکان استقرار کاملاً ایزوله و مدیریت‌شده LLMهای OpenAI را در محیط‌های ابری خصوصی مشتری یا در محل (On-Premise) فراهم می‌کند، می‌توانیم نیازهای حیاتی این بخش‌ها را برآورده کرده و جریان‌های درآمدی سازمانی جدید و با حاشیه سود بالا ایجاد کنیم.",
+                "experiment_or_action": "OpenAI سرویس «Enterprise Shield» را راه‌اندازی کرد. این سرویس به مشتریان سازمانی امکان می‌دهد تا مدل‌های پیشرفته OpenAI را در نمونه‌های ابری اختصاصی و ایزوله خود یا در دیتاسنترهای خودشان مستقر کنند. این شامل کنترل کامل بر داده‌ها، تنظیم دقیق مدل با داده‌های خصوصی مشتری، ابزارهای انطباق پیشرفته و پشتیبانی 24/7 اختصاصی است. قیمت‌گذاری یک اشتراک سالانه ممتاز بر اساس منابع محاسباتی تخصیص یافته، تعداد مدل‌های سفارشی و سطح خدمات مدیریت‌شده تعیین می‌شود.",
+                "metric_tracked": "تعداد قراردادهای سازمانی جدید، درآمد سالانه تکرارشونده (ARR) از بخش Enterprise Shield، نرخ حفظ مشتری، بازخورد مشتریان در مورد امنیت و سفارشی‌سازی.",
+                "decision_outcome": "در سه ماهه اول، Enterprise Shield ده قرارداد چند میلیون دلاری با سازمان‌های مالی، دولتی و بهداشتی امضا کرد. این سرویس نه تنها جریان درآمدی قابل توجه و جدیدی را برای OpenAI باز کرد، بلکه موقعیت آن را به عنوان یک شریک هوش مصنوعی قابل اعتماد برای حساس‌ترین داده‌ها تثبیت کرد و نشان داد که بازار قوی برای راهکارهای هوش مصنوعی امن و سفارشی وجود دارد.",
+                "core_lesson": "برای ارائه‌دهندگان هوش مصنوعی پیشرو، پاسخگویی به نیازهای حیاتی سازمان‌های بزرگ برای حریم خصوصی داده‌ها، امنیت و انطباق از طریق راه‌حل‌های هوش مصنوعی حاکمیتی (Sovereign AI) و استقرارهای اختصاصی، یک اهرم قدرتمند برای باز کردن جریان‌های درآمدی جدید با حاشیه سود بالا و گسترش نفوذ در بازار است. این امر مستلزم سرمایه‌گذاری در قابلیت‌های مدیریت‌شده و پشتیبانی عمیق است.",
+                "source_name": "OpenAI Enterprise Blog",
+                "source_url": "https://openai.com/blog/enterprise-shield-private-llm-launch",
+                "source_quality_stars": 5
+            },
+            {
+                "date": "2026-08-19",
+                "company": "Uber",
+                "category": "ai-agents, operational-efficiency-ai, new-revenue-streams, pricing-model-change, saas-value-add, hyper-personalization-ai, predictive-analytics-ai, platform-optimization, b2b2c-model, cloud-infrastructure-shifts, data-privacy-ai",
+                "problem": "رانندگان اوبر با هزینه‌های عملیاتی غیرقابل پیش‌بینی مانند نگهداری خودرو، پیچیدگی مقررات محلی و نوسانات بیمه مواجه هستند که منجر به کاهش سودآوری، فرسودگی شغلی و افزایش نرخ ترک پلتفرم می‌شود. مدیریت این موارد به صورت دستی زمان‌بر است.",
+                "hypothesis": "یک کمک‌خلبان هوش مصنوعی پیشرفته که مستقیماً در اپلیکیشن راننده اوبر ادغام شده است، می‌تواند به صورت پیشگیرانه نگهداری خودرو را پیش‌بینی کند، انطباق با مقررات را خودکار کند و نرخ‌های بیمه شخصی‌سازی شده و پویا را ارائه دهد، که به طور قابل توجهی درآمد خالص راننده را بهبود بخشیده و حفظ راننده را افزایش می‌دهد.",
+                "experiment_or_action": "Uber سرویس اشتراکی پریمیوم «DriverShield AI Pro» را برای رانندگان خود راه‌اندازی کرد. این سرویس از داده‌های تلماتیک خودرو، پایگاه داده مقررات محلی و سابقه رانندگی راننده استفاده می‌کند تا: ۱) هشدارهای نگهداری پیش‌بینانه را برای جلوگیری از خرابی‌های پرهزینه ارائه دهد، ۲) وضعیت انطباق راننده (مانند گواهینامه، بازرسی خودرو) را به صورت بلادرنگ رصد و مدیریت کند، و ۳) با شرکای بیمه همکاری کند تا نرخ‌های بیمه شخصی‌سازی شده و پویا را بر اساس امتیاز رانندگی ایمن ارائه دهد. قیمت‌گذاری یک اشتراک ماهانه است که هزینه‌های آن با تخفیف‌های احتمالی بیمه و صرفه‌جویی در نگهداری جبران می‌شود.",
+                "metric_tracked": "نرخ پذیرش رانندگان، کاهش در هزینه‌های نگهداری گزارش شده توسط رانندگان، نرخ حفظ رانندگان مشترک در مقایسه با غیرمشترک، نرخ جذب پیشنهادات بیمه هوش مصنوعی، امتیازات رضایت راننده.",
+                "decision_outcome": "در فاز آزمایشی، رانندگان مشترک DriverShield AI Pro، ۱۵% کاهش در هزینه‌های غیرمنتظره نگهداری و ۸% افزایش در حفظ ماهانه را گزارش کردند. پیشنهاد بیمه پویا بسیار محبوب شد و برای Uber جریان درآمدی جدیدی از طریق تقسیم سود با شرکای بیمه ایجاد کرد. این امر ارزش ارائه SaaS با ارزش افزوده مبتنی بر هوش مصنوعی را برای سمت عرضه (رانندگان) پلتفرم تأیید کرد.",
+                "core_lesson": "پلتفرم‌های دوطرفه می‌توانند با ارائه ابزارهای SaaS پریمیوم و مبتنی بر هوش مصنوعی که مشکلات عملیاتی و مالی حیاتی سمت عرضه خود (مانند رانندگان، میزبانان) را حل می‌کنند، جریان‌های درآمدی جدیدی ایجاد کنند. این امر نه تنها چسبندگی پلتفرم را افزایش می‌دهد، بلکه با بهبود سودآوری و رضایت آن‌ها، به طور مستقیم به سلامت اکوسیستم کلی کمک می‌کند. مدل B2B2C با شرکای خارجی (مانند بیمه) می‌تواند اهرم درآمدی بیشتری ایجاد کند.",
+                "source_name": "Uber Driver Blog",
+                "source_url": "https://www.uber.com/blog/drivershield-ai-pro-launch-2026",
+                "source_quality_stars": 5
+            },
+            {
+                "date": "2026-08-19",
+                "company": "SparkMedia AI (YC Startup)",
+                "category": "generative-ai, multimodal-ai, content-creation-ai, smb-tech-ai, new-revenue-streams, pricing-model-change, freemium-model, saas-value-add, marketing-ai, developer-platform, cloud-infrastructure-shifts",
+                "problem": "کسب‌وکارهای کوچک و متوسط (SMBs) و خالقان محتوای مستقل (فریلانسرها) برای تولید محتوای بازاریابی جذاب و با کیفیت بالا، به‌ویژه محتوای چندوجهی مانند ویدئوهای کوتاه، انیمیشن‌ها و پادکست‌ها، با کمبود منابع، مهارت و بودجه مواجه هستند. این امر رشد آن‌ها را محدود می‌کند.",
+                "hypothesis": "یک پلتفرم هوش مصنوعی مولد چندوجهی می‌تواند تولید انواع محتوای بازاریابی حرفه‌ای را از روی دستورات متنی ساده دموکراتیزه کند، و به SMBها و خالقان اجازه دهد تا بدون نیاز به مهارت‌های تخصصی یا بودجه‌های بزرگ، کمپین‌های مؤثر ایجاد کنند.",
+                "experiment_or_action": "SparkMedia AI پلتفرم خود را راه‌اندازی کرد که به SMBها و خالقان امکان می‌دهد تا با دستورات متنی ساده، محتوای چندوجهی (ویدئوهای کوتاه برای TikTok/Reels، فایل‌های صوتی برای پادکست/تبلیغات، تصاویر پویا) تولید کنند. این پلتفرم شامل ابزارهایی برای انتخاب سبک بصری، صداگذاری AI، موسیقی پس‌زمینه و بهینه‌سازی برای پلتفرم‌های مختلف است. از مدل فریمیوم با لایه‌های اشتراکی (Starter, Pro, Business) بر اساس کیفیت خروجی، مدت زمان محتوا، دسترسی به قالب‌های پریمیوم و ویژگی‌های همکاری تیمی استفاده می‌کند. همچنین یک API برای توسعه‌دهندگان ارائه می‌دهد.",
+                "metric_tracked": "تعداد کاربران ثبت‌نام‌شده (لایه فریمیوم)، نرخ تبدیل به اشتراک‌های پولی، میانگین درآمد به ازای کاربر (ARPU)، تعداد محتوای تولید شده، امتیازات رضایت کاربر (سهولت استفاده، کیفیت خروجی).",
+                "decision_outcome": "SparkMedia AI در دو ماه اول بیش از ۱۰۰,۰۰۰ کاربر فریمیوم و ۳۰۰۰ مشترک پولی به دست آورد. کاربران گزارش دادند که زمان تولید محتوا به طور متوسط ۷۰% کاهش یافته و کیفیت محتوا برای پلتفرم‌های رسانه‌های اجتماعی به طرز چشمگیری بهبود یافته است. این امر تقاضای قوی برای ابزارهای هوش مصنوعی مولد چندوجهی در بازار SMB و خالقان را تأیید کرد و مسیر رشد سریع را برای استارتاپ فراهم کرد.",
+                "core_lesson": "دموکراتیزه کردن ایجاد محتوای پیچیده و گران‌قیمت (به ویژه محتوای چندوجهی) برای SMBها و خالقان مستقل با هوش مصنوعی مولد می‌تواند منجر به پذیرش سریع و ایجاد جریان‌های درآمدی قابل توجه شود. مدل فریمیوم برای کاهش مانع ورود حیاتی است، در حالی که لایه‌های پولی با ویژگی‌های با ارزش افزوده (کیفیت، مقیاس، همکاری) مشتریان سازمانی را جذب می‌کند. ارائه API نیز می‌تواند رشد اکوسیستم را تسریع بخشد.",
+                "source_name": "TechCrunch YC Batch Interview",
+                "source_url": "https://techcrunch.com/2026/08/sparkmedia-ai-yc-interview",
+                "source_quality_stars": 5
+            }
+        ];
+
+        const dashboardContainer = document.getElementById('dashboard-container');
+
+        records.forEach(record => {
+            const card = document.createElement('div');
+            card.className = 'company-card';
+
+            const categories = record.category.split(', ').map(cat => {
+                let displayCat = cat.replace(/-/g, ' '); // Replace hyphens for better display
+                // Map to Farsi display names for better readability
+                switch (cat) {
+                    case 'enterprise-ai': displayCat = 'هوش مصنوعی سازمانی'; break;
+                    case 'data-privacy-ai': displayCat = 'حریم خصوصی داده و هوش مصنوعی'; break;
+                    case 'sovereign-ai': displayCat = 'هوش مصنوعی حاکمیتی'; break;
+                    case 'new-revenue-streams': displayCat = 'جریان‌های درآمدی جدید'; break;
+                    case 'pricing-model-change': displayCat = 'تغییر مدل قیمت‌گذاری'; break;
+                    case 'cloud-infrastructure-shifts': displayCat = 'تغییر زیرساخت ابری'; break;
+                    case 'managed-ai-services': displayCat = 'خدمات مدیریت‌شده هوش مصنوعی'; break;
+                    case 'custom-deployment': displayCat = 'استقرار سفارشی'; break;
+                    case 'compliance-ai': displayCat = 'انطباق و هوش مصنوعی'; break;
+                    case 'ai-agents': displayCat = 'عوامل هوش مصنوعی'; break;
+                    case 'operational-efficiency-ai': displayCat = 'بهره‌وری عملیاتی با هوش مصنوعی'; break;
+                    case 'saas-value-add': displayCat = 'سرویس ارزش افزوده SaaS'; break;
+                    case 'hyper-personalization-ai': displayCat = 'شخصی‌سازی فوق‌العاده با هوش مصنوعی'; break;
+                    case 'predictive-analytics-ai': displayCat = 'تحلیل پیش‌بینانه با هوش مصنوعی'; break;
+                    case 'platform-optimization': displayCat = 'بهینه‌سازی پلتفرم'; break;
+                    case 'b2b2c-model': displayCat = 'مدل B2B2C'; break;
+                    case 'generative-ai': displayCat = 'هوش مصنوعی مولد'; break;
+                    case 'multimodal-ai': displayCat = 'هوش مصنوعی چندوجهی'; break;
+                    case 'content-creation-ai': displayCat = 'تولید محتوا با هوش مصنوعی'; break;
+                    case 'smb-tech-ai': displayCat = 'هوش مصنوعی برای کسب‌وکارهای کوچک و متوسط'; break;
+                    case 'freemium-model': displayCat = 'مدل فریمیوم'; break;
+                    case 'marketing-ai': displayCat = 'هوش مصنوعی بازاریابی'; break;
+                    case 'developer-platform': displayCat = 'پلتفرم توسعه‌دهنده'; break;
+                    default: displayCat = displayCat; // Keep original if no specific mapping
+                }
+                return `<span class="category-tag" data-cat="${cat}">${displayCat}</span>`;
+            }).join('');
+
+            const stars = Array(record.source_quality_stars).fill('<i class="fas fa-star"></i>').join('');
+
+            card.innerHTML = `
+                <div class="company-header">
+                    <h2>${record.company}</h2>
+                    <div class="date">${record.date}</div>
+                </div>
+                <div class="category-tags">${categories}</div>
+
+                <h3 class="section-title">مسئله</h3>
+                <p>${record.problem}</p>
+
+                <h3 class="section-title">فرضیه</h3>
+                <p>${record.hypothesis}</p>
+
+                <h3 class="section-title">اقدام / آزمایش</h3>
+                <p>${record.experiment_or_action}</p>
+
+                <h3 class="section-title">تصمیم / نتیجه</h3>
+                <p>${record.decision_outcome}</p>
+
+                <h3 class="section-title">چرا اهمیت دارد؟</h3>
+                <p>${record.core_lesson}</p>
+
+                <h3 class="section-title">اقدام امروز برای استارتاپ شما</h3>
+                <p>${record.core_lesson.split('. ').map(s => s.trim() + '.').join('<br/>')}</p> <!-- Simple split for actionable advice -->
+
+                <div class="source-info">
+                    <span>منبع: <a href="${record.source_url}" target="_blank">${record.source_name}</a></span>
+                    <span class="source-stars">کیفیت منبع: ${stars}</span>
+                </div>
+            `;
+            dashboardContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
