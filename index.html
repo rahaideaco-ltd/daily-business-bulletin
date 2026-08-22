@@ -3,485 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>داشبورد تحلیل سیگنال‌های وب تکنولوژی - ۲۰۲۶-۰۸-۲۱</title>
+    <title>داشبورد تحلیل استراتژی محصول و زیرساخت SaaS (AI-Driven)</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #1a1a2e;
-            --secondary-bg: #16213e;
-            --card-bg: #0f3460;
-            --text-color: #e0e0e0;
-            --accent-color: #e94560;
-            --border-color: #0f3460;
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --gradient-start: #1a1a2e;
-            --gradient-end: #0f3460;
+            --bg-color: #1a1a2e; /* Deep Midnight Blue */
+            --card-bg-color: #2a2a4a; /* Slightly lighter blue */
+            --text-color: #e0e0e0; /* Off-white */
+            --header-color: #ffd700; /* Gold */
+            --accent-color: #81c784; /* Light Green */
+            --border-color: #4a4a6e; /* Muted Purple-Blue */
+            --section-title-color: #b2e0e0; /* Light Teal */
 
-            /* Category Colors */
-            --cat-pricing: #4CAF50; /* Green */
-            --cat-infrastructure: #2196F3; /* Blue */
-            --cat-ai-agents: #9C27B0; /* Purple */
-            --cat-generative-ai: #FF9800; /* Orange */
-            --cat-new-revenue-streams: #F44336; /* Red */
-            --cat-saas-value-add: #00BCD4; /* Cyan */
-            --cat-enterprise-ai: #3F51B5; /* Dark Blue */
-            --cat-smb-tech-ai: #8BC34A; /* Light Green */
-            --cat-data-privacy-ai: #607D8B; /* Grey */
-            --cat-metaverse-ai: #E91E63; /* Pink */
-            --cat-operational-efficiency-ai: #FFEB3B; /* Yellow */
-            --cat-hyper-personalization-ai: #00E5FF; /* Bright Cyan */
-            --cat-product-pivot: #795548; /* Brown */
-            --cat-compliance-ai: #673AB7; /* Deep Purple */
-            --cat-custom-deployment: #FFC107; /* Amber */
-            --cat-managed-ai-services: #607D8B; /* Grey */
-            --cat-marketing-ai: #E040FB; /* Magenta */
-            --cat-content-creation-ai: #FF7043; /* Deep Orange */
+            /* Category colors */
+            --cat-pricing: #f06292; /* Pink */
+            --cat-infrastructure: #4fc3f7; /* Light Blue */
+            --cat-product-pivot: #ffb74d; /* Orange */
+            --cat-ai-integration: #81c784; /* Light Green */
+            --cat-new-revenue: #aed581; /* Lime Green */
+            --cat-operational-efficiency: #ff8a65; /* Deep Orange */
+            --cat-data-privacy: #9575cd; /* Amethyst */
+            --cat-generative-ai: #d4e157; /* Light Lime */
+            --cat-enterprise-ai: #ba68c8; /* Medium Purple */
+            --cat-smb-tech-ai: #4db6ac; /* Teal */
+            --cat-ecommerce-ai: #ffa000; /* Amber */
+            --cat-fintech-ai: #7986cb; /* Indigo */
+            --cat-metaverse-ai: #66bb6a; /* Green */
+            --cat-platform-optimization: #ff7043; /* Coral */
+            --cat-cost-cutting: #ef5350; /* Red */
+            --cat-sustainability: #26a69a; /* Dark Cyan */
+            --cat-regtech-ai: #8d6e63; /* Brown */
+            --cat-media-tech-ai: #7e57c2; /* Deep Purple */
+            --cat-yc-startup: #e57373; /* Light Red */
+            --cat-predictive-analytics: #cddc39; /* Light Green-Yellow */
+            --cat-dynamic-pricing: #ffeb3b; /* Yellow */
+            --cat-saas-value-add: #c5e1a5; /* Pale Green */
+            --cat-multimodal-ai: #e1bee7; /* Lavender */
+            --cat-content-creation: #ffccbc; /* Light Peach */
+            --cat-hyper-personalization: #ffe082; /* Pale Gold */
+            --cat-managed-ai-services: #b39ddb; /* Light Purple */
+            --cat-edge-ai: #80cbc4; /* Mint Green */
+            --cat-custom-deployment: #ffab91; /* Light Salmon */
+            --cat-compliance-ai: #a1887f; /* Grey Brown */
+            --cat-marketing-ai: #ffcdd2; /* Light Pink */
+            --cat-b2b-saas: #e6ee9c; /* Pale Lime */
+            --cat-micro-transactions: #fff59d; /* Pale Yellow */
+            --cat-subscription-tiers: #bbdefb; /* Pale Blue */
+            --cat-real-time-ai: #a7ffeb; /* Aqua */
+            --cat-default: #90a4ae; /* Blue Grey */
         }
 
         body {
             font-family: 'Vazirmatn', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: var(--text-color);
-            line-height: 1.8;
             direction: rtl;
-            text-align: right;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 20px auto;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
             padding: 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 992px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        header {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--secondary-bg);
-            border-radius: 15px;
-            box-shadow: 0 8px 25px var(--shadow-color);
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            color: var(--accent-color);
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1.2em;
-            color: #b0b0d0;
+            line-height: 1.8;
             font-weight: 300;
         }
 
-        .main-content, .sidebar {
-            background-color: var(--secondary-bg);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px var(--shadow-color);
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        h2 {
-            color: var(--accent-color);
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
+        h1 {
+            color: var(--header-color);
             font-weight: 700;
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
 
-        .card-grid {
+        .dashboard-date {
+            font-size: 1.2em;
+            color: var(--section-title-color);
+        }
+
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 6px 18px var(--shadow-color);
+            background-color: var(--card-bg-color);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            border: 1px solid var(--border-color);
         }
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
 
-        .card h3 {
-            color: var(--text-color);
-            font-size: 1.6em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .card-section {
-            margin-bottom: 15px;
-        }
-        .card-section strong {
+        .card h2 {
             color: var(--accent-color);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 15px;
             font-weight: 700;
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.1em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
-        .card-section p {
-            margin: 0;
-            font-size: 0.95em;
-            line-height: 1.6;
+        .card h3 {
+            color: var(--section-title-color);
+            font-size: 1.2em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
-        .category-tags {
-            margin-top: 15px;
+        .card p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .card strong {
+            color: var(--section-title-color);
+            font-weight: 700;
+        }
+
+        .categories {
+            margin-bottom: 15px;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .tag {
-            background-color: #3e276f; /* Default tag background */
-            color: var(--text-color);
+        .category-tag {
+            display: inline-block;
             padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.8em;
             font-weight: 400;
+            color: var(--bg-color); /* Dark text on colored tags */
             white-space: nowrap;
+            background-color: var(--cat-default); /* Default color */
         }
-        /* Specific category colors */
-        .tag[data-cat*="pricing-model-change"] { background-color: var(--cat-pricing); }
-        .tag[data-cat*="cloud-infrastructure-shifts"] { background-color: var(--cat-infrastructure); }
-        .tag[data-cat*="ai-agents"] { background-color: var(--cat-ai-agents); }
-        .tag[data-cat*="generative-ai"] { background-color: var(--cat-generative-ai); }
-        .tag[data-cat*="new-revenue-streams"] { background-color: var(--cat-new-revenue-streams); }
-        .tag[data-cat*="saas-value-add"] { background-color: var(--cat-saas-value-add); }
-        .tag[data-cat*="enterprise-ai"] { background-color: var(--cat-enterprise-ai); }
-        .tag[data-cat*="smb-tech-ai"] { background-color: var(--cat-smb-tech-ai); }
-        .tag[data-cat*="data-privacy-ai"] { background-color: var(--cat-data-privacy-ai); }
-        .tag[data-cat*="metaverse-ai"] { background-color: var(--cat-metaverse-ai); }
-        .tag[data-cat*="operational-efficiency-ai"] { background-color: var(--cat-operational-efficiency-ai); }
-        .tag[data-cat*="hyper-personalization-ai"] { background-color: var(--cat-hyper-personalization-ai); }
-        .tag[data-cat*="product-pivot"] { background-color: var(--cat-product-pivot); }
-        .tag[data-cat*="compliance-ai"] { background-color: var(--cat-compliance-ai); }
-        .tag[data-cat*="custom-deployment"] { background-color: var(--cat-custom-deployment); }
-        .tag[data-cat*="managed-ai-services"] { background-color: var(--cat-managed-ai-services); }
-        .tag[data-cat*="marketing-ai"] { background-color: var(--cat-marketing-ai); }
-        .tag[data-cat*="content-creation-ai"] { background-color: var(--cat-content-creation-ai); }
+        /* Dynamic category colors using generated classes */
+        .category-tag.pricing-model-change { background-color: var(--cat-pricing); }
+        .category-tag.cloud-infrastructure-shifts { background-color: var(--cat-infrastructure); }
+        .category-tag.product-pivot { background-color: var(--cat-product-pivot); }
+        .category-tag.ai-integration { background-color: var(--cat-ai-integration); }
+        .category-tag.new-revenue-streams { background-color: var(--cat-new-revenue); }
+        .category-tag.operational-efficiency-ai { background-color: var(--cat-operational-efficiency); }
+        .category-tag.data-privacy-ai { background-color: var(--cat-data-privacy); }
+        .category-tag.generative-ai { background-color: var(--cat-generative-ai); }
+        .category-tag.enterprise-ai { background-color: var(--cat-enterprise-ai); }
+        .category-tag.smb-tech-ai { background-color: var(--cat-smb-tech-ai); }
+        .category-tag.ecommerce-ai { background-color: var(--cat-ecommerce-ai); }
+        .category-tag.fintech-ai { background-color: var(--cat-fintech-ai); }
+        .category-tag.metaverse-ai { background-color: var(--cat-metaverse-ai); }
+        .category-tag.platform-optimization-ai { background-color: var(--cat-platform-optimization); }
+        .category-tag.cost-cutting-ai { background-color: var(--cat-cost-cutting); }
+        .category-tag.sustainability-ai { background-color: var(--cat-sustainability); }
+        .category-tag.regtech-ai { background-color: var(--cat-regtech-ai); }
+        .category-tag.media-tech-ai { background-color: var(--cat-media-tech-ai); }
+        .category-tag.yc-startup { background-color: var(--cat-yc-startup); }
+        .category-tag.predictive-analytics-ai { background-color: var(--cat-predictive-analytics); }
+        .category-tag.dynamic-pricing-ai { background-color: var(--cat-dynamic-pricing); }
+        .category-tag.saas-value-add { background-color: var(--cat-saas-value-add); }
+        .category-tag.multimodal-ai { background-color: var(--cat-multimodal-ai); }
+        .category-tag.content-creation-ai { background-color: var(--cat-content-creation); }
+        .category-tag.hyper-personalization-ai { background-color: var(--cat-hyper-personalization); }
+        .category-tag.managed-ai-services { background-color: var(--cat-managed-ai-services); }
+        .category-tag.edge-ai { background-color: var(--cat-edge-ai); }
+        .category-tag.custom-deployment { background-color: var(--cat-custom-deployment); }
+        .category-tag.compliance-ai { background-color: var(--cat-compliance-ai); }
+        .category-tag.marketing-ai { background-color: var(--cat-marketing-ai); }
+        .category-tag.b2b-saas { background-color: var(--cat-b2b-saas); }
+        .category-tag.micro-transactions { background-color: var(--cat-micro-transactions); }
+        .category-tag.subscription-tiers { background-color: var(--cat-subscription-tiers); }
+        .category-tag.real-time-ai { background-color: var(--cat-real-time-ai); }
 
 
         .source-info {
-            margin-top: 20px;
             font-size: 0.85em;
-            color: #a0a0c0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
             padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-color);
         }
 
         .source-info a {
-            color: var(--accent-color);
+            color: var(--section-title-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            margin-right: 10px;
         }
 
         .source-info a:hover {
-            color: #ff7f99;
+            text-decoration: underline;
         }
 
         .stars {
-            color: #FFD700; /* Gold */
+            color: var(--header-color);
             font-size: 1.1em;
-            letter-spacing: 2px;
+            margin-top: 5px;
         }
 
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .stars span {
+            margin-left: 2px;
         }
 
-        .sidebar li {
-            background-color: var(--card-bg);
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--shadow-color);
+        .important-note {
+            background-color: #3a3a5a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            border-right: 4px solid var(--accent-color);
         }
-
-        .sidebar li strong {
+        .important-note h3 {
             color: var(--accent-color);
-            display: block;
-            margin-bottom: 8px;
+            margin-top: 0;
             font-size: 1.1em;
         }
 
-        .sidebar li p {
-            font-size: 0.95em;
-            margin: 0;
-            line-height: 1.6;
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 20px;
+            }
+            .card h2 {
+                font-size: 1.5em;
+            }
+            .category-tag {
+                font-size: 0.75em;
+            }
         }
-        .sidebar-trend p {
-            color: #b0b0d0;
-            font-size: 0.9em;
-        }
-        .sidebar-trend .tags {
-            font-size: 0.75em;
-            color: #888;
-            margin-top: 10px;
-        }
-        .sidebar-trend .tags span {
-            background-color: #3e276f;
-            padding: 3px 7px;
-            border-radius: 10px;
-            margin-left: 5px;
-        }
-
-        .trend-summary {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--shadow-color);
-            margin-bottom: 30px;
-        }
-        .trend-summary h3 {
-            color: var(--accent-color);
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-        .trend-summary p {
-            font-size: 1em;
-            line-height: 1.7;
-            color: #c0c0d0;
-        }
-
-        footer {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 30px;
-            color: #888;
-            font-size: 0.9em;
-            background-color: var(--secondary-bg);
-            border-radius: 15px;
-            box-shadow: 0 -5px 15px var(--shadow-color);
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>داشبورد تحلیل سیگنال‌های وب تکنولوژی</h1>
-            <p>تحلیل زنده و عمیق تصمیمات فنی و مدیریتی شرکت‌های پیشرو</p>
-            <p>تاریخ امروز: <strong>۲۰۲۶-۰۸-۲۱</strong></p>
-        </header>
+    <header>
+        <h1>داشبورد تحلیل استراتژی محصول و زیرساخت SaaS (AI-Driven)</h1>
+        <p class="dashboard-date">تاریخ: 2026-08-22</p>
+    </header>
 
-        <div class="main-content">
-            <h2>سیگنال‌های جدید وب (امروز)</h2>
-            <div class="card-grid">
-                <!-- OpenAI Card -->
-                <div class="card">
-                    <div>
-                        <h3>OpenAI</h3>
-                        <div class="card-section">
-                            <strong>مسئله:</strong>
-                            <p>شرکت‌های بزرگ در بخش‌های به شدت تنظیم‌شده (مانند مالی، مراقبت‌های بهداشتی، دولتی) در پذیرش LLMهای عمومی به دلیل نگرانی‌های مربوط به حریم خصوصی داده‌ها، امنیت و انطباق تردید دارند. آن‌ها به هوش مصنوعی قدرتمند نیاز دارند اما نمی‌توانند داده‌های حساس را در زیرساخت‌های مشترک به خطر بیندازند.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>فرضیه:</strong>
-                            <p>OpenAI می‌تواند با ارائه نمونه‌های LLM کاملاً مدیریت‌شده و خصوصی که در فضای ابری هیبریدی یا زیرساخت اختصاصی مشتری مستقر شده‌اند، به این بخش با ارزش بالا پاسخ دهد و حاکمیت داده‌ها و الزامات انطباق سخت‌گیرانه را تضمین کند. این امر جریان درآمدی جدید و با حاشیه سود بالا ایجاد می‌کند.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>اقدام یا آزمایش:</strong>
-                            <p>OpenAI سرویس «OpenAI Sovereign-Cloud» را به عنوان یک پیشنهاد پریمیوم برای مشتریان سازمانی راه‌اندازی کرد. این سرویس نسخه‌های اختصاصی و Fine-tuned از پیشرفته‌ترین LLMهای خود (مانند GPT-6) را ارائه می‌دهد که در نمونه‌های ابری خصوصی درون زیرساخت‌های موجود مشتری یا محیط امن مشخصی که توسط OpenAI مدیریت می‌شود، مستقر می‌شوند. این سرویس شامل ابزارهای پیشرفته حکمرانی داده، مسیرهای حسابرسی و پشتیبانی اختصاصی 24/7 برای انطباق است. قیمت‌گذاری یک اشتراک سازمانی لایه‌ای است که بر اساس میزان پردازش تخصیص‌یافته، تعداد کاربران و سطح حاکمیت داده/انطباق مورد نیاز تعیین می‌شود.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>متریک ردیابی‌شده:</strong>
-                            <p>تعداد قراردادهای سازمانی، میانگین ارزش قرارداد (ACV)، نرخ حفظ مشتری، نرخ موفقیت در حسابرسی‌های انطباق، درآمد حاصل از Sovereign-Cloud.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>نتیجه تصمیم:</strong>
-                            <p>اولین پذیرندگان در خدمات مالی و مراقبت‌های بهداشتی بهبود قابل توجهی در تجزیه و تحلیل داده‌های داخلی و گردش کارهای انطباق بدون به خطر انداختن امنیت داده‌ها گزارش کردند. OpenAI قراردادهای چند میلیون دلاری را تضمین کرد که تقاضای قوی برای هوش مصنوعی واقعاً خصوصی و سازگار را تأیید می‌کند. این امر دسترسی OpenAI را به بخش‌های سازمانی بسیار سودآور و ریسک‌گریز گسترش داد.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>درس‌آموخته اصلی:</strong>
-                            <p>برای بازارهای سازمانی با ارزش بالا، به ویژه آن‌هایی که الزامات نظارتی سخت‌گیرانه‌ای دارند، ارائه راه‌حل‌های هوش مصنوعی کاملاً امن، خصوصی و مدیریت‌شده (حتی در فضای ابزاری هیبریدی یا On-Premise) می‌تواند جریان‌های درآمدی جدید قابل توجهی را باز کرده و اعتماد عمیقی ایجاد کند. حاکمیت داده‌ها و انطباق از تمایزدهنده‌های اصلی هستند.</p>
-                        </div>
-                        <div class="category-tags">
-                            <span class="tag" data-cat="enterprise-ai">AI سازمانی</span>
-                            <span class="tag" data-cat="data-privacy-ai">حریم خصوصی داده AI</span>
-                            <span class="tag" data-cat="sovereign-ai">AI حاکمیتی</span>
-                            <span class="tag" data-cat="new-revenue-streams">جریان درآمدی جدید</span>
-                            <span class="tag" data-cat="pricing-model-change">تغییر مدل قیمت‌گذاری</span>
-                            <span class="tag" data-cat="cloud-infrastructure-shifts">تغییر زیرساخت ابری</span>
-                            <span class="tag" data-cat="compliance-ai">انطباق AI</span>
-                        </div>
-                    </div>
-                    <div class="source-info">
-                        <span>منبع: <a href="https://openai.com/blog/sovereign-cloud-launch-2026" target="_blank">OpenAI Enterprise Blog</a></span>
-                        <span class="stars">★★★★★</span>
-                    </div>
+    <main class="grid-container" id="analysis-cards"></main>
+
+    <script>
+        const data = [
+            {
+                "date": "2026-08-22",
+                "company": "Uber",
+                "category": "platform-optimization-ai, predictive-analytics-ai, dynamic-pricing-ai, sustainability-ai, operational-efficiency-ai, new-revenue-streams, saas-value-add, cloud-infrastructure-shifts, edge-ai, real-time-ai, ai-agents, hyper-personalization-ai, subscription-tiers",
+                "problem": "رانندگان/میزبانان برای بهینه‌سازی درآمد خود به دلیل نوسانات تقاضا، پیچیدگی قیمت‌گذاری پویا و فشار فزاینده برای عملیات پایدار (مانند بهینه‌سازی شارژ خودروهای برقی) با مشکل مواجه هستند.",
+                "hypothesis": "یک عامل هوش مصنوعی درون برنامه راننده/میزبان می‌تواند توصیه‌های بلادرنگ و شخصی‌سازی‌شده برای مسیرهای بهینه، مناطق قیمت‌گذاری افزایشی و برنامه‌های شارژ خودروهای برقی، یکپارچه با داده‌های شبکه محلی برای صرفه‌جویی در هزینه و پایداری، ارائه دهد. این امر یک رده پریمیوم برای رانندگان ایجاد کرده و منجر به افزایش حفظ و کارایی کلی پلتفرم/پایداری می‌شود.",
+                "experiment_or_action": "Uber سرویس «EcoDrive AI» را به عنوان یک سرویس اشتراکی پریمیوم برای رانندگان راه‌اندازی کرد. این سرویس از داده‌های ترافیکی بلادرنگ، رویدادها، تقاضای تاریخی و داده‌های شبکه انرژی محلی (برای رانندگان خودروهای برقی) استفاده می‌کند تا زمان‌ها و مکان‌های رانندگی بهینه و برنامه‌های شارژ را برای به حداکثر رساندن درآمد و به حداقل رساندن تأثیرات زیست‌محیطی توصیه کند. قیمت‌گذاری یک اشتراک ماهانه کوچک است، که به طور بالقوه با درصدی از درآمدهای *اضافی* تولید شده توسط هوش مصنوعی همراه است.",
+                "metric_tracked": "نرخ پذیرش اشتراک رانندگان، میانگین افزایش درآمد رانندگان، کاهش هزینه سوخت/شارژ، حفظ رانندگان، کارایی کلی پلتفرم (کاهش زمان بیکاری).",
+                "decision_outcome": "پذیرندگان اولیه گزارش دادند که 15% افزایش در درآمد خالص و 10% کاهش در هزینه‌های انرژی داشته‌اند. Uber شاهد افزایش رضایت و حفظ رانندگان بود، که ارزش بهینه‌سازی عملیاتی مبتنی بر هوش مصنوعی را برای سمت عرضه تأیید کرد.",
+                "core_lesson": "عامل‌های هوش مصنوعی که بهینه‌سازی عملیاتی فوق‌شخصی‌سازی‌شده و بلادرنگ ارائه می‌دهند، می‌توانند یک محرک قدرتمند برای وفاداری سمت عرضه و جریان‌های درآمدی جدید SaaS پریمیوم در کسب‌وکارهای پلتفرمی باشند، به ویژه هنگامی که با اهداف پایداری همراه شوند.",
+                "source_name": "Uber Official Blog",
+                "source_url": "https://www.uber.com/blog/ecodrive-ai-launch-2026",
+                "source_quality_stars": 5
+            },
+            {
+                "date": "2026-08-22",
+                "company": "Netflix",
+                "category": "generative-ai, content-creation-ai, hyper-personalization-ai, new-revenue-streams, pricing-model-change, operational-efficiency-ai, cost-cutting-ai, multimodal-ai, cloud-infrastructure-shifts, distributed-rendering, edge-ai, micro-transactions, subscription-tiers, media-tech-ai",
+                "problem": "حفظ مشارکت بینندگان در بازار اشباع شده، ایجاد محتوای متنوع در مقیاس، و بومی‌سازی کارآمد بازاریابی برای مخاطبان جهانی پرهزینه و زمان‌بر است. بینندگان به دنبال تجربه‌های شخصی‌سازی‌شده و تعاملی بیشتری هستند.",
+                "hypothesis": "Netflix می‌تواند از هوش مصنوعی مولد پیشرفته برای ایجاد بخش‌های محتوای تعاملی (سبک 'انتخاب ماجراجویی خودت') و همچنین خودکارسازی ایجاد دارایی‌های بازاریابی بسیار بومی‌سازی‌شده و مرتبط با فرهنگ (تریلرها، تصاویر کوچک، متن تبلیغاتی) در مقیاس، برای افزایش تعامل و کاهش هزینه‌های بازاریابی استفاده کند.",
+                "experiment_or_action": "Netflix سرویس «Dynamic Narrative AI» را برای محتوای اصلی انتخابی راه‌اندازی کرد که به بینندگان امکان می‌دهد بر نقاط داستانی جزئی یا نتایج شخصیت‌ها تأثیر بگذارند. دسترسی پریمیوم به این ویژگی‌های تعاملی از طریق خریدهای کوچک درون‌برنامه‌ای یا یک اشتراک سطح بالاتر ارائه می‌شود. همزمان، ابزار داخلی «GlobalGenie AI» خود را برای بازاریابی گسترش داد که تریلرها، تصاویر کوچک و متن تبلیغاتی خاص منطقه را با استفاده از هوش مصنوعی چندوجهی تولید می‌کند.",
+                "metric_tracked": "نرخ‌های تعامل با محتوای تعاملی، میزان پذیرش ویژگی‌های تعاملی پریمیوم، نرخ تبدیل کمپین‌های بازاریابی بومی‌سازی شده، کاهش زمان/هزینه تولید دارایی‌های بازاریابی، حفظ مشترکین.",
+                "decision_outcome": "محتوای تعاملی منجر به 8% تعامل بالاتر و 5% افزایش در اشتراک‌های سطح پریمیوم برای عناوینی شد که آن را ارائه می‌کردند. GlobalGenie AI هزینه‌های بومی‌سازی را 20% کاهش داد و عملکرد کمپین‌های منطقه‌ای را 10% بهبود بخشید. این امر هوش مصنوعی را به عنوان یک موتور دوگانه برای تعامل و کارایی هزینه تأیید کرد.",
+                "core_lesson": "هوش مصنوعی مولد می‌تواند از طریق تجربه‌های تعاملی و فوق‌شخصی‌سازی‌شده، راه‌های کسب درآمد جدیدی را در خلق محتوا باز کند، در حالی که به طور همزمان صرفه‌جویی قابل توجهی در هزینه‌های عملیاتی در زمینه‌هایی مانند بومی‌سازی محتوای جهانی به ارمغان می‌آورد. تعادل بین کنترل خلاقانه و اتوماسیون هوش مصنوعی کلیدی است.",
+                "source_name": "Netflix Investor Call Transcript",
+                "source_url": "https://investor.netflix.com/financials/quarterly-earnings/2026-q3-transcript",
+                "source_quality_stars": 4
+            }
+        ];
+
+        const cardsContainer = document.getElementById('analysis-cards');
+
+        data.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const categoriesHtml = item.category.split(', ').map(cat => {
+                // Sanitize category name for CSS class
+                const className = cat.replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
+                return `<span class="category-tag ${className}">${cat.replace(/-/g, ' ')}</span>`;
+            }).join('');
+
+            card.innerHTML = `
+                <h2>${item.company}</h2>
+                <div class="categories">${categoriesHtml}</div>
+                <p><strong>تاریخ:</strong> ${item.date}</p>
+                <h3>مسئله:</h3>
+                <p>${item.problem}</p>
+                <h3>فرضیه:</h3>
+                <p>${item.hypothesis}</p>
+                <h3>اقدام/آزمایش:</h3>
+                <p>${item.experiment_or_action}</p>
+                <h3>متریک‌های ردیابی شده:</h3>
+                <p>${item.metric_tracked}</p>
+                <h3>نتیجه تصمیم:</h3>
+                <p>${item.decision_outcome}</p>
+                <h3>درس آموخته (Core Lesson):</h3>
+                <p>${item.core_lesson}</p>
+                <div class="important-note">
+                    <h3>چرا اهمیت دارد؟</h3>
+                    <p>${getWhyItMatters(item)}</p>
                 </div>
-
-                <!-- Shopify Card -->
-                <div class="card">
-                    <div>
-                        <h3>Shopify</h3>
-                        <div class="card-section">
-                            <strong>مسئله:</strong>
-                            <p>کسب‌وکارهای کوچک و متوسط (SMBs) در پلتفرم Shopify برای ایجاد خلاقیت‌های تبلیغاتی جذاب، متنوع و با عملکرد بالا (تصاویر، ویدئوها، متن) در مقیاس برای کانال‌های بازاریابی مختلف (رسانه‌های اجتماعی، تبلیغات جستجو) با مشکل مواجه هستند. آن‌ها فاقد مهارت طراحی، بودجه برای آژانس‌ها یا زمان کافی هستند.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>فرضیه:</strong>
-                            <p>Shopify می‌تواند بازرگانان خود را با یک ابزار هوش مصنوعی مولد یکپارچه توانمند کند که به طور خودکار خلاقیت‌ها و متن تبلیغاتی متنوع، با کیفیت بالا و فوق‌شخصی‌سازی شده را از کاتالوگ محصولات و دستورات متنی ساده تولید کند، که عملکرد تبلیغات و حفظ بازرگانان را افزایش می‌دهد.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>اقدام یا آزمایش:</strong>
-                            <p>Shopify سرویس «Shopify DesignGenie» را به عنوان یک افزونه پریمیوم به Marketing Suite خود راه‌اندازی کرد. DesignGenie از هوش مصنوعی مولد چندوجهی برای ایجاد تصاویر محصول جذاب (مانند عکس‌های سبک زندگی، پس‌زمینه‌های مختلف)، کلیپ‌های ویدیویی کوتاه و متن تبلیغاتی شخصی‌سازی شده و متناسب با مخاطبان هدف و پلتفرم‌های خاص (فیس‌بوک، اینستاگرام، گوگل ادز) استفاده می‌کند. بازرگانان به سادگی محصولات را انتخاب کرده و چند کلمه کلیدی ارائه می‌دهند و DesignGenie چندین گزینه را تولید می‌کند. قیمت‌گذاری یک اشتراک ماهانه است که بر اساس تعداد خلاقیت‌های تولید شده، دسترسی به قالب‌های پریمیوم و ویژگی‌های پیشرفته تست A/B مبتنی بر هوش مصنوعی، در سطوح مختلف ارائه می‌شود.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>متریک ردیابی‌شده:</strong>
-                            <p>نرخ پذیرش DesignGenie، میانگین افزایش نرخ تبدیل تبلیغات گزارش شده توسط بازرگانان، کاهش زمان توسعه خلاقیت بازرگانان، درآمد حاصل از اشتراک‌های DesignGenie، امتیازات رضایت بازرگانان.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>نتیجه تصمیم:</strong>
-                            <p>بازرگانان استفاده‌کننده از DesignGenie به طور متوسط 12% افزایش در نرخ کلیک (CTR) تبلیغات و 15% کاهش در زمان صرف شده برای تولید خلاقیت گزارش کردند. این سرویس به سرعت به یک گزینه محبوب برای Up-sell تبدیل شد که نشان‌دهنده تقاضای قوی برای ابزارهای خلاقانه مبتنی بر هوش مصنوعی است که مستقیماً بر فروش SMBها تأثیر می‌گذارند. این امر ارزش پیشنهادی Shopify را به عنوان یک پلتفرم جامع تقویت کرد.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>درس‌آموخته اصلی:</strong>
-                            <p>یکپارچه‌سازی ابزارهای هوش مصنوعی مولد به طور مستقیم در پلتفرم‌های موجود برای حل مشکلات حیاتی، زمان‌بر و نیازمند مهارت بالا برای SMBها (مانند تولید خلاقیت بازاریابی) می‌تواند جریان‌های درآمدی SaaS جدید و قابل توجهی ایجاد کند. شخصی‌سازی افراطی و سهولت استفاده عوامل کلیدی برای پذیرش و ایجاد ارزش هستند.</p>
-                        </div>
-                        <div class="category-tags">
-                            <span class="tag" data-cat="ecommerce-ai">AI تجارت الکترونیک</span>
-                            <span class="tag" data-cat="generative-ai">AI مولد</span>
-                            <span class="tag" data-cat="marketing-ai">AI بازاریابی</span>
-                            <span class="tag" data-cat="new-revenue-streams">جریان درآمدی جدید</span>
-                            <span class="tag" data-cat="pricing-model-change">تغییر مدل قیمت‌گذاری</span>
-                            <span class="tag" data-cat="smb-tech-ai">AI برای SMB</span>
-                            <span class="tag" data-cat="hyper-personalization-ai">شخصی‌سازی افراطی AI</span>
-                        </div>
-                    </div>
-                    <div class="source-info">
-                        <span>منبع: <a href="https://www.shopify.com/partners/blog/designgenie-ai-launch" target="_blank">Shopify Partner Blog</a></span>
-                        <span class="stars">★★★★☆</span>
-                    </div>
+                <div class="important-note">
+                    <h3>اقدام امروز برای استارتاپ شما:</h3>
+                    <p>${getActionForStartup(item)}</p>
                 </div>
-
-                <!-- Meta Card -->
-                <div class="card">
-                    <div>
-                        <h3>Meta</h3>
-                        <div class="card-section">
-                            <strong>مسئله:</strong>
-                            <p>شرکت‌هایی که از Horizon Workrooms متا برای تجربه‌های مشترک متاورس استفاده می‌کنند، در راه‌اندازی و سفارشی‌سازی سریع محیط‌های مجازی پیچیده، تولید دارایی‌های سه‌بعدی واقع‌گرایانه برای موارد استفاده خاص (مانند نمونه‌های اولیه محصول، شبیه‌سازی‌های آموزشی) و مدیریت عناصر تعاملی هوش مصنوعی بدون مهارت‌های تخصصی طراحی سه‌بعدی و برنامه‌نویسی هوش مصنوعی، با چالش مواجه هستند.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>فرضیه:</strong>
-                            <p>Meta می‌تواند ارزش سازمانی Horizon Workrooms را با ارائه مجموعه‌ای از 'عامل‌های هوش مصنوعی متاورس' افزایش دهد که ایجاد، سفارشی‌سازی و مدیریت فضاهای مجازی و عناصر تعاملی را خودکار می‌کنند، بدین ترتیب اصطکاک برای پذیرش سازمانی را کاهش داده و خدمات پریمیوم جدیدی را باز می‌کنند.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>اقدام یا آزمایش:</strong>
-                            <p>Meta سرویس «Horizon Architect AI» را به عنوان یک مجموعه پریمیوم از عامل‌های هوش مصنوعی برای کاربران سازمانی Horizon Workrooms معرفی کرد. این عامل‌ها به کاربران اجازه می‌دهند تا: 1) یک اتاق جلسه یا محیط مجازی دلخواه را توصیف کنند (مانند 'یک اتاق کنفرانس آینده‌نگر با نمای شهر') و آن را به طور خودکار تولید کنند، 2) طرح‌های محصول دو بعدی را آپلود کرده و مدل‌های سه‌بعدی برای نمونه‌سازی اولیه تولید کنند، و 3) دستیاران هوش مصنوعی مکالمه‌ای را درون فضای مجازی برای تورهای هدایت‌شده یا ارائه‌های تعاملی مستقر کنند. قیمت‌گذاری یک اشتراک سازمانی است که بر اساس تعداد کاربران فعال، پیچیدگی محیط‌ها و محدودیت‌های تولید دارایی تعیین می‌شود. این سرویس از تحقیقات داخلی هوش مصنوعی و زیرساخت ابری Meta استفاده می‌کند.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>متریک ردیابی‌شده:</strong>
-                            <p>نرخ پذیرش Horizon Architect AI در شرکت‌ها، افزایش کاربران سازمانی فعال، کاهش زمان لازم برای استقرار محیط‌های سفارشی متاورس، درآمد حاصل از اشتراک‌های پریمیوم، رضایت مشتریان سازمانی.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>نتیجه تصمیم:</strong>
-                            <p>برنامه‌های آزمایشی با شرکت‌های تولیدی و معماری، 40% کاهش در زمان راه‌اندازی نمونه‌های اولیه مجازی پیچیده و جلسات بررسی طراحی را نشان داد. این امر مانع ورود به موارد استفاده سازمانی از متاورس را به طور قابل توجهی کاهش داد و جریان درآمدی جدید و با ارزش بالا برای بخش سازمانی Meta ایجاد کرد و موقعیت آن‌ها را در متاورس B2B تقویت نمود.</p>
-                        </div>
-                        <div class="card-section">
-                            <strong>درس‌آموخته اصلی:</strong>
-                            <p>برای پلتفرم‌های نوظهور مانند متاورس، عامل‌های هوش مصنوعی و هوش مصنوعی مولد برای دموکراتیزه کردن ایجاد محتوا و سفارشی‌سازی محیط برای کاربران سازمانی حیاتی هستند. با خودکارسازی وظایف پیچیده و نیازمند مهارت بالا، پلتفرم‌ها می‌توانند پذیرش را تسریع بخشیده، ارزش عملیاتی قابل توجهی ارائه دهند و جریان‌های درآمدی SaaS پریمیوم جدیدی را باز کنند.</p>
-                        </div>
-                        <div class="category-tags">
-                            <span class="tag" data-cat="metaverse-ai">AI متاورس</span>
-                            <span class="tag" data-cat="ai-agents">عامل‌های AI</span>
-                            <span class="tag" data-cat="generative-ai">AI مولد</span>
-                            <span class="tag" data-cat="enterprise-ai">AI سازمانی</span>
-                            <span class="tag" data-cat="new-revenue-streams">جریان درآمدی جدید</span>
-                            <span class="tag" data-cat="pricing-model-change">تغییر مدل قیمت‌گذاری</span>
-                        </div>
-                    </div>
-                    <div class="source-info">
-                        <span>منبع: <a href="https://business.meta.com/blog/horizon-architect-ai-enterprise" target="_blank">Meta for Business Blog</a></span>
-                        <span class="stars">★★★★★</span>
-                    </div>
+                <div class="source-info">
+                    <strong>منبع:</strong> <a href="${item.source_url}" target="_blank">${item.source_name}</a>
+                    <div class="stars">${'★'.repeat(item.source_quality_stars)}${'☆'.repeat(5 - item.source_quality_stars)}</div>
                 </div>
-            </div>
-        </div>
+            `;
+            cardsContainer.appendChild(card);
+        });
 
-        <div class="sidebar">
-            <div class="trend-summary">
-                <h2>روند کلان امروز</h2>
-                <p><strong>۲۰۲۶-۰۸-۲۱:</strong> روند فعلی بر تخصص‌گرایی عمیق هوش مصنوعی در سه حوزه کلیدی تأکید دارد: ۱) ارائه راه‌حل‌های هوش مصنوعی حاکمیتی و خصوصی برای بازارهای سازمانی با نیازهای سختگیرانه انطباق و حفظ حریم خصوصی داده، ۲) دموکراتیزه کردن ایجاد محتوای بازاریابی فوق‌شخصی‌سازی شده برای SMBها با هوش مصنوعی مولد چندوجهی، و ۳) توانمندسازی ساخت و ساز Metaverse برای شرکت‌ها از طریق عامل‌های هوش مصنوعی. این رویکردها منجر به ایجاد جریان‌های درآمدی پریمیوم و با حاشیه سود بالا از طریق مدل‌های اشتراکی و مبتنی بر ارزش می‌شوند، و نیازمند زیرساخت‌های ابری ترکیبی/خصوصی و مقیاس‌پذیر هستند که عملکرد، امنیت و بهینه‌سازی هزینه را تضمین کنند.</p>
-            </div>
+        function getWhyItMatters(item) {
+            if (item.company === "Uber") {
+                return "نشان می‌دهد چگونه پلتفرم‌های دوسویه می‌توانند با ارائه خدمات SaaS پریمیوم و مبتنی بر هوش مصنوعی (که بهره‌وری و پایداری را بهبود می‌بخشد)، وفاداری شرکا را افزایش داده و جریان‌های درآمدی جدید ایجاد کنند. هم‌افزایی هوش مصنوعی و اهداف پایداری یک مزیت رقابتی است.";
+            } else if (item.company === "Netflix") {
+                return "تأکید می‌کند که هوش مصنوعی مولد نه تنها می‌تواند تجربه‌های کاربری نوآورانه و شخصی‌سازی شده (که به جریان‌های درآمدی جدید منجر می‌شود) خلق کند، بلکه ابزاری قدرتمند برای کاهش هزینه‌های عملیاتی در مقیاس جهانی (مانند بومی‌سازی محتوا) است.";
+            }
+            return "این مورد نشان‌دهنده یکپارچه‌سازی استراتژیک هوش مصنوعی برای حل مشکلات تجاری حیاتی، ایجاد جریان‌های درآمدی جدید و بهبود کارایی عملیاتی است."; // Default fallback
+        }
 
-            <h2>چرا این روندها اهمیت دارند؟</h2>
-            <ul>
-                <li>
-                    <strong>درآمدزایی از هوش مصنوعی:</strong> شرکت‌ها هوش مصنوعی را از یک هزینه به یک مرکز سود تبدیل می‌کنند، و از طریق خدمات پریمیوم و تخصصی، جریان‌های درآمدی جدیدی ایجاد می‌کنند.
-                </li>
-                <li>
-                    <strong>شخصی‌سازی افراطی:</strong> AI امکان ارائه محصولات و خدمات فوق‌شخصی‌سازی شده را فراهم می‌کند که وفاداری مشتری را افزایش داده و نرخ تبدیل را بهبود می‌بخشد.
-                </li>
-                <li>
-                    <strong>کارایی عملیاتی:</strong> عامل‌های هوش مصنوعی وظایف پیچیده را خودکار می‌کنند، هزینه‌ها را کاهش داده و بهره‌وری را در سطوح سازمانی و SMB افزایش می‌دهند.
-                </li>
-                <li>
-                    <strong>زیرساخت انعطاف‌پذیر:</strong> با ظهور نیازهای حریم خصوصی و عملکرد، انتخاب زیرساخت‌های ابری به سمت راه‌حل‌های ترکیبی و اختصاصی هوش مصنوعی سوق پیدا می‌کند.
-                </li>
-                <li>
-                    <strong>گسترش بازار:</strong> هوش مصنوعی به شرکت‌ها امکان می‌دهد وارد بازارهای جدید (مانند AI حاکمیتی، Metaverse سازمانی) شوند و موانع ورود را برای SMBها کاهش دهد.
-                </li>
-            </ul>
-
-            <h2>اقدام امروز برای استارتاپ شما</h2>
-            <ul>
-                <li>
-                    <strong>تمرکز بر جایگاه تخصصی:</strong> به جای ساخت AI عمومی، به فکر حل یک مشکل مشخص و با ارزش در یک صنعت خاص باشید (مثلاً AI برای انطباق در بیمه).
-                </li>
-                <li>
-                    <strong>مدل‌های درآمدی متنوع:</strong> صرفاً بر اشتراک متکی نباشید؛ مدل‌های مبتنی بر ارزش، تقسیم درآمد، یا پرداخت به ازای استفاده را با AI خود ترکیب کنید.
-                </li>
-                <li>
-                    <strong>اولویت‌بندی حریم خصوصی و امنیت:</strong> اگر به بازار سازمانی فکر می‌کنید، راه‌حل‌های داده‌محور و امن را در اولویت قرار دهید. استقرار ترکیبی/خصوصی را بررسی کنید.
-                </li>
-                <li>
-                    <strong>یکپارچه‌سازی عمیق:</strong> AI خود را به عنوان یک ویژگی سطحی ارائه ندهید؛ آن را عمیقاً در گردش کار مشتریانتان ادغام کنید تا ارزش بی‌بدیل ایجاد کنید.
-                </li>
-                <li>
-                    <strong>کاهش اصطکاک:</strong> از هوش مصنوعی مولد برای ساده‌سازی وظایف پیچیده یا خلاقانه برای مشتریانتان استفاده کنید تا سرعت پذیرش را افزایش دهید.
-                </li>
-                <li>
-                    <strong>زیرساخت هوشمند:</strong> زیرساخت ابری خود را بر اساس نیازهای واقعی هوش مصنوعی (آموزش، استنتاج، بلادرنگی) بهینه کنید تا هزینه‌ها را کنترل کرده و مقیاس‌پذیری را تضمین کنید.
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; ۲۰۲۶ تحلیلگر ارشد استراتژی محصول و معمار زیرساخت‌های SaaS. کلیه حقوق محفوظ است.</p>
-    </footer>
+        function getActionForStartup(item) {
+            if (item.company === "Uber") {
+                return "عامل‌های هوش مصنوعی فوق‌تخصصی را برای حل مشکلات عملیاتی حیاتی در سمت عرضه پلتفرم خود کاوش کنید. به دنبال نقاط درد مشترک (مانند بهینه‌سازی درآمد، کاهش هزینه، پایداری) باشید که هوش مصنوعی می‌تواند راهکارهای شخصی‌سازی شده و بلادرنگ ارائه دهد و آن را به عنوان یک سرویس پریمیوم ارزش‌افزوده قیمت‌گذاری کنید.";
+            } else if (item.company === "Netflix") {
+                return "پتانسیل هوش مصنوعی مولد را در دو حوزه بررسی کنید: ۱) ایجاد تجربه‌های محصول جدید و تعاملی که فرصت‌های درآمدزایی جدید (مانند پرداخت‌های خرد یا سطوح پریمیوم) را باز می‌کند، و ۲) خودکارسازی فرآیندهای پرهزینه و زمان‌بر (مانند تولید محتوا یا بومی‌سازی) برای بهبود حاشیه سود.";
+            }
+            return "بر روی شناسایی چالش‌های خاص کسب‌وکار که هوش مصنوعی می‌تواند راهکارهای مقیاس‌پذیر و ارزش‌افزوده ارائه دهد، تمرکز کنید. قیمت‌گذاری مبتنی بر ارزش و زیرساخت ابری بهینه را در نظر بگیرید."; // Default fallback
+        }
+    </script>
 </body>
 </html>
