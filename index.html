@@ -1,5 +1,286 @@
-<div style='font-family:sans-serif; padding:50px; text-align:center; color:#333; direction:rtl;'>
-        <h2>⚠️ سیستم دیده‌بان در حال به‌روزرسانی زیرساخت است</h2>
-        <p>موتور استراتژی خطایی را گزارش کرده است. فرآیند خودمراقبتی سیستم فعال شده است.</p>
-        <code style='background:#fff5f5; color:#c53030; padding:10px; border-radius:5px; display:inline-block; direction:ltr;'>'NoneType' object has no attribute 'group'</code>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحلیلگر استراتژی محصول SaaS - رصد زنده ۲۰۲۶-۱۰-۰۸</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap">
+    <style>
+        :root {
+            --bg-color: #f8f9fa; /* Light background */
+            --card-bg: #ffffff;
+            --text-color: #212529; /* Dark gray for text */
+            --header-color: #0d1a26; /* Darker header */
+            --accent-color: #6a5acd; /* Royal Purple */
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+
+            /* Category Colors - Soft & Luxurious */
+            --cat-generative-ai: #d3eaf0; /* Light Blue-Green */
+            --cat-content-creation-ai: #fcf1d2; /* Creamy Yellow */
+            --cat-media-tech-ai: #ffe0b2; /* Light Orange */
+            --cat-enterprise-ai: #e0cffc; /* Light Purple */
+            --cat-new-revenue-streams: #d4edda; /* Light Green */
+            --cat-pricing-model-change: #fff3cd; /* Light Gold */
+            --cat-saas-value-add: #d1ecf1; /* Light Cyan */
+            --cat-cost-cutting-ai: #f8d7da; /* Light Red */
+            --cat-operational-efficiency-ai: #c3e6cb; /* Pale Green */
+            --cat-cloud-infrastructure-shifts: #e1d4f4; /* Muted Violet */
+            --cat-custom-hardware: #f0e6da; /* Dusty Rose */
+            --cat-r-d-monetization: #cce5ff; /* Soft Blue */
+            --cat-default: #e9ecef;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding-top: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px var(--shadow-color);
+            border-radius: 8px;
+        }
+
+        header h1 {
+            color: var(--header-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        header p {
+            color: var(--text-color);
+            font-weight: 400;
+            font-size: 1.1em;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-header h2 {
+            color: var(--accent-color);
+            font-size: 1.8em;
+            margin: 0 0 10px;
+            font-weight: 700;
+        }
+
+        .card-header .date {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .category-tag {
+            font-size: 0.8em;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            white-space: nowrap;
+            color: var(--text-color);
+        }
+        
+        .category-tag[data-category*="generative-ai"] { background-color: var(--cat-generative-ai); }
+        .category-tag[data-category*="content-creation-ai"] { background-color: var(--cat-content-creation-ai); }
+        .category-tag[data-category*="media-tech-ai"] { background-color: var(--cat-media-tech-ai); }
+        .category-tag[data-category*="enterprise-ai"] { background-color: var(--cat-enterprise-ai); }
+        .category-tag[data-category*="new-revenue-streams"] { background-color: var(--cat-new-revenue-streams); }
+        .category-tag[data-category*="pricing-model-change"] { background-color: var(--cat-pricing-model-change); }
+        .category-tag[data-category*="saas-value-add"] { background-color: var(--cat-saas-value-add); }
+        .category-tag[data-category*="cost-cutting-ai"] { background-color: var(--cat-cost-cutting-ai); }
+        .category-tag[data-category*="operational-efficiency-ai"] { background-color: var(--cat-operational-efficiency-ai); }
+        .category-tag[data-category*="cloud-infrastructure-shifts"] { background-color: var(--cat-cloud-infrastructure-shifts); }
+        .category-tag[data-category*="custom-hardware"] { background-color: var(--cat-custom-hardware); }
+        .category-tag[data-category*="r-d-monetization"] { background-color: var(--cat-r-d-monetization); }
+        .category-tag:not([data-category*="-ai"]) { background-color: var(--cat-default); }
+
+
+        .card-section {
+            margin-bottom: 20px;
+        }
+
+        .card-section h3 {
+            color: var(--accent-color);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-bottom: 1px dotted var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .card-section p {
+            font-size: 0.95em;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .source-info {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .source-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .source-info a:hover {
+            text-decoration: underline;
+        }
+
+        .star-rating {
+            color: #FFD700; /* Gold color for stars */
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .star-rating span {
+            display: inline-block;
+            margin-left: 2px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>دیده‌بان استراتژی محصول و زیرساخت‌های SaaS</h1>
+        <p>تحلیل زنده تصمیمات فنی و مدیریتی شرکت‌های پیشرو تکنولوژی - ۲۰۲۶-۱۰-۰۸</p>
+    </header>
+
+    <div class="container">
+        <!-- Netflix Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="date">۲۰۲۶-۱۰-۰۸</div>
+                <h2>Netflix</h2>
+                <div class="category-tags">
+                    <span class="category-tag" data-category="generative-ai">هوش مصنوعی مولد</span>
+                    <span class="category-tag" data-category="content-creation-ai">تولید محتوای هوش مصنوعی</span>
+                    <span class="category-tag" data-category="media-tech-ai">فناوری رسانه هوش مصنوعی</span>
+                    <span class="category-tag" data-category="enterprise-ai">هوش مصنوعی سازمانی</span>
+                    <span class="category-tag" data-category="new-revenue-streams">جریان‌های درآمدی جدید</span>
+                    <span class="category-tag" data-category="pricing-model-change">تغییر مدل قیمت‌گذاری</span>
+                    <span class="category-tag" data-category="saas-value-add">افزودن ارزش SaaS</span>
+                    <span class="category-tag" data-category="cost-cutting-ai">کاهش هزینه‌ها با هوش مصنوعی</span>
+                    <span class="category-tag" data-category="operational-efficiency-ai">کارایی عملیاتی هوش مصنوعی</span>
+                    <span class="category-tag" data-category="cloud-infrastructure-shifts">تغییرات زیرساخت ابری</span>
+                    <span class="category-tag" data-category="custom-hardware">سخت‌افزار سفارشی</span>
+                    <span class="category-tag" data-category="r-d-monetization">درآمدزایی از تحقیق و توسعه</span>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <h3>مسئله</h3>
+                <p>هزینه‌های تولید محتوا همچنان رو به افزایش است و تقاضا برای محتوای تازه و متنوع از چرخه‌های تولید سنتی پیشی می‌گیرد. استودیوها و سازندگان مستقل در نمونه‌سازی سریع ایده‌ها، تولید پیش‌نویس‌های اولیه و بهینه‌سازی کارآمد فرآیندهای پیش‌تولید با مشکل مواجه هستند.</p>
+            </div>
+            
+            <div class="card-section">
+                <h3>فرضیه</h3>
+                <p>نتفلیکس، با بهره‌گیری از هوش مصنوعی مولد اختصاصی خود که برای توسعه و شخصی‌سازی محتوای داخلی توسعه یافته است، می‌تواند یک پلتفرم SaaS B2B با نام "StoryForge AI" را به استودیوها و سازندگان خارجی ارائه دهد. این پلتفرم به طرز چشمگیری نگارش فیلمنامه، تولید استوری‌بورد و پیش‌نمایش را تسریع می‌بخشد و به جریان درآمدی جدید و استاندارد صنعتی تبدیل می‌شود.</p>
+            </div>
+            
+            <div class="card-section">
+                <h3>اقدام عملی</h3>
+                <p>نتفلیکس "StoryForge AI" را راه‌اندازی کرد، یک پلتفرم SaaS B2B پریمیوم برای تولید محتوای مولد. این شامل LLMهای پیشرفته‌ای است که برای تولید فیلمنامه (از مفاهیم اولیه تا پیش‌نویس‌های کامل)، ساخت استوری‌بورد با هوش مصنوعی (از متن به توالی‌های بصری) و ابزارهای اولیه پیش‌نمایش (تولید هنر مفهومی اولیه یا توالی‌های انیمیشن ساده) تنظیم شده‌اند. قیمت‌گذاری یک اشتراک رده‌بندی شده بر اساس میزان استفاده (فراخوانی‌های API، حجم تولید محتوا) با پشتیبانی سازمانی و گزینه‌های سفارشی‌سازی مدل است. این پلتفرم بر روی زیرساخت ابری خصوصی و بهینه‌سازی شده نتفلیکس اجرا می‌شود که از شتاب‌دهنده‌های هوش مصنوعی سفارشی (احتمالاً با همکاری شرکا) برای استنتاج و تولید سریع و مقرون‌به‌صرفه استفاده می‌کند.</p>
+            </div>
+            
+            <div class="card-section">
+                <h3>متریک‌های ردیابی شده</h3>
+                <p>تعداد اشتراک‌های استودیو/سازندگان، متوسط درآمد به ازای هر کاربر (ARPU)، حجم محتوای تولید شده، کاهش گزارش شده در زمان/هزینه پیش‌تولید توسط مشتریان، و بازخورد تیم‌های خلاق.</p>
+            </div>
+            
+            <div class="card-section">
+                <h3>نتیجه تصمیم</h3>
+                <p>پذیرش اولیه توسط چندین استودیوی مستقل متوسط و آژانس‌های خلاق. گزارش‌های اولیه حاکی از کاهش ۲۵ درصدی زمان صرف شده برای پیش‌نویس‌های اول فیلمنامه و ۴۰ درصد سریع‌تر شدن توسعه استوری‌بورد است. StoryForge AI نتفلیکس را به عنوان یک ارائه‌دهنده زیرساخت حیاتی در صنعت خلاق معرفی می‌کند و درآمد را فراتر از اشتراک‌ها متنوع می‌سازد و نوآوری در تولید محتوا را پیش می‌برد.</p>
+            </div>
+            
+            <div class="card-section">
+                <h3>چرا اهمیت دارد؟</h3>
+                <p>این راه‌اندازی نشان‌دهنده چرخش استراتژیک نتفلیکس از صرفاً یک توزیع‌کننده و تولیدکننده محتوا به یک ارائه‌دهنده فناوری اساسی برای صنعت خلاق است. با درآمدزایی از هوش مصنوعی مولد داخلی خود، نتفلیکس به چالش سراسری صنعت یعنی افزایش هزینه‌های محتوا و کندی چرخه‌های تولید پاسخ می‌دهد و بازار B2B عظیمی را باز می‌کند. این اقدام همچنین روند شرکت‌های فناوری بزرگ را در تنوع بخشیدن به جریان‌های درآمدی از طریق محصول‌سازی تحقیق و توسعه داخلی هوش مصنوعی تأیید می‌کند.</p>
+            </div>
+            
+            <div class="card-section">
+                <h3>اقدام امروز برای استارتاپ شما</h3>
+                <p>اگر استارتاپ شما در حوزه فناوری رسانه یا هوش مصنوعی سازمانی فعالیت می‌کنید، فرآیندهای خاص، پرهزینه و زمان‌بر را در صنایعی که هدف قرار می‌دهید شناسایی کنید. ابزارهای هوش مصنوعی مولد تخصصی را توسعه دهید که کارایی‌های قابل اثباتی ارائه می‌دهند. بر ایجاد پیشنهادهای SaaS B2B پریمیوم، با بهره‌گیری از داده‌ها/مدل‌های اختصاصی، تمرکز کنید و یک مدل قیمت‌گذاری رده‌بندی شده که ارزش ارائه شده را منعکس کند (مبتنی بر استفاده، مبتنی بر عملکرد) را در نظر بگیرید. برای پذیرش اولیه و اعتباربخشی با رهبران صنعت همکاری کنید.</p>
+            </div>
+
+            <div class="source-info">
+                منبع: <a href="https://netflix.com/blog/storyforge-ai-launch-2026-10-08" target="_blank">Netflix Creator Blog</a>
+                <span class="star-rating">
+                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                </span>
+            </div>
+        </div>
+        <!-- End Netflix Card -->
+
+        <!-- Repeat other cards here following the same structure -->
+
     </div>
+</body>
+</html>
