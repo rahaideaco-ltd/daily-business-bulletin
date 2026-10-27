@@ -3838,5 +3838,47 @@
     "source_name": "TechCrunch, BioPharma Dive",
     "source_url": "https://techcrunch.com/2026/10/26/biosynth-ai-genesis-launch",
     "source_quality_stars": 5
+  },
+  {
+    "date": "2026-10-27",
+    "company": "Shopify",
+    "category": "smb-tech-ai, ai-agents, generative-ai, multimodal-ai, hyper-personalization-ai, operational-efficiency-ai, cost-cutting-ai, new-revenue-streams, pricing-model-change, saas-value-add, cloud-infrastructure-shifts, multi-cloud, real-time-ai, ecommerce-ai, predictive-analytics-ai",
+    "problem": "کسب‌وکارهای کوچک و متوسط (SMBs) برای مقیاس‌دهی پشتیبانی مشتری شخصی‌سازی‌شده، مدیریت موجودی و قیمت‌گذاری بلادرنگ بدون تیم‌های اختصاصی، با چالش مواجه هستند.",
+    "hypothesis": "شاپیفای می‌تواند هوش مصنوعی چندوجهی و فناوری عامل داخلی خود را به یک مدیر فروشگاه خودکار به عنوان یک سرویس SaaS پریمیوم تبدیل کند.",
+    "experiment_or_action": "شاپیفای \"عامل‌های خرده‌فروشی خودکار\" (SARA) را راه‌اندازی کرد، مجموعه‌ای از عامل‌های هوش مصنوعی که از هوش مصنوعی چندوجهی برای مدیریت موجودی، قیمت‌گذاری پویا بر اساس تقاضای بلادرنگ و ارائه پشتیبانی مشتری ۲۴/۷ توسط هوش مصنوعی استفاده می‌کند. SARA با سیستم‌های POS و زنجیره تامین یکپارچه می‌شود.",
+    "metric_tracked": "افزایش رضایت مشتری برای SMBها، نرخ تبدیل فروش، کاهش هزینه‌های عملیاتی، درآمد اشتراک SARA.",
+    "decision_outcome": "پذیرندگان اولیه افزایش ۱۵ درصدی در رضایت مشتری و ۱۰ درصدی در کاهش هزینه‌های عملیاتی را گزارش کردند. SARA offerings شاپیفای را در اکوسیستم B2B2C خود گسترش می‌دهد و SMBها را رقابتی‌تر می‌کند.",
+    "core_lesson": "عامل‌های هوش مصنوعی با قابلیت‌های چندوجهی می‌توانند عملیات اصلی خرده‌فروشی SMB را خودکار کنند و از طریق کارایی و تجربه مشتری بهبود یافته، ارزش ایجاد کنند. قیمت‌گذاری مبتنی بر عملکرد (درصد از صرفه‌جویی/افزایش درآمد) آن را جذاب می‌کند.",
+    "source_name": "Shopify Blog",
+    "source_url": "https://shopify.com/blog/sara-launch-2026-10-27",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-10-27",
+    "company": "Stripe",
+    "category": "enterprise-ai, fintech-ai, security-ai, compliance-ai, fraud-detection-ai, predictive-analytics-ai, real-time-ai, new-revenue-streams, pricing-model-change, saas-value-add, cloud-infrastructure-shifts, data-privacy-ai, multi-cloud, federated-learning-ai, web3-ai",
+    "problem": "شرکت‌ها در تراکنش‌های پرحجم، فرامرزی و دارایی‌های دیجیتال با جرایم مالی فزاینده، پیچیدگی نظارتی و چالش‌های ارزیابی ریسک بلادرنگ مواجه هستند. ابزارهای موجود واکنشی هستند و برای کلاس‌های دارایی نوظهور طراحی نشده‌اند.",
+    "hypothesis": "استرایپ می‌تواند هوش مصنوعی فین‌تک خود را به یک پلتفرم اطلاعات ریسک پیش‌بینانه بلادرنگ برای جریان‌های مالی پیچیده سازمانی، از جمله دارایی‌های دیجیتال، گسترش دهد.",
+    "experiment_or_action": "استرایپ \"Stripe Nexus Risk Intelligence\" را راه‌اندازی کرد، یک پلتفرم SaaS سازمانی که امتیازدهی ریسک مبتنی بر هوش مصنوعی بلادرنگ، اتوماسیون انطباق (KYC/AML برای دارایی‌های سنتی و دیجیتال) و تشخیص تقلب پیش‌بینانه را برای تراکنش‌های جهانی ارائه می‌دهد. این پلتفرم از رویکرد یادگیری فدرال در سراسر شبکه استرایپ بهره می‌برد.",
+    "metric_tracked": "کاهش در زیان‌های ناشی از تقلب، نرخ قبولی ممیزی‌های انطباق، سرعت پردازش تراکنش، درآمد اشتراک Nexus.",
+    "decision_outcome": "برنامه‌های آزمایشی کاهش ۲۰ درصدی در هشدارهای کاذب و ۱۵ درصدی در سرعت ترخیص برای تراکنش‌های پرخطر را نشان دادند. Nexus Risk Intelligence استرایپ را به عنوان یک لایه زیرساختی حیاتی برای آینده مالی جهانی قرار می‌دهد.",
+    "core_lesson": "هوش مصنوعی مالی اختصاصی، به ویژه هنگامی که با اثرات شبکه و یادگیری فدرال تقویت شود، می‌تواند به SaaS B2B با ارزش بالا برای مدیریت ریسک پیچیده سازمانی تبدیل شود و قیمت‌گذاری پریمیوم مبتنی بر استفاده را توجیه کند.",
+    "source_name": "Stripe Newsroom",
+    "source_url": "https://stripe.com/news/nexus-risk-ai-launch-2026-10-27",
+    "source_quality_stars": 5
+  },
+  {
+    "date": "2026-10-27",
+    "company": "Airbnb",
+    "category": "enterprise-ai, smb-tech-ai, platform-optimization-ai, predictive-analytics-ai, generative-ai, dynamic-pricing-ai, hyper-personalization-ai, new-revenue-streams, pricing-model-change, saas-value-add, cloud-infrastructure-shifts, multi-cloud, real-time-ai, operational-efficiency-ai, cost-cutting-ai",
+    "problem": "مدیران حرفه‌ای املاک با قیمت‌گذاری پویا، نمایش بهینه لیست‌ها و زمان‌بندی نگهداری پیش‌بینانه در سبدهای بزرگ و بازارهای خرد متنوع، دست و پنجه نرم می‌کنند.",
+    "hypothesis": "ایر بی‌ان‌بی می‌تواند از داده‌های گسترده رزرو تاریخی، هوش مصنوعی پیش‌بینی تقاضای محلی و هوش مصنوعی مولد برای بهینه‌سازی لیست‌ها، یک SaaS پریمیوم برای مدیران حرفه‌ای املاک ارائه دهد.",
+    "experiment_or_action": "ایر بی‌ان‌بی \"Airbnb ProManage AI\" را راه‌اندازی کرد، یک پلتفرم SaaS که توصیه‌های قیمت‌گذاری پویا، هوش مصنوعی مولد برای بهینه‌سازی عکس‌ها/توضیحات لیست‌ها بر اساس روندهای بازار، و برنامه‌های نگهداری پیش‌بینانه را برای املاک ارائه می‌دهد. این پلتفرم با سیستم‌های مدیریت املاک موجود یکپارچه می‌شود.",
+    "metric_tracked": "افزایش نرخ رزرو، افزایش متوسط نرخ روزانه (ADR)، کاهش هزینه‌های نگهداری، درآمد اشتراک ProManage AI.",
+    "decision_outcome": "کاربران اولیه ۱۰ تا ۱۵ درصد افزایش در درآمد هر لیست و ۵ درصد کاهش در نگهداری برنامه‌ریزی نشده را گزارش کردند. این امر اکوسیستم B2B ایر بی‌ان‌بی را گسترش می‌دهد.",
+    "core_lesson": "شرکت‌های پلتفرمی می‌توانند با محصول‌سازی تخصص هوش مصنوعی داخلی و داده‌های اختصاصی خود به راه‌حل‌های SaaS B2B برای بخش‌های \"تامین‌کننده\" حرفه‌ای خود، جریان‌های درآمدی جدید و با حاشیه سود بالا ایجاد کنند، با تمرکز بر بازگشت سرمایه روشن برای مشتری.",
+    "source_name": "Airbnb Host Blog",
+    "source_url": "https://airbnb.com/pro-manage-ai-launch-2026-10-27",
+    "source_quality_stars": 4
   }
 ]
